@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人資料 | Nymph 寧芙女神 Atelier</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Geist:wght@300;400;500;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nymph: {
+              cream: '#ECE9E3',
+              tan: '#D0CBB6',
+              sand: '#D2C2A7',
+              forest: '#435A44',
+              darkOlive: '#44422B',
+              sage: '#C2C4AC',
+              olive: '#787E5E',
+              warmBrown: '#78725C',
+              darkGreen: '#3D4A2E',
+              lightGray: '#DADCDB',
+              cardBg: '#FFFDF8',
+              cardSand: '#EAE7E0',
+            }
+          },
+          fontFamily: {
+            serif: ['"EB Garamond"', 'serif'],
+            display: ['"Philosopher"', 'serif'],
+            script: ['"Allura"', 'cursive'],
+            sans: ['"Geist"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#ece9e3] text-nymph-darkGreen font-sans antialiased selection:bg-nymph-olive selection:text-white flex flex-col min-h-screen">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-[#435a44] border-b border-[#787e5e]/30 shadow-md">
+    <div class="max-w-[1440px] mx-auto h-20 px-5 sm:px-10 lg:px-20 flex items-center justify-between">
+      
+      <div class="flex items-center lg:hidden">
+        <button id="mobile-menu-btn" type="button" aria-label="開啟選單" class="p-2 -ml-2 text-nymph-cream hover:text-white focus:outline-none">
+          <img src="./assets/28deb0e1f605c9e01d46577a8fdc055d4058474d.svg" alt="選單" class="w-5 h-4 object-contain">
+        </button>
+      </div>
+
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="./assets/e1a9ba9bba27310a2c2be7f93b67d8f80d4f2a67.svg" alt="Nymph" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105">
+        <div class="hidden sm:flex flex-col ml-3 gap-0.5">
+          <img src="./assets/e55976c0d7cbe3fc0646ae276111f8c423e0684a.svg" alt="NYMPH" class="h-5 w-auto object-contain">
+          <img src="./assets/0c5c3a9478573436e84dcaaf785ca915bf3412ea.svg" alt="南芙女神" class="h-3 w-auto object-contain opacity-90">
+        </div>
+        <span class="sm:hidden font-serif font-bold text-nymph-tan text-xl tracking-[0.2em] ml-2">NYMPH</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-10">
+        <a href="shop.html" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">線上商店</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+        <a href="about.html" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">關於我們</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+        <a href="shop.html?cat=candles" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">經典系列</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+        <a href="shop.html?cat=courses" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">線上課程</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-4 sm:gap-6">
+        <a href="shop.html" aria-label="搜尋" class="text-nymph-tan hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors">
+          <img src="./assets/487bb933c6c4df0bf30234ea3368f3e0a4dd6fdb.svg" alt="Search" class="w-5 h-5 object-contain">
+        </a>
+        <button type="button" aria-label="購物車" class="cart-trigger-btn flex items-center gap-1.5 p-1.5 rounded-full hover:bg-white/10 transition-all text-nymph-tan group">
+          <img src="./assets/30fd977a21856d4fb8c8b03444e58061b58d381c.svg" alt="Cart" class="w-5 h-5 object-contain group-hover:scale-110 transition-transform">
+          <span class="cart-count-badge bg-nymph-cream text-nymph-darkOlive font-sans font-bold text-[10px] leading-tight px-1.5 py-0.5 rounded-full shadow-sm">2</span>
+        </button>
+        <a href="profile.html" aria-label="會員中心" class="text-nymph-tan hover:text-white p-1.5 rounded-full bg-white/10 transition-colors">
+          <img src="./assets/c35a53d546de92c3f79922c9e47e50e7fbecbe60.svg" alt="User" class="w-5 h-5 object-contain">
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== MAIN PROFILE CONTENT (Figma 90:183) ==================== -->
+  <main class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 pt-8 sm:pt-12 pb-20 flex-1 w-full">
+    
+    <!-- Breadcrumb (Figma 90:213) -->
+    <nav class="flex items-center gap-2 text-xs sm:text-sm text-[#787e5e] font-sans mb-8">
+      <a href="index.html" class="hover:underline">首頁</a>
+      <span>/</span>
+      <span class="text-[#787e5e]">會員中心</span>
+      <span>/</span>
+      <span class="text-[#435a44] font-medium">個人資料</span>
+    </nav>
+
+    <!-- Dashboard Columns (Figma 90:222) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      
+      <!-- ==================== LEFT: NAV SIDEBAR (Figma 90:223) ==================== -->
+      <aside class="lg:col-span-3">
+        <div class="bg-white/60 p-6 rounded-lg border border-[#d0cbb6]/60 shadow-sm flex flex-col items-center text-center">
+          
+          <!-- Avatar (Figma 90:225) -->
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-4 shadow-sm border border-[#d0cbb6]">
+            <img src="./assets/avatar.png" alt="林南舒" class="w-full h-full object-cover">
+          </div>
+          
+          <h3 class="font-serif font-semibold text-xl text-[#1c1c1a] mb-1">
+            林南舒
+          </h3>
+          <p class="font-sans text-xs text-[#787e5e] mb-6">
+            nanshu.lin@gmail.com
+          </p>
+
+          <div class="w-full border-t border-[#d0cbb6]/60 mb-6"></div>
+
+          <!-- Nav List (Figma 90:230) -->
+          <div class="w-full space-y-2 text-left font-sans text-sm">
+            <!-- Active: 個人資料 -->
+            <a href="profile.html" class="flex flex-col px-4 py-2.5 rounded bg-white shadow-sm border-l-4 border-[#435a44] text-[#435a44] font-medium">
+              <span class="text-sm">個人資料</span>
+              <span class="text-[11px] text-[#787e5e]">My Profile</span>
+            </a>
+            
+            <!-- 我的訂單 -->
+            <a href="orders.html" class="flex flex-col px-4 py-2.5 rounded hover:bg-white/50 text-[#78725c] hover:text-[#435a44] transition-colors">
+              <span class="text-sm">我的訂單</span>
+              <span class="text-[11px] text-[#787e5e]/80">My Orders</span>
+            </a>
+
+            <!-- 我的課程 -->
+            <a href="shop.html?cat=courses" class="flex flex-col px-4 py-2.5 rounded hover:bg-white/50 text-[#78725c] hover:text-[#435a44] transition-colors">
+              <span class="text-sm">我的課程</span>
+              <span class="text-[11px] text-[#787e5e]/80">My Courses</span>
+            </a>
+
+            <!-- 聯絡客服 -->
+            <a href="contact.html" class="flex flex-col px-4 py-2.5 rounded hover:bg-white/50 text-[#78725c] hover:text-[#435a44] transition-colors">
+              <span class="text-sm">聯絡客服</span>
+              <span class="text-[11px] text-[#787e5e]/80">Contact Support</span>
+            </a>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- ==================== RIGHT: CONTENT PANE (Figma 90:248) ==================== -->
+      <section class="lg:col-span-9 space-y-6">
+        
+        <!-- Header (Figma 90:249) -->
+        <div>
+          <h1 class="font-serif font-normal text-3xl sm:text-4xl text-[#1c1c1a] mb-2">
+            個人資料
+          </h1>
+          <p class="font-sans text-sm text-[#78725c]">
+            管理您的基本帳戶資訊與配送地址
+          </p>
+        </div>
+
+        <!-- Form Card Container (Figma 90:252) -->
+        <div class="bg-white p-6 sm:p-10 rounded-lg border border-[#d0cbb6]/60 shadow-sm space-y-8">
+          
+          <!-- Avatar Upload Header (Figma 90:253) -->
+          <div class="flex flex-col sm:flex-row items-center sm:items-center gap-6">
+            <div class="w-24 h-24 rounded-full overflow-hidden shadow border border-[#d0cbb6] shrink-0">
+              <img id="profile-avatar-preview" src="./assets/avatar.png" alt="林南舒" class="w-full h-full object-cover">
+            </div>
+            <div class="flex flex-col items-center sm:items-start gap-2">
+              <input type="file" id="avatar-input" accept="image/png, image/jpeg" class="hidden" onchange="previewAvatar(this)">
+              <button type="button" onclick="document.getElementById('avatar-input').click()" class="bg-[#435a44] hover:bg-[#344635] text-white text-xs font-sans px-4 py-2 rounded shadow transition-colors">
+                上傳新頭像
+              </button>
+              <p class="font-sans text-xs text-[#787e5e]">
+                建議尺寸 200x200 像素，支援 JPG、PNG 格式。
+              </p>
+            </div>
+          </div>
+
+          <div class="border-t border-[#d0cbb6]/60"></div>
+
+          <!-- Form Fields Grid (Figma 90:263) -->
+          <form id="profile-form" onsubmit="event.preventDefault(); saveProfile();" class="space-y-6">
+            
+            <!-- Row 1: 中文姓名 & 英文姓名 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name-zh" class="block font-sans text-sm font-medium text-[#1c1c1a] mb-2">中文姓名</label>
+                <input type="text" id="name-zh" value="林南舒" required class="w-full border border-[#d0cbb6] rounded px-4 py-2.5 text-sm text-[#1c1c1a] bg-white focus:outline-none focus:border-[#435a44] transition-colors">
+              </div>
+              <div>
+                <label for="name-en" class="block font-sans text-sm font-medium text-[#1c1c1a] mb-2">英文姓名</label>
+                <input type="text" id="name-en" value="Nanshu Lin" class="w-full border border-[#d0cbb6] rounded px-4 py-2.5 text-sm text-[#1c1c1a] bg-white focus:outline-none focus:border-[#435a44] transition-colors">
+              </div>
+            </div>
+
+            <!-- Row 2: 電子信箱 (Disabled) & 聯絡電話 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="email" class="block font-sans text-sm font-medium text-[#1c1c1a] mb-2">電子信箱</label>
+                <input type="email" id="email" value="nanshu.lin@gmail.com (不可修改)" disabled class="w-full border border-[#d0cbb6] rounded px-4 py-2.5 text-sm text-[#78725c] bg-[#eae7e0] cursor-not-allowed">
+              </div>
+              <div>
+                <label for="phone" class="block font-sans text-sm font-medium text-[#1c1c1a] mb-2">聯絡電話</label>
+                <input type="tel" id="phone" value="0912-345-678" class="w-full border border-[#d0cbb6] rounded px-4 py-2.5 text-sm text-[#1c1c1a] bg-white focus:outline-none focus:border-[#435a44] transition-colors">
+              </div>
+            </div>
+
+            <!-- Row 3: 出生日期 & 性別 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="birthday" class="block font-sans text-sm font-medium text-[#1c1c1a] mb-2">出生日期</label>
+                <input type="text" id="birthday" value="1995 / 10 / 12" class="w-full border border-[#d0cbb6] rounded px-4 py-2.5 text-sm text-[#1c1c1a] bg-white focus:outline-none focus:border-[#435a44] transition-colors">
+              </div>
+              <div>
+                <label for="gender" class="block font-sans text-sm font-medium text-[#1c1c1a] mb-2">性別</label>
+                <input type="text" id="gender" value="女性" class="w-full border border-[#d0cbb6] rounded px-4 py-2.5 text-sm text-[#1c1c1a] bg-white focus:outline-none focus:border-[#435a44] transition-colors">
+              </div>
+            </div>
+
+            <!-- Row 4: 預設收件地址 (Full Width) -->
+            <div>
+              <label for="address" class="block font-sans text-sm font-medium text-[#1c1c1a] mb-2">預設收件地址</label>
+              <input type="text" id="address" value="台北市大安區新生南路三段 99 號 4 樓" class="w-full border border-[#d0cbb6] rounded px-4 py-2.5 text-sm text-[#1c1c1a] bg-white focus:outline-none focus:border-[#435a44] transition-colors">
+            </div>
+
+            <!-- Action Buttons (Figma 90:291) -->
+            <div class="flex items-center justify-end gap-4 pt-4">
+              <button type="button" onclick="window.location.reload();" class="border border-[#d0cbb6] hover:border-[#787e5e] text-[#44422b] px-6 py-2.5 rounded text-sm font-sans transition-colors">
+                取消
+              </button>
+              <button type="submit" class="bg-[#435a44] hover:bg-[#344635] text-white px-7 py-2.5 rounded text-sm font-sans font-medium shadow transition-all">
+                儲存修改
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="mt-auto bg-[#435a44] border-t border-[#787e5e] text-[#ece9e3] pt-16 sm:pt-20 pb-10">
+    <div class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-20">
+      <div class="flex flex-col lg:flex-row justify-between gap-12 pb-14 border-b border-[#787e5e]/40">
+        
+        <!-- Newsletter Column -->
+        <div class="max-w-md flex flex-col gap-6">
+          <h4 class="font-serif text-3xl text-[#ece9e3]">訂閱南芙晨報</h4>
+          <p class="font-sans text-sm text-[#c2c4ac] leading-relaxed">
+            每月獲取一封關於月相、植物香氣、水晶能量及內在平靜的溫柔提醒。首購可享 9 折。
+          </p>
+          <form onsubmit="event.preventDefault(); window.nymphApp && window.nymphApp.showToast('感謝訂閱！優惠代碼已寄至您的信箱');" class="flex items-stretch border border-[#ece9e3] overflow-hidden">
+            <input type="email" required placeholder="輸入您的電子信箱 Email" class="w-full px-4 py-3 text-sm bg-transparent text-[#ece9e3] placeholder-[#c2c4ac] focus:outline-none">
+            <button type="submit" class="bg-[#ece9e3] text-[#787e5e] font-sans font-medium text-xs sm:text-sm tracking-wider px-5 py-3 hover:bg-white transition-colors shrink-0">訂閱</button>
+          </form>
+        </div>
+
+        <!-- Footer Links Columns -->
+        <div class="flex flex-wrap sm:flex-nowrap gap-12 sm:gap-20">
+          <div class="flex flex-col gap-4 text-sm whitespace-nowrap">
+            <h5 class="font-sans font-semibold text-[#ece9e3] text-[15px]">購買須知</h5>
+            <a href="shop.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">付款與配送</a>
+            <a href="orders.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">退換貨政策</a>
+            <a href="contact.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">常見問題 FAQ</a>
+            <a href="shop.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">水晶消磁說明</a>
+          </div>
+
+          <div class="flex flex-col gap-4 text-sm whitespace-nowrap">
+            <h5 class="font-sans font-semibold text-[#ece9e3] text-[15px]">顧客條款</h5>
+            <a href="about.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">服務條款</a>
+            <a href="about.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">隱私權政策</a>
+            <a href="about.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">免責聲明</a>
+          </div>
+
+          <div class="flex flex-col gap-4 text-sm max-w-[200px]">
+            <h5 class="font-sans font-semibold text-[#ece9e3] text-[15px]">追蹤南芙</h5>
+            <div class="flex items-center gap-4">
+              <a href="#" aria-label="Instagram" class="hover:opacity-80 transition-opacity">
+                <img src="./assets/f6365d56bbfac37ba367491c48179335c9fab636.svg" alt="Instagram" class="w-5 h-5 object-contain">
+              </a>
+              <a href="#" aria-label="Facebook" class="hover:opacity-80 transition-opacity">
+                <img src="./assets/82ea03b64ac019a120aa5028c497d157421cb04e.svg" alt="Facebook" class="w-5 h-5 object-contain">
+              </a>
+              <a href="#" aria-label="Line" class="hover:opacity-80 transition-opacity">
+                <img src="./assets/70da4ac6e19af07a684b9365809feccaf11a4549.svg" alt="Line" class="w-5 h-5 object-contain">
+              </a>
+            </div>
+            <p class="text-xs text-[#c2c4ac] leading-relaxed mt-2">
+              LINE 官方帳號: @nymph.tw<br>客服信箱: service@nymph.com
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#c2c4ac]">
+        <p>© 2026 南芙女神 nymph Atelier. All Rights Reserved.</p>
+        <p class="font-script text-lg text-nymph-tan">Serenity in everyday rituals.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== MOBILE MENU DRAWER ==================== -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 pointer-events-none">
+    <div id="mobile-menu-overlay" class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300"></div>
+    <div class="absolute inset-y-0 right-0 max-w-xs w-full bg-nymph-forest text-nymph-cream p-6 shadow-2xl flex flex-col justify-between overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-nymph-olive/30">
+          <span class="font-serif font-bold text-lg text-nymph-tan tracking-wider">NYMPH</span>
+          <button id="mobile-menu-close" type="button" class="p-2 text-nymph-cream hover:text-white">✕</button>
+        </div>
+        <nav class="flex flex-col gap-4 py-8 text-base font-sans">
+          <a href="shop.html" class="hover:text-nymph-tan py-1">線上商店</a>
+          <a href="about.html" class="hover:text-nymph-tan py-1">關於我們</a>
+          <a href="shop.html?cat=candles" class="hover:text-nymph-tan py-1">經典系列</a>
+          <a href="shop.html?cat=courses" class="hover:text-nymph-tan py-1">線上課程</a>
+          <a href="profile.html" class="text-nymph-tan font-bold py-1">會員中心</a>
+          <a href="orders.html" class="hover:text-nymph-tan py-1">我的訂單</a>
+          <a href="contact.html" class="hover:text-nymph-tan py-1">聯絡客服</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-nymph-olive/30 text-xs text-nymph-sage">
+        <p>© 2026 南芙女神 nymph</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function previewAvatar(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('profile-avatar-preview').src = e.target.result;
+          if (window.nymphApp) window.nymphApp.showToast('頭像已預覽，點擊儲存修改以生效');
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function saveProfile() {
+      if (window.nymphApp) {
+        window.nymphApp.showToast('個人資料已成功儲存！');
+      }
+    }
+  </script>
+
+  <!-- Shared Cart Drawer & App Logic -->
+  <script src="./assets/app.js"></script>
+
+</body>
+</html>

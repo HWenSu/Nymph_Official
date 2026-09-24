@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於我們 | Nymph 寧芙女神 Atelier</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Geist:wght@300;400;500;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nymph: {
+              cream: '#ECE9E3',
+              tan: '#D0CBB6',
+              sand: '#D2C2A7',
+              forest: '#435A44',
+              darkOlive: '#44422B',
+              sage: '#C2C4AC',
+              olive: '#787E5E',
+              warmBrown: '#78725C',
+              darkGreen: '#3D4A2E',
+              lightGray: '#DADCDB',
+              cardBg: '#FFFDF8',
+              cardSand: '#EAE7E0',
+            }
+          },
+          fontFamily: {
+            serif: ['"EB Garamond"', 'serif'],
+            display: ['"Philosopher"', 'serif'],
+            script: ['"Allura"', 'cursive'],
+            sans: ['"Geist"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#ece9e3] text-nymph-darkGreen font-sans antialiased selection:bg-nymph-olive selection:text-white flex flex-col min-h-screen">
+
+  <!-- ==================== HEADER (Desktop & Mobile) ==================== -->
+  <header class="sticky top-0 z-40 bg-[#435a44] border-b border-[#787e5e]/30 shadow-md">
+    <div class="max-w-[1440px] mx-auto h-20 px-5 sm:px-10 lg:px-20 flex items-center justify-between">
+      
+      <!-- Mobile Menu Toggle Button -->
+      <div class="flex items-center lg:hidden">
+        <button id="mobile-menu-btn" type="button" aria-label="開啟選單" class="p-2 -ml-2 text-nymph-cream hover:text-white focus:outline-none">
+          <img src="./assets/28deb0e1f605c9e01d46577a8fdc055d4058474d.svg" alt="選單" class="w-5 h-4 object-contain">
+        </button>
+      </div>
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="./assets/e1a9ba9bba27310a2c2be7f93b67d8f80d4f2a67.svg" alt="Nymph" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105">
+        <div class="hidden sm:flex flex-col ml-3 gap-0.5">
+          <img src="./assets/e55976c0d7cbe3fc0646ae276111f8c423e0684a.svg" alt="NYMPH" class="h-5 w-auto object-contain">
+          <img src="./assets/0c5c3a9478573436e84dcaaf785ca915bf3412ea.svg" alt="南芙女神" class="h-3 w-auto object-contain opacity-90">
+        </div>
+        <span class="sm:hidden font-serif font-bold text-nymph-tan text-xl tracking-[0.2em] ml-2">NYMPH</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-10">
+        <a href="shop.html" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">線上商店</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+        <a href="about.html" class="relative group py-2 flex flex-col items-center">
+          <span class="font-sans font-semibold text-[15px] text-nymph-tan tracking-wide">關於我們</span>
+          <span class="absolute bottom-0 w-full h-[2px] bg-nymph-olive rounded-full"></span>
+        </a>
+        <a href="shop.html?cat=candles" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">經典系列</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+        <a href="shop.html?cat=courses" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">線上課程</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+      </nav>
+
+      <!-- Right Action Icons -->
+      <div class="flex items-center gap-4 sm:gap-6">
+        <a href="shop.html" aria-label="搜尋" class="text-nymph-tan hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors">
+          <img src="./assets/487bb933c6c4df0bf30234ea3368f3e0a4dd6fdb.svg" alt="Search" class="w-5 h-5 object-contain">
+        </a>
+        <button type="button" aria-label="購物車" class="cart-trigger-btn flex items-center gap-1.5 p-1.5 rounded-full hover:bg-white/10 transition-all text-nymph-tan group">
+          <img src="./assets/30fd977a21856d4fb8c8b03444e58061b58d381c.svg" alt="Cart" class="w-5 h-5 object-contain group-hover:scale-110 transition-transform">
+          <span class="cart-count-badge bg-nymph-cream text-nymph-darkOlive font-sans font-bold text-[10px] leading-tight px-1.5 py-0.5 rounded-full shadow-sm">2</span>
+        </button>
+        <a href="profile.html" aria-label="會員中心" class="text-nymph-tan hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors">
+          <img src="./assets/c35a53d546de92c3f79922c9e47e50e7fbecbe60.svg" alt="User" class="w-5 h-5 object-contain">
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== 1. ABOUT HERO (Figma 83:177) ==================== -->
+  <section class="relative w-full h-[380px] sm:h-[480px] lg:h-[579px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <img src="./assets/f4eac19e4a922329fe5b3ebe7811b1ca505a6742.png" alt="About Hero" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-[#1c1c1a]/25"></div>
+    </div>
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-4">
+      <div class="flex flex-col items-center">
+        <!-- Glowing Nymph Emblem -->
+        <div class="w-[60px] sm:w-[76px] h-auto mb-6">
+          <img src="./assets/e1a9ba9bba27310a2c2be7f93b67d8f80d4f2a67.svg" alt="Emblem" class="w-full h-auto object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+        </div>
+        <!-- Wordmark NYMPH -->
+        <div class="w-[130px] sm:w-[164px] h-auto mb-2">
+          <img src="./assets/e55976c0d7cbe3fc0646ae276111f8c423e0684a.svg" alt="NYMPH" class="w-full h-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+        </div>
+        <!-- Chinese Wordmark 南芙女神 -->
+        <div class="w-[130px] sm:w-[164px] h-auto">
+          <img src="./assets/0c5c3a9478573436e84dcaaf785ca915bf3412ea.svg" alt="南芙女神" class="w-full h-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 2. WORDMARK & BOTANICAL CORNERS (Figma 83:271) ==================== -->
+  <section class="relative w-full bg-[#ece9e3] py-16 sm:py-24 lg:py-28 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative min-h-[500px] lg:h-[650px] flex flex-col items-center justify-center text-center">
+      
+      <!-- Top-Left Circle (Bouquet) -->
+      <div class="hidden md:block absolute left-8 lg:left-16 top-0 w-36 lg:w-44 h-36 lg:h-44">
+        <div class="relative w-full h-full rounded-full border border-[#435a44] p-1.5 flex items-center justify-center">
+          <div class="w-full h-full rounded-full border-[3px] border-[#435a44] p-2 flex items-center justify-center overflow-hidden bg-white/40">
+            <img src="./assets/about_wordmark_tl.png" alt="Botanical Bouquet" class="w-4/5 h-4/5 object-contain">
+          </div>
+        </div>
+      </div>
+
+      <!-- Top-Right Circle (Tarot) -->
+      <div class="hidden md:block absolute right-8 lg:right-16 top-0 w-36 lg:w-44 h-36 lg:h-44">
+        <div class="relative w-full h-full rounded-full border border-[#435a44] p-1.5 flex items-center justify-center">
+          <div class="w-full h-full rounded-full border-[3px] border-[#435a44] p-2 flex items-center justify-center overflow-hidden bg-white/40">
+            <img src="./assets/about_wordmark_tr.png" alt="Tarot Mystic" class="w-4/5 h-4/5 object-contain">
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom-Left Circle (Crystals) -->
+      <div class="hidden md:block absolute left-8 lg:left-16 bottom-0 w-36 lg:w-44 h-36 lg:h-44">
+        <div class="relative w-full h-full rounded-full border border-[#435a44] p-1.5 flex items-center justify-center">
+          <div class="w-full h-full rounded-full border-[3px] border-[#435a44] p-2 flex items-center justify-center overflow-hidden bg-white/40">
+            <img src="./assets/about_wordmark_bl.png" alt="Crystal Cluster" class="w-4/5 h-4/5 object-contain">
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom-Right Circle (Perfume) -->
+      <div class="hidden md:block absolute right-8 lg:right-16 bottom-0 w-36 lg:w-44 h-36 lg:h-44">
+        <div class="relative w-full h-full rounded-full border border-[#435a44] p-1.5 flex items-center justify-center">
+          <div class="w-full h-full rounded-full border-[3px] border-[#435a44] p-2 flex items-center justify-center overflow-hidden bg-white/40">
+            <img src="./assets/about_wordmark_br.png" alt="Perfume Elixir" class="w-4/5 h-4/5 object-contain">
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Wordmark Block -->
+      <div class="relative z-10 flex flex-col items-center justify-center max-w-2xl px-4 py-8">
+        <!-- Brand Name Nymph -->
+        <h2 class="font-display text-6xl sm:text-7xl lg:text-[96px] text-[#435a44] tracking-tight leading-none mb-6">
+          Nymph
+        </h2>
+        
+        <!-- SINCE - EMBLEM - 2026 -->
+        <div class="flex items-center justify-center gap-6 sm:gap-10 font-display text-2xl sm:text-3xl text-[#787e5e] mb-10">
+          <span>SINCE</span>
+          <div class="w-12 h-16 sm:w-16 sm:h-20 flex items-center justify-center">
+            <img src="./assets/d31e98292031e0395ce95d1c5af41fd5e1a3abd8.svg" alt="Emblem" class="w-8 h-12 object-contain">
+          </div>
+          <span>2026</span>
+        </div>
+
+        <!-- Cursive Heading & Subtitle -->
+        <p class="font-script text-3xl sm:text-5xl lg:text-[64px] text-[#787e5e] underline underline-offset-8 decoration-1 mb-4 leading-tight">
+          Lorem ipsum dolor sit amet consectetur.
+        </p>
+        <p class="font-display text-xl sm:text-2xl lg:text-3xl text-[#787e5e]">
+          Magic for living, apple, banana
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 3. BRAND STORY (Figma 83:183) ==================== -->
+  <section class="w-full bg-[#d0cbb6] py-16 sm:py-24 relative overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 space-y-16 lg:space-y-24">
+      
+      <!-- Story Row 1: Genesis -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+        <!-- Left Text -->
+        <div class="lg:col-span-7 flex flex-col items-start gap-6">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <img src="./assets/d31e98292031e0395ce95d1c5af41fd5e1a3abd8.svg" alt="Leaf" class="w-8 h-8 object-contain">
+            </div>
+            <h3 class="font-serif font-semibold text-2xl sm:text-3xl lg:text-[36px] text-[#787e5e]">
+              南芙女神的誕生
+            </h3>
+          </div>
+          <p class="font-sans text-sm sm:text-[15px] text-[#78725c] leading-[1.8] tracking-wide">
+            「南芙」象徵源自土地的蘊育（南）與純淨出塵的心靈（芙）。我們相信，在快節奏的現代生活中，每個人都需要一處靜謐的聖域，讓疲憊的感官回歸純粹。
+            創辦人在喜馬拉雅山腳下的冥想中獲得啟發，決定創立一個融合自然芳香、晶礦能量與心靈感知的美學品牌。南芙女神 nymph 不僅提供感官的奢華體驗，更是尋求生命平衡的溫柔媒介。
+          </p>
+        </div>
+        <!-- Right Image (Artisan pouring oil) -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="w-full max-w-[520px] h-[280px] sm:h-[360px] lg:h-[400px] rounded-lg overflow-hidden shadow-lg border border-black/5 bg-[#ece9e3]">
+            <img src="./assets/about_artisan_1.png" alt="南芙工藝手作" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Row 2: Sustainability -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+        <!-- Left Image (Artisan hands mixing herbs) -->
+        <div class="order-2 lg:order-1 lg:col-span-5 flex justify-center lg:justify-start">
+          <div class="w-full max-w-[520px] h-[280px] sm:h-[360px] lg:h-[400px] rounded-lg overflow-hidden shadow-lg border border-black/5 bg-[#ece9e3]">
+            <img src="./assets/about_artisan_2.png" alt="手作美學與永續堅持" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <!-- Right Text -->
+        <div class="order-1 lg:order-2 lg:col-span-7 flex flex-col items-start gap-6">
+          <h3 class="font-serif font-semibold text-2xl sm:text-3xl lg:text-[36px] text-[#787e5e]">
+            我們的手作美學與永續堅持
+          </h3>
+          <p class="font-sans text-sm sm:text-[15px] text-[#726d64] leading-[1.8] tracking-wide">
+            我們所有的產品皆遵循永續環境的承諾。從純大豆蠟、有機蜂蠟，到公平貿易採購的珍稀草本植物與淨化鼠尾草，絕不添加人工合成防腐劑與人造香精。
+            每一顆蠟燭、每一款香氛，皆由工匠小量手工灌製、調配。水晶與礦石則逐一挑選、以山泉水與日光完成洗禮、消磁淨化。這不只是產品，更是一份虔誠的祝福。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 4. ORBITAL DIAGRAM (Figma 86:386) ==================== -->
+  <section class="relative w-full bg-[#ece9e3] py-20 lg:py-28 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 relative">
+      
+      <!-- Central Orbital Circle Graphic -->
+      <div class="relative w-full max-w-[900px] mx-auto min-h-[460px] sm:min-h-[560px] flex items-center justify-center my-6">
+        
+        <!-- Outer Orbital Rings (SVG) -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="w-[300px] sm:w-[420px] lg:w-[480px] h-[300px] sm:h-[420px] lg:h-[480px] rounded-full border border-[#787e5e]/40"></div>
+          <div class="absolute w-[440px] sm:w-[600px] lg:w-[680px] h-[440px] sm:h-[600px] lg:h-[680px] rounded-full border border-dashed border-[#787e5e]/25"></div>
+          <!-- Sparkles -->
+          <span class="absolute top-10 left-1/4 text-[#787e5e] text-lg">✦</span>
+          <span class="absolute bottom-10 right-1/4 text-[#787e5e] text-lg">✦</span>
+          <span class="absolute top-1/2 left-4 text-[#787e5e] text-sm">✦</span>
+          <span class="absolute top-1/2 right-4 text-[#787e5e] text-sm">✦</span>
+        </div>
+
+        <!-- Center Artisan Hands Photo Circle -->
+        <div class="relative z-10 w-48 sm:w-64 lg:w-80 h-48 sm:h-64 lg:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-white">
+          <img src="./assets/about_artisan_2.png" alt="Handcrafted Rituals" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Surrounding Nodes -->
+        <!-- Top Node: Crystals -->
+        <div class="hidden sm:flex absolute -top-4 left-1/2 -translate-x-1/2 flex-col items-center">
+          <div class="w-20 h-20 rounded-full border border-[#787e5e] bg-[#ece9e3] p-1.5 shadow-md flex items-center justify-center">
+            <img src="./assets/about_wordmark_bl.png" alt="Crystal" class="w-12 h-12 object-contain">
+          </div>
+        </div>
+        <!-- Right Node: Tarot -->
+        <div class="hidden sm:flex absolute top-1/2 -right-4 -translate-y-1/2 flex-col items-center">
+          <div class="w-20 h-20 rounded-full border border-[#787e5e] bg-[#ece9e3] p-1.5 shadow-md flex items-center justify-center">
+            <img src="./assets/about_wordmark_tr.png" alt="Tarot" class="w-12 h-12 object-contain">
+          </div>
+        </div>
+        <!-- Left Node: Perfume -->
+        <div class="hidden sm:flex absolute top-1/2 -left-4 -translate-y-1/2 flex-col items-center">
+          <div class="w-20 h-20 rounded-full border border-[#787e5e] bg-[#ece9e3] p-1.5 shadow-md flex items-center justify-center">
+            <img src="./assets/about_wordmark_br.png" alt="Perfume" class="w-12 h-12 object-contain">
+          </div>
+        </div>
+        <!-- Bottom Node: Bouquet -->
+        <div class="hidden sm:flex absolute -bottom-4 left-1/2 -translate-x-1/2 flex-col items-center">
+          <div class="w-20 h-20 rounded-full border border-[#787e5e] bg-[#ece9e3] p-1.5 shadow-md flex items-center justify-center">
+            <img src="./assets/about_wordmark_tl.png" alt="Bouquet" class="w-12 h-12 object-contain">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 4 Text Blocks (Figma 104:37 - 104:45) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20 max-w-5xl mx-auto mt-12">
+        <div class="flex flex-col items-start gap-2">
+          <h4 class="font-serif font-bold text-2xl text-[#44422b]">Lorem ipsum</h4>
+          <p class="font-serif font-medium text-base text-[#44422b] leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur. Et laoreet eleifend odio ut. Non enim ut vitae non bibendum arcu arcu vitae. Auctor eget tincidunt scelerisque elementum. Fames duis eu tellus vulputate amet sed ac at etiam.
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-2">
+          <h4 class="font-serif font-bold text-2xl text-[#44422b]">Lorem ipsum</h4>
+          <p class="font-serif font-medium text-base text-[#44422b] leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur. Et laoreet eleifend odio ut. Non enim ut vitae non bibendum arcu arcu vitae. Auctor eget tincidunt scelerisque elementum. Fames duis eu tellus vulputate amet sed ac at etiam.
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-2">
+          <h4 class="font-serif font-bold text-2xl text-[#44422b]">Lorem ipsum</h4>
+          <p class="font-serif font-medium text-base text-[#44422b] leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur. Et laoreet eleifend odio ut. Non enim ut vitae non bibendum arcu arcu vitae. Auctor eget tincidunt scelerisque elementum. Fames duis eu tellus vulputate amet sed ac at etiam.
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-2">
+          <h4 class="font-serif font-bold text-2xl text-[#44422b]">Lorem ipsum</h4>
+          <p class="font-serif font-medium text-base text-[#44422b] leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur. Et laoreet eleifend odio ut. Non enim ut vitae non bibendum arcu arcu vitae. Auctor eget tincidunt scelerisque elementum. Fames duis eu tellus vulputate amet sed ac at etiam.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. THE GARDEN MAGIC PINBOARD (Figma 108:54) ==================== -->
+  <section class="relative w-full h-[540px] sm:h-[680px] lg:h-[785px] flex items-center justify-center overflow-hidden">
+    <!-- Fairy Woodland Cottage Background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <img src="./assets/about_cottage.png" alt="Woodland Cottage" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/15"></div>
+    </div>
+    
+    <!-- Pinned Parchment Note Card -->
+    <div class="relative z-10 w-full max-w-[680px] mx-4 p-8 sm:p-14 bg-[#fffdf8]/90 backdrop-blur-sm rounded-lg shadow-2xl border border-[#d0cbb6] rotate-[1.5deg] transition-transform hover:rotate-0 duration-300">
+      <!-- Pin / Wax Seal Clip -->
+      <div class="absolute -top-4 right-16 w-8 h-14 bg-stone-300/80 rounded-sm border border-stone-400/80 shadow-md"></div>
+      
+      <div class="flex flex-col items-center justify-center text-center">
+        <!-- Title -->
+        <h2 class="font-display capitalize text-5xl sm:text-7xl lg:text-[88px] text-[#435a44] leading-[0.95] mb-6">
+          The Garden<br>Magic
+        </h2>
+        
+        <!-- Bottom divider and Nymph mark -->
+        <div class="flex items-center justify-center gap-3">
+          <span class="w-12 h-px bg-[#435a44]/60"></span>
+          <span class="font-display text-lg sm:text-xl text-[#435a44] tracking-widest uppercase">Nymph</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="mt-auto bg-[#435a44] border-t border-[#787e5e] text-[#ece9e3] pt-16 sm:pt-20 pb-10">
+    <div class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-20">
+      <div class="flex flex-col lg:flex-row justify-between gap-12 pb-14 border-b border-[#787e5e]/40">
+        
+        <!-- Newsletter Column -->
+        <div class="max-w-md flex flex-col gap-6">
+          <h4 class="font-serif text-3xl text-[#ece9e3]">訂閱南芙晨報</h4>
+          <p class="font-sans text-sm text-[#c2c4ac] leading-relaxed">
+            每月獲取一封關於月相、植物香氣、水晶能量及內在平靜的溫柔提醒。首購可享 9 折。
+          </p>
+          <form onsubmit="event.preventDefault(); window.nymphApp && window.nymphApp.showToast('感謝訂閱！優惠代碼已寄至您的信箱');" class="flex items-stretch border border-[#ece9e3] overflow-hidden">
+            <input type="email" required placeholder="輸入您的電子信箱 Email" class="w-full px-4 py-3 text-sm bg-transparent text-[#ece9e3] placeholder-[#c2c4ac] focus:outline-none">
+            <button type="submit" class="bg-[#ece9e3] text-[#787e5e] font-sans font-medium text-xs sm:text-sm tracking-wider px-5 py-3 hover:bg-white transition-colors shrink-0">訂閱</button>
+          </form>
+        </div>
+
+        <!-- Footer Links Columns -->
+        <div class="flex flex-wrap sm:flex-nowrap gap-12 sm:gap-20">
+          <!-- Col 1 -->
+          <div class="flex flex-col gap-4 text-sm whitespace-nowrap">
+            <h5 class="font-sans font-semibold text-[#ece9e3] text-[15px]">購買須知</h5>
+            <a href="shop.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">付款與配送</a>
+            <a href="orders.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">退換貨政策</a>
+            <a href="contact.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">常見問題 FAQ</a>
+            <a href="shop.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">水晶消磁說明</a>
+          </div>
+
+          <!-- Col 2 -->
+          <div class="flex flex-col gap-4 text-sm whitespace-nowrap">
+            <h5 class="font-sans font-semibold text-[#ece9e3] text-[15px]">顧客條款</h5>
+            <a href="about.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">服務條款</a>
+            <a href="about.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">隱私權政策</a>
+            <a href="about.html" class="text-[#c2c4ac] hover:text-[#ece9e3] transition-colors">免責聲明</a>
+          </div>
+
+          <!-- Col 3 -->
+          <div class="flex flex-col gap-4 text-sm max-w-[200px]">
+            <h5 class="font-sans font-semibold text-[#ece9e3] text-[15px]">追蹤南芙</h5>
+            <div class="flex items-center gap-4">
+              <a href="#" aria-label="Instagram" class="hover:opacity-80 transition-opacity">
+                <img src="./assets/f6365d56bbfac37ba367491c48179335c9fab636.svg" alt="Instagram" class="w-5 h-5 object-contain">
+              </a>
+              <a href="#" aria-label="Facebook" class="hover:opacity-80 transition-opacity">
+                <img src="./assets/82ea03b64ac019a120aa5028c497d157421cb04e.svg" alt="Facebook" class="w-5 h-5 object-contain">
+              </a>
+              <a href="#" aria-label="Line" class="hover:opacity-80 transition-opacity">
+                <img src="./assets/70da4ac6e19af07a684b9365809feccaf11a4549.svg" alt="Line" class="w-5 h-5 object-contain">
+              </a>
+            </div>
+            <p class="text-xs text-[#c2c4ac] leading-relaxed mt-2">
+              LINE 官方帳號: @nymph.tw<br>客服信箱: service@nymph.com
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#c2c4ac]">
+        <p>© 2026 南芙女神 nymph Atelier. All Rights Reserved.</p>
+        <p class="font-script text-lg text-nymph-tan">Serenity in everyday rituals.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== MOBILE MENU DRAWER ==================== -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 pointer-events-none">
+    <div id="mobile-menu-overlay" class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300"></div>
+    <div class="absolute inset-y-0 right-0 max-w-xs w-full bg-nymph-forest text-nymph-cream p-6 shadow-2xl flex flex-col justify-between overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-nymph-olive/30">
+          <span class="font-serif font-bold text-lg text-nymph-tan tracking-wider">NYMPH</span>
+          <button id="mobile-menu-close" type="button" class="p-2 text-nymph-cream hover:text-white">✕</button>
+        </div>
+        <nav class="flex flex-col gap-4 py-8 text-base font-sans">
+          <a href="shop.html" class="hover:text-nymph-tan py-1">線上商店</a>
+          <a href="about.html" class="text-nymph-tan font-bold py-1">關於我們</a>
+          <a href="shop.html?cat=candles" class="hover:text-nymph-tan py-1">經典系列</a>
+          <a href="shop.html?cat=courses" class="hover:text-nymph-tan py-1">線上課程</a>
+          <a href="profile.html" class="hover:text-nymph-tan py-1">會員中心</a>
+          <a href="orders.html" class="hover:text-nymph-tan py-1">我的訂單</a>
+          <a href="contact.html" class="hover:text-nymph-tan py-1">聯絡客服</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-nymph-olive/30 text-xs text-nymph-sage">
+        <p>© 2026 南芙女神 nymph</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Cart Drawer & App Logic -->
+  <script src="./assets/app.js"></script>
+
+</body>
+</html>

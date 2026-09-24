@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nymph 寧芙女神 Atelier | 與靈魂對話的香氣</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Geist:wght@300;400;500;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nymph: {
+              cream: '#ECE9E3',
+              tan: '#D0CBB6',
+              sand: '#D2C2A7',
+              forest: '#435A44',
+              darkOlive: '#44422B',
+              sage: '#C2C4AC',
+              olive: '#787E5E',
+              warmBrown: '#78725C',
+              darkGreen: '#3D4A2E',
+              lightGray: '#DADCDB',
+              cardBg: '#FFFDF8',
+              cardSand: '#EAE7E0',
+            }
+          },
+          fontFamily: {
+            serif: ['"EB Garamond"', 'serif'],
+            display: ['"Philosopher"', 'serif'],
+            script: ['"Allura"', 'cursive'],
+            sans: ['"Geist"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 4px 20px -2px rgba(67, 90, 68, 0.08)',
+            'card-hover': '0 12px 30px -4px rgba(67, 90, 68, 0.16)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ECE9E3;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C2C4AC;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #787E5E;
+    }
+
+    /* Hide scrollbar for carousel on mobile while keeping scroll functionality */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-nymph-cream text-nymph-darkGreen font-sans antialiased selection:bg-nymph-olive selection:text-white">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-nymph-forest/95 backdrop-blur-md border-b border-nymph-olive/30 shadow-[0_2px_15px_rgba(0,0,0,0.15)] transition-all duration-300">
+    <div class="max-w-[1440px] mx-auto h-20 px-5 sm:px-10 lg:px-20 flex items-center justify-between">
+      
+      <!-- Mobile Left: Menu Toggle -->
+      <div class="flex items-center lg:hidden">
+        <button id="mobile-menu-btn" type="button" aria-label="開啟選單" class="p-2 -ml-2 text-nymph-cream hover:text-white transition-colors focus:outline-none">
+          <img src="./assets/28deb0e1f605c9e01d46577a8fdc055d4058474d.svg" alt="選單" class="w-5 h-4 object-contain">
+        </button>
+      </div>
+
+      <!-- Desktop Left / Mobile Center: Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="flex items-center">
+          <!-- Logo Emblem -->
+          <img src="./assets/e1a9ba9bba27310a2c2be7f93b67d8f80d4f2a67.svg" alt="Nymph Emblem" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 duration-300">
+          
+          <!-- Desktop Wordmark -->
+          <div class="hidden sm:flex flex-col ml-3 gap-0.5">
+            <img src="./assets/e55976c0d7cbe3fc0646ae276111f8c423e0684a.svg" alt="NYMPH" class="h-5 w-auto object-contain">
+            <img src="./assets/0c5c3a9478573436e84dcaaf785ca915bf3412ea.svg" alt="南芙女神" class="h-3 w-auto object-contain opacity-90">
+          </div>
+          
+          <!-- Mobile Wordmark -->
+          <span class="sm:hidden font-serif font-bold text-nymph-tan text-xl tracking-[0.2em] ml-2">NYMPH</span>
+        </div>
+      </a>
+
+      <!-- Desktop Center: Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-10">
+        <a href="shop.html" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">線上商店</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+        <a href="shop.html?cat=candles" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">經典系列</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+        <a href="about.html" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">關於我們</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+        <a href="contact.html" class="group py-2 flex flex-col items-center">
+          <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">聯絡客服</span>
+          <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
+        </a>
+      </nav>
+
+      <!-- Right: Action Icons (Search, Cart, User) -->
+      <div class="flex items-center gap-4 sm:gap-6">
+        <!-- Search Button -->
+        <a href="shop.html" aria-label="搜尋商品" class="hidden sm:flex text-nymph-tan hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/10">
+          <img src="./assets/487bb933c6c4df0bf30234ea3368f3e0a4dd6fdb.svg" alt="Search" class="w-5 h-5 object-contain">
+        </a>
+
+        <!-- Cart Button -->
+        <button id="cart-header-btn" type="button" aria-label="購物車" class="cart-trigger-btn flex items-center gap-1.5 p-1.5 rounded-full hover:bg-white/10 transition-all text-nymph-tan group">
+          <img src="./assets/30fd977a21856d4fb8c8b03444e58061b58d381c.svg" alt="Cart" class="w-5 h-5 object-contain group-hover:scale-110 transition-transform">
+          <span class="cart-count-badge bg-nymph-cream text-nymph-darkOlive font-sans font-bold text-[10px] leading-tight px-1.5 py-0.5 rounded-full shadow-sm">
+            2
+          </span>
+        </button>
+
+        <!-- User Profile Button -->
+        <a href="profile.html" aria-label="會員中心" class="hidden sm:flex text-nymph-tan hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/10">
+          <img src="./assets/c35a53d546de92c3f79922c9e47e50e7fbecbe60.svg" alt="User" class="w-5 h-5 object-contain">
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== MOBILE DRAWER MENU ==================== -->
+  <div id="drawer-backdrop" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out"></div>
+  
+  <aside id="mobile-drawer" class="fixed top-0 left-0 bottom-0 z-50 w-[82vw] max-w-[320px] bg-nymph-cream shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <!-- Drawer Top -->
+    <div class="p-6">
+      <!-- Drawer Header -->
+      <div class="flex items-start justify-between pb-6 border-b border-nymph-sand/60">
+        <div>
+          <div class="flex items-center gap-2">
+            <img src="./assets/d1cf33687701e7fc64e6e8ca17c0c894906f06a2.svg" alt="" class="h-6 w-auto">
+            <span class="font-serif font-bold text-nymph-darkGreen text-xl tracking-[0.18em]">NYMPH</span>
+          </div>
+          <p class="font-serif text-xs text-nymph-olive mt-1 italic">與靈魂對話的日常聖境</p>
+        </div>
+        <button id="close-drawer-btn" type="button" aria-label="關閉選單" class="p-1.5 text-nymph-darkGreen/70 hover:text-nymph-darkGreen rounded-full hover:bg-nymph-sand/30 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Ornament -->
+      <div class="flex items-center justify-center gap-3 my-6">
+        <div class="flex-1 h-px bg-nymph-olive/30"></div>
+        <span class="text-nymph-olive font-serif text-xs">✦</span>
+        <div class="flex-1 h-px bg-nymph-olive/30"></div>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="space-y-4">
+        <a href="index.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>首頁</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="shop.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>線上商店</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="about.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>關於我們</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="profile.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>會員中心</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="orders.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>我的訂單</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="contact.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>聯絡客服</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </nav>
+
+      <!-- Category Quick List -->
+      <div class="mt-8 pt-6 border-t border-nymph-sand/60">
+        <h4 class="font-sans font-semibold text-xs text-nymph-olive uppercase tracking-widest mb-3">產品類別</h4>
+        <ul class="space-y-2.5 text-sm text-nymph-darkGreen/85 font-sans">
+          <li><a href="shop.html?cat=candles" class="drawer-nav-link hover:text-nymph-forest transition-colors">天然大豆蠟燭</a></li>
+          <li><a href="shop.html?cat=crystals" class="drawer-nav-link hover:text-nymph-forest transition-colors">水晶礦石精品</a></li>
+          <li><a href="shop.html?cat=fragrance" class="drawer-nav-link hover:text-nymph-forest transition-colors">精油香氛系列</a></li>
+          <li><a href="shop.html?cat=sets" class="drawer-nav-link hover:text-nymph-forest transition-colors">身心靈儀式禮盒</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="p-6 bg-nymph-cardSand/60 border-t border-nymph-sand/50">
+      <div class="flex items-center gap-4 mb-4">
+        <a href="#" class="p-2 bg-white rounded-full text-nymph-forest shadow-sm hover:scale-110 transition-transform">
+          <img src="./assets/f6365d56bbfac37ba367491c48179335c9fab636.svg" alt="Instagram" class="w-4 h-4">
+        </a>
+        <a href="#" class="p-2 bg-white rounded-full text-nymph-forest shadow-sm hover:scale-110 transition-transform">
+          <img src="./assets/82ea03b64ac019a120aa5028c497d157421cb04e.svg" alt="Facebook" class="w-4 h-4">
+        </a>
+        <a href="#" class="p-2 bg-white rounded-full text-nymph-forest shadow-sm hover:scale-110 transition-transform">
+          <img src="./assets/70da4ac6e19af07a684b9365809feccaf11a4549.svg" alt="Line" class="w-4 h-4">
+        </a>
+      </div>
+      <p class="text-xs text-nymph-olive font-sans">LINE 官方帳號: @nymph.tw</p>
+      <p class="text-[11px] text-nymph-olive/70 font-sans mt-1">© 2026 南芙女神 nymph Atelier.</p>
+    </div>
+  </aside>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="relative min-h-[540px] md:min-h-[660px] lg:h-[756px] flex items-center justify-center overflow-hidden">
+    <!-- Background Hero Image -->
+    <div class="absolute inset-0">
+      <img src="./assets/f6bb2bb6410bf98f1091e2263c62216477fd8a00.png" alt="Sacred Rituals Background" class="w-full h-full object-cover object-center scale-105 animate-[pulse_10s_ease-in-out_infinite]">
+      <div class="absolute inset-0 bg-black/35 md:bg-black/25"></div>
+      <!-- Subtle Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-nymph-forest/80 via-transparent to-black/30"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-3xl mx-auto px-6 py-16 text-center flex flex-col items-center">
+      <p class="font-sans font-semibold text-nymph-tan text-xs sm:text-sm tracking-[0.25em] uppercase mb-4 sm:mb-6 drop-shadow-sm">
+        THE ART OF SACRED RITUALS
+      </p>
+      
+      <h1 class="font-serif font-normal text-white text-3xl sm:text-5xl lg:text-[64px] leading-tight sm:leading-[1.15] mb-5 sm:mb-6 drop-shadow-md">
+        與靈魂對話的香氣
+      </h1>
+      
+      <p class="font-sans font-normal text-white/90 text-sm sm:text-base leading-relaxed sm:leading-[1.8] max-w-xl mx-auto mb-8 sm:mb-10 drop-shadow-sm">
+        在每一次呼吸與凝視中，尋回失落的內在平靜。<br class="hidden sm:inline">源自大自然的植物芳香與礦石結晶，為日常注入神聖療癒能量。
+      </p>
+
+      <a href="shop.html" class="inline-flex items-center gap-3 bg-nymph-olive hover:bg-nymph-olive/90 active:scale-95 text-white font-sans font-semibold text-xs sm:text-sm tracking-wider uppercase px-7 sm:px-9 py-3.5 sm:py-4 rounded-[2px] shadow-lg hover:shadow-xl transition-all duration-300 group">
+        <span>立即選購</span>
+        <img src="./assets/9a55fcfb687ce60d0a1c3d0af575b785212f7f81.svg" alt="" class="w-4 h-4 object-contain group-hover:translate-x-1 transition-transform">
+      </a>
+    </div>
+  </section>
+
+  <!-- ==================== COLLECTION / CATEGORIES ==================== -->
+  <section id="collection" class="relative bg-nymph-forest py-16 lg:py-24 text-nymph-cream overflow-hidden">
+    <!-- Decorative Botanical Assets in Background -->
+    <div class="absolute top-0 right-0 w-48 sm:w-64 lg:w-72 pointer-events-none opacity-80 translate-x-12 -translate-y-8 select-none">
+      <img src="./assets/b660fd47becf99c4f51f8ecf5a75e9a7516f01ce.png" alt="" class="w-full h-auto object-contain">
+    </div>
+    <div class="absolute top-4 left-0 w-36 sm:w-56 pointer-events-none opacity-80 -translate-x-8 select-none">
+      <img src="./assets/2cc6c8a673e88ac964ca04c14b1ea3be9850afea.png" alt="" class="w-full h-auto object-contain">
+    </div>
+    <div class="absolute bottom-0 left-0 w-80 lg:w-96 pointer-events-none opacity-10 -translate-x-10 translate-y-12 select-none">
+      <img src="./assets/3656dee5cb10347156c0ba6de2bd21bae20a16ce.png" alt="" class="w-full h-auto object-contain">
+    </div>
+    <div class="absolute bottom-0 right-0 w-80 lg:w-96 pointer-events-none opacity-10 translate-x-10 translate-y-12 select-none">
+      <img src="./assets/3656dee5cb10347156c0ba6de2bd21bae20a16ce.png" alt="" class="w-full h-auto object-contain scale-x-[-1]">
+    </div>
+
+    <div class="relative max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-20">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-xl mx-auto mb-10 lg:mb-16">
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[40px] tracking-[0.1em] uppercase text-nymph-cream mb-1">
+          Collection
+        </h2>
+        <p class="font-script text-xl sm:text-2xl text-nymph-cream/90 tracking-wide mb-3">
+          Explore Our Healing Mediums
+        </p>
+        <div class="flex items-center justify-center gap-3 max-w-xs mx-auto">
+          <div class="flex-1 h-px bg-nymph-olive/40"></div>
+          <div class="w-5 h-5 rounded-full bg-nymph-olive/60 flex items-center justify-center">
+            <span class="font-serif font-bold text-nymph-cream text-[10px]">✦</span>
+          </div>
+          <div class="flex-1 h-px bg-nymph-olive/40"></div>
+        </div>
+      </div>
+
+      <!-- Categories Showcase / Arched Gallery -->
+      <!-- Desktop: Centered 5-card arch gallery with prominent centerpiece -->
+      <!-- Mobile: Interactive Horizontal Scroll Carousel -->
+      <div class="relative">
+        
+        <!-- Mobile Carousel Navigation Buttons -->
+        <button id="carousel-prev" type="button" aria-label="上一項" class="lg:hidden absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-nymph-cream/90 border border-nymph-tan text-nymph-forest shadow-md flex items-center justify-center hover:bg-white transition-all">
+          <img src="./assets/be4b8693b1157f907f3b009a016c94d133455ad1.svg" alt="" class="w-3.5 h-3.5">
+        </button>
+        <button id="carousel-next" type="button" aria-label="下一項" class="lg:hidden absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-nymph-cream/90 border border-nymph-tan text-nymph-forest shadow-md flex items-center justify-center hover:bg-white transition-all">
+          <img src="./assets/d284e90e40223e473271243d442d9272367b37f1.svg" alt="" class="w-3.5 h-3.5">
+        </button>
+
+        <!-- Carousel Track -->
+        <div id="categories-track" class="flex lg:grid lg:grid-cols-5 gap-5 sm:gap-6 lg:gap-8 items-end justify-start lg:justify-center overflow-x-auto no-scrollbar snap-x snap-mandatory px-4 lg:px-0 py-4">
+
+          <!-- Card 1: Fragrance (精選香氛) -->
+          <a href="shop.html?cat=fragrance" class="snap-center shrink-0 w-[180px] sm:w-[210px] lg:w-auto flex flex-col items-center group cursor-pointer block">
+            <div class="relative w-full h-[270px] sm:h-[310px] lg:h-[364px] rounded-full overflow-hidden border border-nymph-tan bg-nymph-cardSand transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl">
+              <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3 left-4 font-serif italic text-nymph-darkGreen text-[10px] opacity-90">Nº</span>
+              <span class="absolute top-3 right-4 font-serif text-nymph-darkGreen text-[10px] opacity-90">01</span>
+            </div>
+            <div class="mt-4 text-center">
+              <div class="flex items-center justify-center gap-1.5 mb-1">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[10px] tracking-wider text-nymph-olive uppercase">Fragrance</span>
+                <span class="w-3 h-px bg-nymph-olive"></span>
+              </div>
+              <p class="font-serif text-lg sm:text-xl text-nymph-cream group-hover:text-nymph-tan transition-colors">精選香氛</p>
+            </div>
+          </a>
+
+          <!-- Card 2: Candles (天然大豆蠟燭) -->
+          <a href="shop.html?cat=candles" class="snap-center shrink-0 w-[180px] sm:w-[210px] lg:w-auto flex flex-col items-center group cursor-pointer block">
+            <div class="relative w-full h-[270px] sm:h-[310px] lg:h-[364px] rounded-full overflow-hidden border border-nymph-tan bg-nymph-cardSand transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl">
+              <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3 left-4 font-serif italic text-nymph-darkGreen text-[10px] opacity-90">Nº</span>
+              <span class="absolute top-3 right-4 font-serif text-nymph-darkGreen text-[10px] opacity-90">02</span>
+            </div>
+            <div class="mt-4 text-center">
+              <div class="flex items-center justify-center gap-1.5 mb-1">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[10px] tracking-wider text-nymph-olive uppercase">Candles</span>
+                <span class="w-3 h-px bg-nymph-olive"></span>
+              </div>
+              <p class="font-serif text-lg sm:text-xl text-nymph-cream group-hover:text-nymph-tan transition-colors">天然大豆蠟燭</p>
+            </div>
+          </a>
+
+          <!-- Card 3: Divination (神聖占卜儀式) - Centerpiece Highlight! -->
+          <a href="shop.html?cat=crystals" class="snap-center shrink-0 w-[210px] sm:w-[240px] lg:w-auto flex flex-col items-center group cursor-pointer lg:-mb-4 block">
+            <div class="relative w-full h-[320px] sm:h-[370px] lg:h-[464px] rounded-full overflow-hidden border-2 border-nymph-sand bg-nymph-cardSand shadow-2xl transition-transform duration-500 group-hover:-translate-y-3 group-hover:border-nymph-tan">
+              <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-4 left-5 font-serif italic text-nymph-darkGreen text-xs opacity-95">Nº</span>
+              <span class="absolute top-4 right-5 font-serif text-nymph-darkGreen text-xs opacity-95">03</span>
+              <!-- Outer glowing aura for centerpiece -->
+              <div class="absolute inset-0 ring-1 ring-inset ring-nymph-tan/30 rounded-full pointer-events-none"></div>
+            </div>
+            <div class="mt-5 text-center">
+              <div class="flex items-center justify-center gap-2 mb-1.5">
+                <span class="w-4 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[11px] tracking-widest text-nymph-tan uppercase">Divination</span>
+                <span class="w-4 h-px bg-nymph-olive"></span>
+              </div>
+              <p class="font-serif font-bold text-xl sm:text-2xl text-nymph-cream group-hover:text-nymph-tan transition-colors">神聖占卜儀式</p>
+            </div>
+          </a>
+
+          <!-- Card 4: Crystals (脈輪療癒水晶) -->
+          <a href="shop.html?cat=crystals" class="snap-center shrink-0 w-[180px] sm:w-[210px] lg:w-auto flex flex-col items-center group cursor-pointer block">
+            <div class="relative w-full h-[270px] sm:h-[310px] lg:h-[364px] rounded-full overflow-hidden border border-nymph-tan bg-nymph-cardSand transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl">
+              <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3 left-4 font-serif italic text-nymph-darkGreen text-[10px] opacity-90">Nº</span>
+              <span class="absolute top-3 right-4 font-serif text-nymph-darkGreen text-[10px] opacity-90">04</span>
+            </div>
+            <div class="mt-4 text-center">
+              <div class="flex items-center justify-center gap-1.5 mb-1">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[10px] tracking-wider text-nymph-olive uppercase">Crystals</span>
+                <span class="w-3 h-px bg-nymph-olive"></span>
+              </div>
+              <p class="font-serif text-lg sm:text-xl text-nymph-cream group-hover:text-nymph-tan transition-colors">脈輪療癒水晶</p>
+            </div>
+          </a>
+
+          <!-- Card 5: Gift Sets (儀式感禮品組) -->
+          <a href="shop.html?cat=sets" class="snap-center shrink-0 w-[180px] sm:w-[210px] lg:w-auto flex flex-col items-center group cursor-pointer block">
+            <div class="relative w-full h-[270px] sm:h-[310px] lg:h-[364px] rounded-full overflow-hidden border border-nymph-tan bg-nymph-cardSand transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl">
+              <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <span class="absolute top-3 left-4 font-serif italic text-nymph-darkGreen text-[10px] opacity-90">Nº</span>
+              <span class="absolute top-3 right-4 font-serif text-nymph-darkGreen text-[10px] opacity-90">05</span>
+            </div>
+            <div class="mt-4 text-center">
+              <div class="flex items-center justify-center gap-1.5 mb-1">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[10px] tracking-wider text-nymph-olive uppercase">Gift Sets</span>
+                <span class="w-3 h-px bg-nymph-olive"></span>
+              </div>
+              <p class="font-serif text-lg sm:text-xl text-nymph-cream group-hover:text-nymph-tan transition-colors">儀式感禮品組</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PROMO BANNER ==================== -->
+  <section class="relative min-h-[380px] lg:h-[400px] flex items-center justify-between overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img src="./assets/141a8d7e2135354960cae8fd0857ba584408eec5.png" alt="秋日靈感" class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 bg-[#1C1C1A]/65"></div>
+    </div>
+
+    <!-- Content Container -->
+    <div class="relative z-10 max-w-[1440px] w-full mx-auto px-6 sm:px-12 lg:px-20 py-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
+      <div class="max-w-xl">
+        <p class="font-sans font-semibold text-nymph-tan text-xs sm:text-[13px] tracking-[0.2em] uppercase mb-2">
+          SEASONAL INSPIRATION
+        </p>
+        <h3 class="font-serif font-normal text-white text-2xl sm:text-4xl leading-snug mb-3">
+          秋日靈感・限定優惠
+        </h3>
+        <p class="font-sans font-normal text-white/85 text-sm sm:text-[15px] leading-relaxed">
+          「在落葉紛飛的季節裡，學會安然收斂能量。」指定大豆蠟燭與冥想線香，任選兩件享 85 折，並贈送淨化白鼠尾草束一份。
+        </p>
+      </div>
+
+      <div class="shrink-0">
+        <a href="shop.html?cat=candles" class="inline-block border border-nymph-tan text-nymph-tan hover:bg-nymph-tan hover:text-nymph-darkOlive px-8 py-3.5 font-sans font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-[1px] transition-all duration-300">
+          了解更多秋日儀式
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DIVIDER BAND ==================== -->
+  <div class="bg-nymph-forest py-6 sm:py-8 lg:py-10 border-b border-nymph-olive/30">
+    <div class="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 flex items-center justify-center gap-4 sm:gap-6">
+      <div class="flex-1 h-px bg-nymph-cream/35"></div>
+      <p class="font-sans font-semibold text-nymph-cream/80 text-xs sm:text-base lg:text-lg tracking-[0.25em] uppercase whitespace-nowrap">
+        ✦ SELECTED PIECES ✦
+      </p>
+      <div class="flex-1 h-px bg-nymph-cream/35"></div>
+    </div>
+  </div>
+
+  <!-- ==================== FEATURED PRODUCTS 1: 本月主打 ==================== -->
+  <section id="shop" class="relative py-16 lg:py-24 bg-nymph-cream overflow-hidden">
+    <!-- Botanical Watermark Overlay Background -->
+    <div class="absolute right-0 top-10 w-96 lg:w-[500px] pointer-events-none opacity-20 select-none">
+      <img src="./assets/77a60641fd82cd68f11b404f3f56cc1a3cb89e16.png" alt="" class="w-full h-auto object-contain">
+    </div>
+    <div class="absolute left-0 top-1/2 w-64 pointer-events-none opacity-20 select-none">
+      <img src="./assets/06accd88b6845a07c73ac65881fce9e334c0e384.png" alt="" class="w-full h-auto object-contain">
+    </div>
+
+    <div class="relative max-w-[1440px] mx-auto px-5 sm:px-10 lg:px-20">
+      
+      <!-- Section Header with Curated Badge -->
+      <div class="mb-10 lg:mb-14">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-nymph-sage/60 relative">
+          
+          <div class="flex items-center gap-5 sm:gap-7">
+            <!-- Stamp Badge -->
+            <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full border border-nymph-olive flex items-center justify-center p-1 bg-white/40 shadow-sm">
+              <div class="w-full h-full rounded-full border border-nymph-olive flex flex-col items-center justify-center text-center">
+                <span class="font-sans font-semibold text-[7px] text-nymph-olive uppercase tracking-widest">CURATED</span>
+                <span class="font-serif font-semibold text-xs sm:text-[13px] text-nymph-darkGreen leading-tight">No. 01</span>
+                <span class="font-sans font-semibold text-[7px] text-nymph-olive uppercase tracking-widest">BOTANICAL</span>
+              </div>
+            </div>
+
+            <!-- Title Texts -->
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-4 sm:w-6 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[10px] text-nymph-olive uppercase tracking-widest">SELECTED PIECES</span>
+                <span class="w-4 sm:w-6 h-px bg-nymph-olive"></span>
+              </div>
+              <h3 class="font-serif font-normal text-2xl sm:text-3xl lg:text-[40px] text-nymph-darkGreen leading-tight">
+                本月主打香氛與儀式礦石
+              </h3>
+              <p class="font-serif italic text-nymph-olive text-xs sm:text-sm lg:text-[15px] mt-0.5">
+                Monthly featured fragrances & ritual minerals
+              </p>
+            </div>
+          </div>
+
+          <!-- Desktop Explore Link -->
+          <div class="hidden md:flex items-center">
+            <a href="shop.html" class="border border-nymph-olive text-nymph-olive hover:bg-nymph-olive hover:text-white px-5 py-2.5 rounded-[1px] font-sans font-semibold text-xs tracking-wider uppercase flex items-center gap-2 transition-all duration-300 group">
+              <span>探索主打商品</span>
+              <img src="./assets/002432c0148428a0a73f87b5a9d8ec3cb750f540.svg" alt="" class="w-3.5 h-3.5 object-contain group-hover:translate-x-1 transition-transform">
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Botanical Decorative Rule with center tilted diamond -->
+        <div class="flex items-center gap-3 mt-4">
+          <div class="flex-1 h-px bg-nymph-sage/60"></div>
+          <div class="w-2 h-2 rotate-45 bg-nymph-olive"></div>
+          <div class="flex-1 h-px bg-nymph-sage/60"></div>
+        </div>
+      </div>
+
+      <!-- Products Grid (4 items) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+        
+        <!-- Product 1 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[280px] sm:h-[320px] lg:h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/292de2cfde3ec55f7fb538f7c7ecd65cb585b8d8.png" alt="晨曦森林複方精油" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <!-- Badge -->
+            <span class="absolute top-3 left-3 bg-nymph-darkGreen text-nymph-cream font-sans font-bold text-[9px] tracking-wider uppercase px-2.5 py-1 rounded-[1px]">
+              NEW
+            </span>
+            <!-- Add to Cart Action -->
+            <button type="button" onclick="addToCart('晨曦森林複方精油', 1280, './assets/292de2cfde3ec55f7fb538f7c7ecd65cb585b8d8.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Fragrance</span>
+              </div>
+              <h4 class="font-serif font-normal text-lg sm:text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">晨曦森林複方精油</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Forest Dawn Essential Oil</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-base sm:text-lg text-nymph-darkGreen">NT$ 1,280</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[280px] sm:h-[320px] lg:h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/7a7fd36f265d8cf2a3b2566480d5e66c206d4035.png" alt="無花果與雪松香氛蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <!-- Add to Cart Action -->
+            <button type="button" onclick="addToCart('無花果與雪松香氛蠟燭', 980, './assets/7a7fd36f265d8cf2a3b2566480d5e66c206d4035.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Candles</span>
+              </div>
+              <h4 class="font-serif font-normal text-lg sm:text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">無花果與雪松香氛蠟燭</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Wild Fig & Cedar Scented Candle</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-base sm:text-lg text-nymph-darkGreen">NT$ 980</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[280px] sm:h-[320px] lg:h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/7fe2f86c753ef34311adfa51aa072f5555b76408.png" alt="白水晶原石療癒盒" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <!-- Badge -->
+            <span class="absolute top-3 left-3 bg-nymph-olive text-nymph-cream font-sans font-bold text-[9px] tracking-wider uppercase px-2.5 py-1 rounded-[1px]">
+              POPULAR
+            </span>
+            <!-- Add to Cart Action -->
+            <button type="button" onclick="addToCart('白水晶原石療癒盒', 1450, './assets/7fe2f86c753ef34311adfa51aa072f5555b76408.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Crystals</span>
+              </div>
+              <h4 class="font-serif font-normal text-lg sm:text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">白水晶原石療癒盒</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Pure Quartz Cleansing Ritual Box</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-base sm:text-lg text-nymph-darkGreen">NT$ 1,450</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[280px] sm:h-[320px] lg:h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/40c37c109a17de7fd8b6bcd5aed84c90c458428e.png" alt="命定脈輪能量晶礦手鍊" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <!-- Add to Cart Action -->
+            <button type="button" onclick="addToCart('命定脈輪能量晶礦手鍊', 1880, './assets/40c37c109a17de7fd8b6bcd5aed84c90c458428e.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Gift Sets</span>
+              </div>
+              <h4 class="font-serif font-normal text-lg sm:text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">命定脈輪能量晶礦手鍊</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Chakra Balance Crystal Bracelet</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-base sm:text-lg text-nymph-darkGreen">NT$ 1,880</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Mobile Explore Button at Bottom -->
+      <div class="mt-8 text-center md:hidden">
+        <a href="shop.html" class="w-full border border-nymph-forest text-nymph-forest hover:bg-nymph-forest hover:text-white py-3.5 px-6 rounded-[2px] font-sans font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+          <span>探索主打商品</span>
+          <img src="./assets/49f2693d571325028f4d372b1888a800f4bdfe98.svg" alt="" class="w-3.5 h-3.5">
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED PRODUCTS 2: 熱銷商品 ==================== -->
+  <section class="relative py-16 lg:py-24 bg-nymph-cream overflow-hidden border-t border-nymph-sage/40">
+    <!-- Decorative botanical foliage in background -->
+    <div class="absolute left-0 top-1/4 w-80 pointer-events-none opacity-25 select-none -translate-x-12">
+      <img src="./assets/af92adf94efd210735a3a4038226a3f4b1c29f93.png" alt="" class="w-full h-auto object-contain">
+    </div>
+    <div class="absolute right-0 bottom-12 w-80 pointer-events-none opacity-25 select-none translate-x-12">
+      <img src="./assets/a8332d800bdfd77fc3861b8e687bc3d5d747e37f.png" alt="" class="w-full h-auto object-contain">
+    </div>
+
+    <div class="relative max-w-[1440px] mx-auto px-5 sm:px-10 lg:px-20">
+      
+      <!-- Section Header -->
+      <div class="mb-10 lg:mb-14">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-nymph-sage/60 relative">
+          
+          <div class="flex items-center gap-5 sm:gap-7">
+            <!-- Stamp Badge -->
+            <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full border border-nymph-olive flex items-center justify-center p-1 bg-white/40 shadow-sm">
+              <div class="w-full h-full rounded-full border border-nymph-olive flex flex-col items-center justify-center text-center">
+                <span class="font-sans font-semibold text-[7px] text-nymph-olive uppercase tracking-widest">BEST</span>
+                <span class="font-serif font-semibold text-xs sm:text-[13px] text-nymph-darkGreen leading-tight">SELLER</span>
+                <span class="font-sans font-semibold text-[7px] text-nymph-olive uppercase tracking-widest">BOTANICAL</span>
+              </div>
+            </div>
+
+            <!-- Title Texts -->
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-4 sm:w-6 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[10px] text-nymph-olive uppercase tracking-widest">SELECTED PIECES</span>
+                <span class="w-4 sm:w-6 h-px bg-nymph-olive"></span>
+              </div>
+              <h3 class="font-serif font-normal text-2xl sm:text-3xl lg:text-[40px] text-nymph-darkGreen leading-tight">
+                熱銷商品
+              </h3>
+              <p class="font-serif italic text-nymph-olive text-xs sm:text-sm lg:text-[15px] mt-0.5">
+                Most loved daily rituals & clean energies
+              </p>
+            </div>
+          </div>
+
+          <!-- Desktop Explore Link -->
+          <div class="hidden md:flex items-center">
+            <a href="shop.html" class="border border-nymph-olive text-nymph-olive hover:bg-nymph-olive hover:text-white px-5 py-2.5 rounded-[1px] font-sans font-semibold text-xs tracking-wider uppercase flex items-center gap-2 transition-all duration-300 group">
+              <span>探索熱銷商品</span>
+              <img src="./assets/35b5a5896ee4b19509602b28ca0cfd15d8fb23c4.svg" alt="" class="w-3.5 h-3.5 object-contain group-hover:translate-x-1 transition-transform">
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Botanical Decorative Rule with center diamond -->
+        <div class="flex items-center gap-3 mt-4">
+          <div class="flex-1 h-px bg-nymph-sage/60"></div>
+          <div class="w-2 h-2 rotate-45 bg-nymph-olive"></div>
+          <div class="flex-1 h-px bg-nymph-sage/60"></div>
+        </div>
+      </div>
+
+      <!-- Products Grid (Row 1) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 mb-8 lg:mb-12">
+        
+        <!-- Hot Product 1 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[280px] sm:h-[320px] lg:h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/292de2cfde3ec55f7fb538f7c7ecd65cb585b8d8.png" alt="晨曦森林複方精油" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <span class="absolute top-3 left-3 bg-nymph-darkGreen text-nymph-cream font-sans font-bold text-[9px] tracking-wider uppercase px-2.5 py-1 rounded-[1px]">NEW</span>
+            <button type="button" onclick="addToCart('晨曦森林複方精油', 1280, './assets/292de2cfde3ec55f7fb538f7c7ecd65cb585b8d8.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Fragrance</span>
+              </div>
+              <h4 class="font-serif font-normal text-lg sm:text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">晨曦森林複方精油</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Forest Dawn Essential Oil</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-base sm:text-lg text-nymph-darkGreen">NT$ 1,280</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hot Product 2 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[280px] sm:h-[320px] lg:h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/7a7fd36f265d8cf2a3b2566480d5e66c206d4035.png" alt="無花果與雪松香氛蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <button type="button" onclick="addToCart('無花果與雪松香氛蠟燭', 980, './assets/7a7fd36f265d8cf2a3b2566480d5e66c206d4035.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Candles</span>
+              </div>
+              <h4 class="font-serif font-normal text-lg sm:text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">無花果與雪松香氛蠟燭</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Wild Fig & Cedar Scented Candle</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-base sm:text-lg text-nymph-darkGreen">NT$ 980</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hot Product 3 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[280px] sm:h-[320px] lg:h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/7fe2f86c753ef34311adfa51aa072f5555b76408.png" alt="白水晶原石療癒盒" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <span class="absolute top-3 left-3 bg-nymph-olive text-nymph-cream font-sans font-bold text-[9px] tracking-wider uppercase px-2.5 py-1 rounded-[1px]">POPULAR</span>
+            <button type="button" onclick="addToCart('白水晶原石療癒盒', 1450, './assets/7fe2f86c753ef34311adfa51aa072f5555b76408.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Crystals</span>
+              </div>
+              <h4 class="font-serif font-normal text-lg sm:text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">白水晶原石療癒盒</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Pure Quartz Cleansing Ritual Box</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-base sm:text-lg text-nymph-darkGreen">NT$ 1,450</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Hot Product 4 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[280px] sm:h-[320px] lg:h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/40c37c109a17de7fd8b6bcd5aed84c90c458428e.png" alt="命定脈輪能量晶礦手鍊" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <button type="button" onclick="addToCart('命定脈輪能量晶礦手鍊', 1880, './assets/40c37c109a17de7fd8b6bcd5aed84c90c458428e.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Gift Sets</span>
+              </div>
+              <h4 class="font-serif font-normal text-lg sm:text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">命定脈輪能量晶礦手鍊</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Chakra Balance Crystal Bracelet</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-base sm:text-lg text-nymph-darkGreen">NT$ 1,880</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Desktop Row 2 (Products in Desktop Artboard) -->
+      <div class="hidden lg:grid grid-cols-4 gap-7 mb-14">
+        
+        <!-- Row 2 Product 1 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/292de2cfde3ec55f7fb538f7c7ecd65cb585b8d8.png" alt="晨曦森林複方精油" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <span class="absolute top-3 left-3 bg-nymph-darkGreen text-nymph-cream font-sans font-bold text-[9px] tracking-wider uppercase px-2.5 py-1 rounded-[1px]">NEW</span>
+            <button type="button" onclick="addToCart('晨曦森林複方精油', 1280, './assets/292de2cfde3ec55f7fb538f7c7ecd65cb585b8d8.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Fragrance</span>
+              </div>
+              <h4 class="font-serif font-normal text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">晨曦森林複方精油</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Forest Dawn Essential Oil</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-lg text-nymph-darkGreen">NT$ 1,280</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Row 2 Product 2 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/7a7fd36f265d8cf2a3b2566480d5e66c206d4035.png" alt="無花果與雪松香氛蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <button type="button" onclick="addToCart('無花果與雪松香氛蠟燭', 980, './assets/7a7fd36f265d8cf2a3b2566480d5e66c206d4035.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Candles</span>
+              </div>
+              <h4 class="font-serif font-normal text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">無花果與雪松香氛蠟燭</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Wild Fig & Cedar Scented Candle</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-lg text-nymph-darkGreen">NT$ 980</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Row 2 Product 3 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/7fe2f86c753ef34311adfa51aa072f5555b76408.png" alt="白水晶原石療癒盒" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <span class="absolute top-3 left-3 bg-nymph-olive text-nymph-cream font-sans font-bold text-[9px] tracking-wider uppercase px-2.5 py-1 rounded-[1px]">POPULAR</span>
+            <button type="button" onclick="addToCart('白水晶原石療癒盒', 1450, './assets/7fe2f86c753ef34311adfa51aa072f5555b76408.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Crystals</span>
+              </div>
+              <h4 class="font-serif font-normal text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">白水晶原石療癒盒</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Pure Quartz Cleansing Ritual Box</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-lg text-nymph-darkGreen">NT$ 1,450</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Row 2 Product 4 -->
+        <article class="bg-nymph-cardBg border border-nymph-sage/70 rounded-[2px] overflow-hidden flex flex-col group shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="relative h-[340px] bg-nymph-cardSand overflow-hidden">
+            <a href="product-detail.html" class="block w-full h-full">
+              <img src="./assets/40c37c109a17de7fd8b6bcd5aed84c90c458428e.png" alt="命定脈輪能量晶礦手鍊" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <button type="button" onclick="addToCart('命定脈輪能量晶礦手鍊', 1880, './assets/40c37c109a17de7fd8b6bcd5aed84c90c458428e.png')" class="absolute bottom-0 inset-x-0 bg-nymph-darkGreen/90 hover:bg-nymph-darkGreen text-nymph-cream py-3 px-4 flex items-center justify-between font-sans font-semibold text-[11px] tracking-wider uppercase transition-colors">
+              <span>ADD TO CART 立即選購</span>
+              <img src="./assets/08f6c80f6bf1adb4c6a794665b935d30eb01b521.svg" alt="" class="w-4 h-4">
+            </button>
+          </div>
+          <div class="p-5 flex flex-col flex-1 justify-between bg-nymph-cardBg">
+            <div>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <span class="w-3 h-px bg-nymph-olive"></span>
+                <span class="font-sans font-semibold text-[9px] uppercase tracking-wider text-nymph-olive">Gift Sets</span>
+              </div>
+              <h4 class="font-serif font-normal text-xl text-nymph-darkGreen leading-snug group-hover:text-nymph-olive transition-colors">
+                <a href="product-detail.html">命定脈輪能量晶礦手鍊</a>
+              </h4>
+              <p class="font-sans text-[11px] text-nymph-olive mt-0.5">Chakra Balance Crystal Bracelet</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-nymph-cream flex items-baseline justify-between">
+              <span class="font-serif font-medium text-lg text-nymph-darkGreen">NT$ 1,880</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Center CTA Button: 探索全部商品 -->
+      <div class="flex items-center justify-center">
+        <a href="shop.html" class="inline-flex items-center justify-center gap-3 bg-nymph-sage hover:bg-nymph-sage/90 text-nymph-darkOlive font-sans font-semibold text-sm sm:text-base tracking-wider uppercase px-8 sm:px-12 py-3.5 sm:py-4 rounded-[1px] shadow-sm hover:shadow-md transition-all duration-300 group">
+          <span>探索全部商品</span>
+          <img src="./assets/49f2693d571325028f4d372b1888a800f4bdfe98.svg" alt="" class="w-4 h-4 object-contain group-hover:translate-x-1 transition-transform">
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== BRAND ESSENCE (QUOTE) ==================== -->
+  <section id="essence" class="relative py-20 sm:py-28 lg:py-36 flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img src="./assets/f4eac19e4a922329fe5b3ebe7811b1ca505a6742.png" alt="Brand Essence Background" class="w-full h-full object-cover object-center opacity-65">
+      <div class="absolute inset-0 bg-black/45"></div>
+    </div>
+
+    <!-- Center Content -->
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center flex flex-col items-center">
+      <!-- Leaf Icon -->
+      <div class="w-8 h-8 sm:w-10 sm:h-10 mb-6 text-nymph-cream opacity-90 animate-bounce duration-1000">
+        <img src="./assets/d31e98292031e0395ce95d1c5af41fd5e1a3abd8.svg" alt="Leaf" class="w-full h-full object-contain">
+      </div>
+
+      <!-- Quote -->
+      <blockquote class="font-serif italic font-normal text-nymph-cream text-xl sm:text-2xl lg:text-[32px] leading-relaxed sm:leading-[1.5] mb-6 drop-shadow-md">
+        “Our products are tools of remembrance. A spark of fire, a deep breath of root and petal—returning you to your pure essence.”
+      </blockquote>
+
+      <!-- Attribution -->
+      <p class="font-sans font-medium text-nymph-cream/90 text-xs sm:text-[13px] tracking-widest uppercase">
+        — 南芙女神 NYMPH ATELIER
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer id="about" class="bg-nymph-forest text-nymph-cream border-t border-nymph-olive/40 pt-16 lg:pt-20 pb-10">
+    <div class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-20">
+      
+      <!-- Footer Main Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-14 pb-14 border-b border-nymph-cream/20">
+        
+        <!-- Column 1: Newsletter (Span 5 on Desktop) -->
+        <div class="lg:col-span-5 max-w-md">
+          <h4 class="font-serif font-normal text-2xl sm:text-[32px] text-nymph-cream mb-3">
+            訂閱南芙晨報
+          </h4>
+          <p class="font-sans text-xs sm:text-sm text-nymph-sage leading-relaxed mb-6">
+            每月獲取一封關於月相、植物香氣、水晶能量及內在平靜的溫柔提醒。首購可享 9 折。
+          </p>
+
+          <!-- Newsletter Form -->
+          <form id="newsletter-form" onsubmit="handleNewsletter(event)" class="space-y-3 sm:space-y-0 sm:flex sm:items-stretch sm:border sm:border-nymph-cream/60 sm:rounded-[2px] overflow-hidden bg-nymph-forest/40">
+            <input id="newsletter-email" type="email" required placeholder="輸入您的電子信箱 Email" class="w-full px-4 py-3 text-xs sm:text-sm bg-transparent text-nymph-cream placeholder-nymph-sage/80 border sm:border-0 border-nymph-cream/60 rounded-[2px] sm:rounded-none focus:outline-none focus:ring-1 focus:ring-nymph-tan">
+            <button type="submit" class="w-full sm:w-auto shrink-0 bg-nymph-cream hover:bg-white text-nymph-olive font-sans font-medium text-xs sm:text-[13px] tracking-wider uppercase px-6 py-3 transition-colors">
+              訂閱
+            </button>
+          </form>
+          <p id="newsletter-success" class="hidden text-xs text-nymph-tan mt-2 font-serif italic">
+            ✦ 感謝您的訂閱！首購 9 折優惠碼已送至您的信箱。
+          </p>
+        </div>
+
+        <!-- Links Columns Container (Span 7 on Desktop) -->
+        <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          
+          <!-- Column 2: 購買須知 -->
+          <div>
+            <h5 class="font-sans font-semibold text-sm sm:text-[15px] text-nymph-cream mb-4 tracking-wide">
+              購買須知
+            </h5>
+            <ul class="space-y-2.5 font-sans text-xs sm:text-sm text-nymph-sage">
+              <li><a href="shop.html" class="hover:text-nymph-tan transition-colors">線上商店</a></li>
+              <li><a href="contact.html#faq" class="hover:text-nymph-tan transition-colors">常見問題 FAQ</a></li>
+              <li><a href="contact.html" class="hover:text-nymph-tan transition-colors">退換貨政策</a></li>
+              <li><a href="product-detail.html" class="hover:text-nymph-tan transition-colors">水晶消磁說明</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: 會員專區 -->
+          <div>
+            <h5 class="font-sans font-semibold text-sm sm:text-[15px] text-nymph-cream mb-4 tracking-wide">
+              會員專區
+            </h5>
+            <ul class="space-y-2.5 font-sans text-xs sm:text-sm text-nymph-sage">
+              <li><a href="profile.html" class="hover:text-nymph-tan transition-colors">個人資料</a></li>
+              <li><a href="orders.html" class="hover:text-nymph-tan transition-colors">我的訂單</a></li>
+              <li><a href="contact.html" class="hover:text-nymph-tan transition-colors">聯絡客服</a></li>
+              <li><a href="about.html" class="hover:text-nymph-tan transition-colors">品牌故事</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: 追蹤南芙 -->
+          <div class="col-span-2 sm:col-span-1">
+            <h5 class="font-sans font-semibold text-sm sm:text-[15px] text-nymph-cream mb-4 tracking-wide">
+              追蹤南芙
+            </h5>
+            <!-- Social Icons -->
+            <div class="flex items-center gap-4 mb-4">
+              <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full bg-nymph-olive/30 hover:bg-nymph-olive/60 flex items-center justify-center transition-colors">
+                <img src="./assets/f6365d56bbfac37ba367491c48179335c9fab636.svg" alt="Instagram" class="w-4 h-4">
+              </a>
+              <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-full bg-nymph-olive/30 hover:bg-nymph-olive/60 flex items-center justify-center transition-colors">
+                <img src="./assets/82ea03b64ac019a120aa5028c497d157421cb04e.svg" alt="Facebook" class="w-4 h-4">
+              </a>
+              <a href="#" aria-label="LINE" class="w-8 h-8 rounded-full bg-nymph-olive/30 hover:bg-nymph-olive/60 flex items-center justify-center transition-colors">
+                <img src="./assets/70da4ac6e19af07a684b9365809feccaf11a4549.svg" alt="Message" class="w-4 h-4">
+              </a>
+            </div>
+            <div class="space-y-1 font-sans text-xs text-nymph-sage leading-relaxed">
+              <p>LINE 官方帳號: <span class="text-nymph-cream">@nymph.tw</span></p>
+              <p>客服信箱: <span class="text-nymph-cream">service@nymph.com</span></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <p class="font-sans text-xs text-nymph-cream/80">
+          © 2026 南芙女神 nymph Atelier. All Rights Reserved.
+        </p>
+        <p class="font-serif italic text-base sm:text-lg text-nymph-cream/90">
+          Serenity in everyday rituals.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== MINI CART DRAWER ==================== -->
+  <div id="cart-backdrop" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 bottom-0 z-50 w-full max-w-md bg-nymph-cream shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div class="p-6 border-b border-nymph-sand/50 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-xl font-bold text-nymph-darkGreen">您的日常聖境購物車</span>
+        <span class="cart-count-badge bg-nymph-forest text-nymph-cream text-xs px-2 py-0.5 rounded-full font-sans">2</span>
+      </div>
+      <button id="cart-drawer-close" class="p-1.5 text-nymph-darkGreen hover:bg-nymph-sand/30 rounded-full transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    
+    <!-- Free Shipping Progress -->
+    <div class="bg-nymph-cardSand px-6 py-3 border-b border-nymph-sand/40">
+      <p id="cart-shipping-text" class="text-xs font-sans text-nymph-darkGreen mb-1.5">滿 NT$ 2,000 即享免運優惠</p>
+      <div class="w-full bg-white h-1.5 rounded-full overflow-hidden">
+        <div id="cart-shipping-bar" class="bg-nymph-olive h-full transition-all duration-300" style="width: 50%;"></div>
+      </div>
+    </div>
+
+    <!-- Items List -->
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto px-6 py-2"></div>
+
+    <!-- Checkout Footer -->
+    <div class="p-6 bg-nymph-cardSand/60 border-t border-nymph-sand/60">
+      <div class="flex items-center justify-between mb-4">
+        <span class="font-sans text-sm text-nymph-olive">小計 Subtotal</span>
+        <span id="cart-drawer-subtotal" class="font-serif text-xl font-bold text-nymph-darkGreen">NT$ 0</span>
+      </div>
+      <button type="button" onclick="showToast('正在導向安全結帳頁面...');" class="w-full bg-nymph-darkGreen hover:bg-nymph-forest text-nymph-cream py-3.5 rounded-[1px] font-sans font-semibold text-xs tracking-wider uppercase transition-colors">
+        前往結帳 CHECKOUT
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================== SHARED & PAGE SCRIPTS ==================== -->
+  <script src="./assets/app.js"></script>
+  <script>
+    // Category Carousel Scroll
+    const categoriesTrack = document.getElementById('categories-track');
+    const carouselPrev = document.getElementById('carousel-prev');
+    const carouselNext = document.getElementById('carousel-next');
+
+    carouselPrev?.addEventListener('click', () => {
+      categoriesTrack?.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+    carouselNext?.addEventListener('click', () => {
+      categoriesTrack?.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+
+    // Newsletter Form Handler
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('newsletter-email');
+      const successMsg = document.getElementById('newsletter-success');
+      if (emailInput && emailInput.value) {
+        successMsg?.classList.remove('hidden');
+        showToast('感謝訂閱！首購 9 折優惠券已發送至您的信箱');
+        emailInput.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
