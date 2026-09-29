@@ -81,7 +81,7 @@
 <body class="bg-nymph-cream text-nymph-darkGreen font-sans antialiased selection:bg-nymph-olive selection:text-white overflow-x-hidden">
 
   <!-- ==================== HEADER ==================== -->
-  <header class="sticky top-0 z-40 bg-nymph-forest/95 backdrop-blur-md border-b border-nymph-olive/30 shadow-[0_2px_15px_rgba(0,0,0,0.15)] transition-all duration-300">
+  <header id="site-header" class="sticky top-0 z-40 bg-nymph-forest/95 backdrop-blur-md border-b border-nymph-olive/30 shadow-[0_2px_15px_rgba(0,0,0,0.15)] transition-colors duration-300 will-change-transform">
     <div class="max-w-[1440px] mx-auto h-20 px-5 sm:px-10 lg:px-20 flex items-center justify-between">
       
       <!-- Mobile Left: Menu Toggle -->
@@ -1680,6 +1680,42 @@
             toggleActions: 'play none none none'
           }
         });
+
+        // ==================== DIRECTIONALLY AWARE HEADER (ScrollTrigger) ====================
+        // Matches GreenSock demo: https://codepen.io/GreenSock/pen/qBawMGb
+        const siteHeader = document.getElementById('site-header') || document.querySelector('header');
+        if (siteHeader) {
+          const showHeaderAnim = gsap.from(siteHeader, {
+            yPercent: -100,
+            paused: true,
+            duration: 0.3,
+            ease: 'power2.out'
+          }).progress(1);
+
+          ScrollTrigger.create({
+            start: 'top top',
+            end: 'max',
+            onUpdate: (self) => {
+              // Keep header visible if mobile drawer is currently open
+              const isDrawerOpen = !document.getElementById('mobile-drawer')?.classList.contains('-translate-x-full');
+              if (isDrawerOpen) {
+                showHeaderAnim.play();
+                return;
+              }
+
+              if (self.scroll() <= 20) {
+                // Near top of page: always keep header visible
+                showHeaderAnim.play();
+              } else if (self.direction === -1) {
+                // Scrolling UP: reveal header smoothly
+                showHeaderAnim.play();
+              } else {
+                // Scrolling DOWN: hide header smoothly
+                showHeaderAnim.reverse();
+              }
+            }
+          });
+        }
       }
     })();
 
