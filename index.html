@@ -12,6 +12,10 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP & ScrollTrigger Animation Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -246,7 +250,7 @@
     </div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 max-w-3xl mx-auto px-6 py-16 text-center flex flex-col items-center">
+    <div id="hero-content" class="relative z-10 max-w-3xl mx-auto px-6 py-16 text-center flex flex-col items-center">
       <p class="font-sans font-semibold text-nymph-tan text-xs sm:text-sm tracking-[0.25em] uppercase mb-4 sm:mb-6 drop-shadow-sm">
         THE ART OF SACRED RITUALS
       </p>
@@ -270,19 +274,19 @@
   <section id="collection" class="relative z-20 bg-[#435a44] pt-12 pb-16 lg:pt-14 lg:pb-20 text-nymph-cream overflow-visible">
     
     <!-- Top-Left Botanical Line Art Illustration (Figma 126:358) - Layered on very top -->
-    <div class="absolute h-[195px] left-1/2 -translate-x-[597px] top-[-50px] lg:top-[-62px] w-[254px] pointer-events-none select-none z-30 opacity-95 hidden sm:block">
+    <div id="botanical-left" class="absolute h-[195px] left-1/2 -translate-x-[597px] top-[-50px] lg:top-[-62px] w-[254px] pointer-events-none select-none z-30 opacity-95 hidden sm:block">
       <img src="./assets/2cc6c8a673e88ac964ca04c14b1ea3be9850afea.png" alt="" class="w-full h-full object-contain drop-shadow-md">
     </div>
 
     <!-- Top-Right Botanical Line Art Illustration (Figma 126:359) - Layered on very top -->
-    <div class="absolute flex h-[282px] items-center justify-center left-1/2 translate-x-[268px] top-[-97px] w-[256px] pointer-events-none select-none z-30 opacity-95 hidden sm:block">
+    <div id="botanical-right" class="absolute flex h-[282px] items-center justify-center left-1/2 translate-x-[268px] top-[-97px] w-[256px] pointer-events-none select-none z-30 opacity-95 hidden sm:block">
       <div class="rotate-[160.19deg] w-[189px] h-[232px]">
         <img src="./assets/b660fd47becf99c4f51f8ecf5a75e9a7516f01ce.png" alt="" class="w-full h-full object-contain drop-shadow-md">
       </div>
     </div>
 
     <!-- Section Header (Figma 70:36) -->
-    <div class="relative z-10 max-w-[1280px] mx-auto flex flex-col items-center justify-center text-center mb-8 lg:mb-10 px-4">
+    <div id="collection-header" class="relative z-10 max-w-[1280px] mx-auto flex flex-col items-center justify-center text-center mb-8 lg:mb-10 px-4">
       <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[40px] tracking-[0.05em] uppercase text-[#ece9e3] leading-normal">
         Collection
       </h2>
@@ -1321,8 +1325,18 @@
   <!-- ==================== SHARED & PAGE SCRIPTS ==================== -->
   <script src="./assets/app.js"></script>
   <script>
-        // Unified Full-Width Interactive Category Carousel
-    (function initCategoryCarousel() {
+        // ==================== GSAP-POWERED FLUID CATEGORY CAROUSEL & INTERACTIONS ====================
+    (function initGSAPCategoryCarousel() {
+      // Check if GSAP is loaded
+      if (typeof gsap === 'undefined') {
+        console.warn('GSAP not loaded, falling back');
+        return;
+      }
+
+      if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+
       const stage = document.getElementById('category-stage');
       const track = document.getElementById('cat-track');
       const prevBtn = document.getElementById('cat-carousel-prev');
@@ -1339,25 +1353,28 @@
       let dragDelta = 0;
       let hasDragged = false;
       let autoPlayTimer = null;
+      let isAnimating = false;
       const AUTO_PLAY_DELAY = 5000;
 
       function getDimensions() {
         const w = window.innerWidth;
         if (w >= 1024) {
-          return { cardWidth: 262, gap: 100, stepX: 362, isDesktop: true, isTablet: false };
+          return { cardWidth: 262, gap: 100, stepX: 362, pillCenter: 464, pillSide: 364, isDesktop: true, isTablet: false };
         } else if (w >= 640) {
-          return { cardWidth: 200, gap: 40, stepX: 240, isDesktop: false, isTablet: true };
+          return { cardWidth: 200, gap: 40, stepX: 240, pillCenter: 360, pillSide: 280, isDesktop: false, isTablet: true };
         } else {
-          return { cardWidth: 170, gap: 24, stepX: 194, isDesktop: false, isTablet: false };
+          return { cardWidth: 170, gap: 24, stepX: 194, pillCenter: 310, pillSide: 245, isDesktop: false, isTablet: false };
         }
       }
 
-      function updateCardStyles() {
+      function updateCardStyles(animate = true) {
         const dims = getDimensions();
         cards.forEach((card, idx) => {
           const pill = card.querySelector('.cat-pill');
           const title = card.querySelector('.cat-title');
           const isCenter = (idx === currentIndex);
+
+          const targetHeight = isCenter ? dims.pillCenter : dims.pillSide;
 
           if (isCenter) {
             card.classList.add('z-10');
@@ -1369,13 +1386,6 @@
             if (pill) {
               pill.classList.add('border-2', 'shadow-2xl');
               pill.classList.remove('border', 'shadow-lg');
-              if (dims.isDesktop) {
-                pill.style.height = '464px';
-              } else if (dims.isTablet) {
-                pill.style.height = '360px';
-              } else {
-                pill.style.height = '310px';
-              }
             }
           } else {
             card.classList.remove('z-10');
@@ -1387,16 +1397,44 @@
             if (pill) {
               pill.classList.remove('border-2', 'shadow-2xl');
               pill.classList.add('border', 'shadow-lg');
-              if (dims.isDesktop) {
-                pill.style.height = '364px';
-              } else if (dims.isTablet) {
-                pill.style.height = '280px';
-              } else {
-                pill.style.height = '245px';
-              }
+            }
+          }
+
+          if (pill) {
+            if (animate) {
+              gsap.to(pill, {
+                height: targetHeight,
+                duration: 0.65,
+                ease: 'power2.out',
+                overwrite: 'auto'
+              });
+            } else {
+              gsap.set(pill, { height: targetHeight });
             }
           }
         });
+      }
+
+      function checkWrapAround() {
+        const dims = getDimensions();
+        const stageWidth = stage.clientWidth || window.innerWidth;
+        let wrapped = false;
+
+        if (currentIndex >= 10) {
+          currentIndex -= 5;
+          wrapped = true;
+        } else if (currentIndex < 5) {
+          currentIndex += 5;
+          wrapped = true;
+        }
+
+        if (wrapped) {
+          const cardCenter = currentIndex * dims.stepX + (dims.cardWidth / 2);
+          currentTranslateX = (stageWidth / 2) - cardCenter;
+          gsap.set(track, { x: currentTranslateX });
+          updateCardStyles(false);
+        }
+        isAnimating = false;
       }
 
       function setTrackPosition(idx, animate = true) {
@@ -1405,13 +1443,21 @@
         const cardCenter = idx * dims.stepX + (dims.cardWidth / 2);
         currentTranslateX = (stageWidth / 2) - cardCenter;
 
+        updateCardStyles(animate);
+
         if (animate) {
-          track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+          isAnimating = true;
+          gsap.to(track, {
+            x: currentTranslateX,
+            duration: 0.8,
+            ease: 'power3.out',
+            overwrite: 'auto',
+            onComplete: checkWrapAround
+          });
         } else {
-          track.style.transition = 'none';
+          gsap.set(track, { x: currentTranslateX });
+          checkWrapAround();
         }
-        track.style.transform = `translateX(${currentTranslateX}px)`;
-        updateCardStyles();
       }
 
       function goToIndex(targetIdx, animate = true) {
@@ -1419,25 +1465,11 @@
         setTrackPosition(currentIndex, animate);
       }
 
-      // Infinite loop wrap-around at ends
-      track.addEventListener('transitionend', (e) => {
-        if (e.target !== track || e.propertyName !== 'transform') return;
-        if (currentIndex >= 10) {
-          currentIndex -= 5;
-          setTrackPosition(currentIndex, false);
-          track.offsetHeight;
-        } else if (currentIndex < 5) {
-          currentIndex += 5;
-          setTrackPosition(currentIndex, false);
-          track.offsetHeight;
-        }
-      });
-
-      // 5-Second Auto Play
+      // 5-Second Auto Rotation
       function startAutoPlay() {
         stopAutoPlay();
         autoPlayTimer = setInterval(() => {
-          goToIndex(currentIndex + 1);
+          goToIndex(currentIndex + 1, true);
         }, AUTO_PLAY_DELAY);
       }
 
@@ -1448,14 +1480,14 @@
         }
       }
 
-      // Mouse drag controls
+      // Smooth Mouse Drag with GSAP Physics
       stage.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return;
         isDragging = true;
         hasDragged = false;
         startX = e.pageX;
         dragDelta = 0;
-        track.style.transition = 'none';
+        gsap.killTweensOf(track);
         stage.classList.remove('cursor-grab');
         stage.classList.add('cursor-grabbing');
         stopAutoPlay();
@@ -1467,7 +1499,7 @@
         if (Math.abs(dragDelta) > 5) {
           hasDragged = true;
         }
-        track.style.transform = `translateX(${currentTranslateX + dragDelta}px)`;
+        gsap.set(track, { x: currentTranslateX + dragDelta });
       });
 
       window.addEventListener('mouseup', () => {
@@ -1478,22 +1510,22 @@
 
         const threshold = 45;
         if (dragDelta < -threshold) {
-          goToIndex(currentIndex + 1);
+          goToIndex(currentIndex + 1, true);
         } else if (dragDelta > threshold) {
-          goToIndex(currentIndex - 1);
+          goToIndex(currentIndex - 1, true);
         } else {
-          goToIndex(currentIndex);
+          goToIndex(currentIndex, true);
         }
         startAutoPlay();
       });
 
-      // Touch swipe controls
+      // Touch Drag for Mobile
       stage.addEventListener('touchstart', (e) => {
         isDragging = true;
         hasDragged = false;
         startX = e.touches[0].pageX;
         dragDelta = 0;
-        track.style.transition = 'none';
+        gsap.killTweensOf(track);
         stopAutoPlay();
       }, { passive: true });
 
@@ -1503,7 +1535,7 @@
         if (Math.abs(dragDelta) > 5) {
           hasDragged = true;
         }
-        track.style.transform = `translateX(${currentTranslateX + dragDelta}px)`;
+        gsap.set(track, { x: currentTranslateX + dragDelta });
       }, { passive: true });
 
       stage.addEventListener('touchend', () => {
@@ -1511,11 +1543,11 @@
         isDragging = false;
         const threshold = 35;
         if (dragDelta < -threshold) {
-          goToIndex(currentIndex + 1);
+          goToIndex(currentIndex + 1, true);
         } else if (dragDelta > threshold) {
-          goToIndex(currentIndex - 1);
+          goToIndex(currentIndex - 1, true);
         } else {
-          goToIndex(currentIndex);
+          goToIndex(currentIndex, true);
         }
         startAutoPlay();
       });
@@ -1530,16 +1562,18 @@
         });
       });
 
-      // Navigation arrow buttons
+      // Arrow buttons with tactile GSAP feedback
       prevBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
-        goToIndex(currentIndex - 1);
+        gsap.fromTo(prevBtn, { scale: 0.88 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
+        goToIndex(currentIndex - 1, true);
         startAutoPlay();
       });
 
       nextBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
-        goToIndex(currentIndex + 1);
+        gsap.fromTo(nextBtn, { scale: 0.88 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
+        goToIndex(currentIndex + 1, true);
         startAutoPlay();
       });
 
@@ -1559,6 +1593,94 @@
         goToIndex(7, false);
         startAutoPlay();
       }, 50);
+
+      // ==================== GSAP AMBIENT & SCROLL ANIMATIONS ====================
+      // 1. Sacred Geometry Gold Ring Floating Breathe
+      gsap.to('#sacred-center-ring', {
+        y: '+=5',
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      // 2. Diamond Star Twinkle Pulse
+      gsap.to('#sacred-center-ring img', {
+        scale: 1.25,
+        opacity: 0.8,
+        duration: 1.8,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      // 3. Top Botanical Illustrations Subtle Floating Motion
+      const botLeft = document.getElementById('botanical-left');
+      const botRight = document.getElementById('botanical-right');
+      if (botLeft) {
+        gsap.to(botLeft, {
+          y: '+=7',
+          rotation: '+=1.2',
+          duration: 4.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+      }
+      if (botRight) {
+        gsap.to(botRight, {
+          y: '+=9',
+          rotation: '-=1.2',
+          duration: 5.2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+      }
+
+      // 4. Hero Content Entrance Animation
+      const heroContent = document.getElementById('hero-content');
+      if (heroContent) {
+        gsap.from(heroContent.children, {
+          y: 28,
+          opacity: 0,
+          stagger: 0.15,
+          duration: 1,
+          ease: 'power3.out',
+          delay: 0.2
+        });
+      }
+
+      // 5. ScrollTrigger Reveals for Collection Section
+      if (typeof ScrollTrigger !== 'undefined') {
+        const colHeader = document.getElementById('collection-header');
+        if (colHeader) {
+          gsap.from(colHeader.children, {
+            y: 30,
+            opacity: 0,
+            stagger: 0.12,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '#collection',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          });
+        }
+
+        gsap.from('#category-stage', {
+          y: 40,
+          opacity: 0,
+          duration: 1.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '#category-stage',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        });
+      }
     })();
 
     // Newsletter Form Handler
