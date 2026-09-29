@@ -283,7 +283,7 @@ function initDirectionalHeader() {
   const showHeaderAnim = gsap.from(header, {
     yPercent: -100,
     paused: true,
-    duration: 0.3,
+    duration: 0.25,
     ease: 'power2.out'
   }).progress(1);
 
@@ -309,14 +309,10 @@ function initDirectionalHeader() {
         return;
       }
 
-      if (self.scroll() <= 20) {
-        showHeaderAnim.play();
-      } else if (self.direction === -1) {
-        // Scrolling UP -> reveal header smoothly
+      if (self.scroll() <= 10) {
         showHeaderAnim.play();
       } else {
-        // Scrolling DOWN -> hide header smoothly
-        showHeaderAnim.reverse();
+        self.direction === -1 ? showHeaderAnim.play() : showHeaderAnim.reverse();
       }
     }
   });

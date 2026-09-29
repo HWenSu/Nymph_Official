@@ -3,13 +3,18 @@
  * Shared design system & directionally-aware styles across all pages
  */
 
+/* Fixed header compensation so page content does not jump */
+body {
+  padding-top: 5rem; /* 80px matching header height */
+}
+
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 40;
+  z-index: 50;
   background-color: rgba(67, 90, 68, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
