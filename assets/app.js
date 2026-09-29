@@ -221,23 +221,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu drawer
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileDrawer = document.getElementById('mobile-drawer') || document.getElementById('mobile-menu-drawer');
-  const drawerBackdrop = document.getElementById('drawer-backdrop') || document.getElementById('mobile-menu-backdrop');
-  const closeDrawerBtn = document.getElementById('close-drawer-btn') || document.getElementById('close-menu-btn');
+  const drawerBackdrop = document.getElementById('drawer-backdrop') || document.getElementById('mobile-menu-backdrop') || document.getElementById('mobile-menu-overlay');
+  const closeDrawerBtn = document.getElementById('close-drawer-btn') || document.getElementById('close-menu-btn') || document.getElementById('mobile-menu-close');
 
   function openMenu() {
-    if (mobileDrawer && drawerBackdrop) {
+    if (mobileDrawer) {
       mobileDrawer.classList.remove('translate-x-full', '-translate-x-full', 'pointer-events-none');
-      drawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-      drawerBackdrop.classList.add('opacity-100');
+      if (drawerBackdrop) {
+        drawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        drawerBackdrop.classList.add('opacity-100');
+      }
       document.body.classList.add('overflow-hidden');
     }
   }
 
   function closeMenu() {
-    if (mobileDrawer && drawerBackdrop) {
+    if (mobileDrawer) {
       mobileDrawer.classList.add('translate-x-full', 'pointer-events-none');
-      drawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
-      drawerBackdrop.classList.remove('opacity-100');
+      if (drawerBackdrop) {
+        drawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
+        drawerBackdrop.classList.remove('opacity-100');
+      }
       document.body.classList.remove('overflow-hidden');
     }
   }
@@ -254,4 +258,67 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeCartBtn = document.getElementById('cart-drawer-close') || document.getElementById('close-cart-btn');
   closeCartBtn?.addEventListener('click', closeCartDrawer);
   document.getElementById('cart-backdrop')?.addEventListener('click', closeCartDrawer);
+
+  // Initialize Directionally-Aware Header on all pages
+  initDirectionalHeader();
+  setTimeout(initDirectionalHeader, 100);
 });
+
+// ==================== DIRECTIONALLY AWARE HEADER (ScrollTrigger) ====================
+// Matches GreenSock demo: https://codepen.io/GreenSock/pen/qBawMGb
+function initDirectionalHeader() {
+  const header = document.getElementById('site-header') || document.querySelector('.site-header') || document.querySelector('header');
+  if (!header) return;
+
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Avoid creating duplicate ScrollTriggers if already initialized
+  if (header._hasDirectionalTrigger) return;
+  header._hasDirectionalTrigger = true;
+
+  const showHeaderAnim = gsap.from(header, {
+    yPercent: -100,
+    paused: true,
+    duration: 0.3,
+    ease: 'power2.out'
+  }).progress(1);
+
+  ScrollTrigger.create({
+    start: 'top top',
+    end: 'max',
+    onUpdate: (self) => {
+      // Keep header visible if mobile drawer or cart drawer is currently open
+      const mobileDrawer = document.getElementById('mobile-drawer') || document.getElementById('mobile-menu-drawer');
+      let isDrawerOpen = false;
+      if (mobileDrawer) {
+        const isOffscreen = mobileDrawer.classList.contains('-translate-x-full') ||
+                            mobileDrawer.classList.contains('translate-x-full') ||
+                            mobileDrawer.classList.contains('pointer-events-none');
+        isDrawerOpen = !isOffscreen;
+      }
+
+      const cartDrawer = document.getElementById('cart-drawer');
+      const isCartOpen = cartDrawer ? !cartDrawer.classList.contains('translate-x-full') : false;
+
+      if (isDrawerOpen || isCartOpen) {
+        showHeaderAnim.play();
+        return;
+      }
+
+      if (self.scroll() <= 20) {
+        showHeaderAnim.play();
+      } else if (self.direction === -1) {
+        // Scrolling UP -> reveal header smoothly
+        showHeaderAnim.play();
+      } else {
+        // Scrolling DOWN -> hide header smoothly
+        showHeaderAnim.reverse();
+      }
+    }
+  });
+}
+
