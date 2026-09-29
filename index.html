@@ -298,225 +298,311 @@
       </div>
     </div>
 
-    <!-- ==================== DESKTOP STAGE VIEW (Figma 72:710) ==================== -->
-    <div class="hidden lg:block relative w-full h-[630px] overflow-hidden select-none">
-      <div class="absolute left-1/2 -translate-x-1/2 top-0 w-[1440px] h-[630px] overflow-hidden pointer-events-auto">
-        
-        <!-- Subtle Leaf Watermarks (Figma 82:153 & 82:159) -->
-        <div class="absolute h-[532px] left-[70px] top-[166px] w-[432px] opacity-10 pointer-events-none">
+    <!-- ==================== UNIFIED FULL-WIDTH INTERACTIVE CAROUSEL STAGE ==================== -->
+    <div id="category-stage" class="relative w-full h-[580px] sm:h-[620px] lg:h-[640px] overflow-hidden select-none cursor-grab active:cursor-grabbing">
+      
+      <!-- Subtle Background Leaf Watermarks (Figma 82:153 & 82:159) -->
+      <div class="absolute h-[532px] left-[5%] top-[166px] w-[432px] opacity-10 pointer-events-none hidden lg:block">
+        <img src="./assets/3656dee5cb10347156c0ba6de2bd21bae20a16ce.png" alt="" class="w-full h-full object-cover">
+      </div>
+      <div class="absolute flex h-[532px] items-center justify-center right-[5%] top-[166px] w-[432px] opacity-10 pointer-events-none hidden lg:block">
+        <div class="-scale-y-100 rotate-180 w-full h-full">
           <img src="./assets/3656dee5cb10347156c0ba6de2bd21bae20a16ce.png" alt="" class="w-full h-full object-cover">
         </div>
-        <div class="absolute flex h-[532px] items-center justify-center left-[938px] top-[166px] w-[432px] opacity-10 pointer-events-none">
-          <div class="-scale-y-100 rotate-180 w-full h-full">
-            <img src="./assets/3656dee5cb10347156c0ba6de2bd21bae20a16ce.png" alt="" class="w-full h-full object-cover">
-          </div>
-        </div>
+      </div>
 
-        <!-- Outer Sacred Geometry Ring for Center Card (Figma 72:793) -->
-        <div class="absolute border border-[#d2c2a7] h-[489px] w-[285px] rounded-full left-[577.5px] top-[19px] pointer-events-none z-10 flex items-center justify-end pr-[-6px]">
-          <!-- Tiny diamond sparkle on ring (Figma 72:759) -->
-          <img src="./assets/2cfbd70e326af482668c0feec5237507fb606f4f.svg" alt="" class="w-[13px] h-[13px] translate-x-1.5">
-        </div>
+      <!-- Outer Sacred Geometry Ring for Center Card (Fixed in Screen Center, Figma 72:793) -->
+      <div id="sacred-center-ring" class="absolute border border-[#d2c2a7] rounded-full left-1/2 -translate-x-1/2 top-[19px] pointer-events-none z-20 flex items-center justify-end
+                  w-[190px] h-[330px] sm:w-[220px] sm:h-[380px] lg:w-[285px] lg:h-[489px]">
+        <!-- Tiny diamond sparkle on ring (Figma 72:759) -->
+        <img src="./assets/2cfbd70e326af482668c0feec5237507fb606f4f.svg" alt="" class="w-[11px] h-[11px] lg:w-[13px] lg:h-[13px] translate-x-1 lg:translate-x-1.5">
+      </div>
 
-        <!-- Floating Sparkle Near Candle (Figma 72:760) -->
-        <div class="absolute left-[570px] top-[360px] w-[15px] h-[15px] pointer-events-none z-10">
-          <img src="./assets/d508d5ba81fe1d749e1c820f562aa2b995e9f8fb.svg" alt="" class="w-full h-full">
-        </div>
+      <!-- Floating Sparkle Near Center-Left (Figma 72:760) -->
+      <div class="absolute left-[calc(50%-170px)] sm:left-[calc(50%-180px)] lg:left-[calc(50%-200px)] top-[320px] lg:top-[360px] w-3.5 h-3.5 lg:w-[15px] lg:h-[15px] pointer-events-none z-20 hidden sm:block">
+        <img src="./assets/d508d5ba81fe1d749e1c820f562aa2b995e9f8fb.svg" alt="" class="w-full h-full">
+      </div>
 
-        <!-- Far-Left Preview Card: 精選香氛 (Figma 72:777) -->
-        <a href="shop.html?cat=fragrance" class="absolute left-[-135px] top-[49.7px] w-[262px] flex flex-col items-start group cursor-pointer transition-transform duration-300 hover:-translate-y-1">
-          <div class="bg-[#eae7e0] border border-[#d0cbb6] w-full h-[364px] rounded-full overflow-hidden relative shadow-lg">
-            <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
-            <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">01</span>
+      <!-- Floating Carousel Prev / Next Arrow Buttons -->
+      <button id="cat-carousel-prev" type="button" aria-label="上一項" class="absolute left-2 sm:left-6 top-[200px] sm:top-[220px] lg:top-[260px] -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
+        <img src="./assets/be4b8693b1157f907f3b009a016c94d133455ad1.svg" alt="" class="w-3.5 h-3.5 sm:w-4 sm:h-4">
+      </button>
+      <button id="cat-carousel-next" type="button" aria-label="下一項" class="absolute right-2 sm:right-6 top-[200px] sm:top-[220px] lg:top-[260px] -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
+        <img src="./assets/d284e90e40223e473271243d442d9272367b37f1.svg" alt="" class="w-3.5 h-3.5 sm:w-4 sm:h-4">
+      </button>
+
+      <!-- Carousel Track with 15 Cards (3 Cloned Sets of 5 Items) -->
+      <div id="cat-track" class="absolute top-[19px] left-0 flex items-center gap-[24px] sm:gap-[40px] lg:gap-[100px] will-change-transform" style="transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
+        <!-- Card 0: 精選香氛 -->
+        <a href="shop.html?cat=fragrance" data-index="0" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">01</span>
+            </div>
           </div>
           <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
             <div class="flex items-center gap-[6px]">
               <div class="bg-[#787e5e] h-px w-[14px]"></div>
-              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Fragrance</span>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">FRAGRANCE</span>
               <div class="bg-[#787e5e] h-px w-[14px]"></div>
             </div>
-            <p class="font-serif text-[24px] text-[#ece9e3] group-hover:text-nymph-tan transition-colors">精選香氛</p>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">精選香氛</p>
           </div>
         </a>
-
-        <!-- 3 Central Columns Grid (w-[986px] left-1/2 -translate-x-1/2) (Figma 72:713) -->
-        <div class="absolute left-1/2 -translate-x-1/2 top-[31.5px] w-[986px] flex gap-[100px] items-center justify-center">
-
-          <!-- Card 1: Candles (天然大豆蠟燭) (Figma 72:714) -->
-          <a href="shop.html?cat=candles" class="flex-1 flex flex-col items-start group cursor-pointer transition-transform duration-300 hover:-translate-y-1">
-            <div class="bg-[#eae7e0] border border-[#d0cbb6] w-full h-[364px] rounded-full overflow-hidden relative shadow-lg">
-              <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <!-- Card 1: 天然大豆蠟燭 -->
+        <a href="shop.html?cat=candles" data-index="1" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">02</span>
             </div>
-            <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
-              <div class="flex items-center gap-[6px]">
-                <div class="bg-[#787e5e] h-px w-[14px]"></div>
-                <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Candles</span>
-                <div class="bg-[#787e5e] h-px w-[14px]"></div>
-              </div>
-              <p class="font-serif text-[24px] text-[#ece9e3] group-hover:text-nymph-tan transition-colors">天然大豆蠟燭</p>
-            </div>
-          </a>
-
-          <!-- Card 2: Divination (神聖占卜儀式) - Centerpiece (Figma 72:729) -->
-          <a href="shop.html?cat=divination" class="flex-1 flex flex-col items-center justify-center group cursor-pointer relative z-20 transition-transform duration-300 hover:scale-[1.02]">
-            <div class="bg-[#eae7e0] border border-[#d0cbb6] w-full h-[464px] rounded-full overflow-hidden relative shadow-2xl">
-              <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-              <span class="absolute top-[16px] left-[18px] font-serif italic text-[#3d4a2e] text-[11px] opacity-95">Nº</span>
-              <span class="absolute top-[16px] right-[18px] font-serif text-[#3d4a2e] text-[11px] opacity-95">03</span>
-            </div>
-            <div class="w-full flex flex-col items-center justify-center pt-[21px] px-[2px] gap-[5px]">
-              <div class="flex items-center gap-[6px]">
-                <div class="bg-[#787e5e] h-px w-[14px]"></div>
-                <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Divination</span>
-                <div class="bg-[#787e5e] h-px w-[14px]"></div>
-              </div>
-              <p class="font-serif font-bold text-[24px] text-[#ece9e3] group-hover:text-nymph-tan transition-colors">神聖占卜儀式</p>
-            </div>
-          </a>
-
-          <!-- Card 3: Crystals (脈輪療癒水晶) (Figma 72:744) -->
-          <a href="shop.html?cat=crystals" class="flex-1 flex flex-col items-start group cursor-pointer transition-transform duration-300 hover:-translate-y-1">
-            <div class="bg-[#eae7e0] border border-[#d0cbb6] w-full h-[364px] rounded-full overflow-hidden relative shadow-lg">
-              <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
-              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">04</span>
-            </div>
-            <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
-              <div class="flex items-center gap-[6px]">
-                <div class="bg-[#787e5e] h-px w-[14px]"></div>
-                <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Crystals</span>
-                <div class="bg-[#787e5e] h-px w-[14px]"></div>
-              </div>
-              <p class="font-serif text-[24px] text-[#ece9e3] group-hover:text-nymph-tan transition-colors">脈輪療癒水晶</p>
-            </div>
-          </a>
-
-        </div>
-
-        <!-- Far-Right Preview Card: 儀式感禮品組 (Figma 72:761) -->
-        <a href="shop.html?cat=sets" class="absolute left-[1313px] top-[49.7px] w-[262px] flex flex-col items-start group cursor-pointer transition-transform duration-300 hover:-translate-y-1">
-          <div class="bg-[#eae7e0] border border-[#d0cbb6] w-full h-[364px] rounded-full overflow-hidden relative shadow-lg">
-            <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
-            <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">05</span>
           </div>
           <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
             <div class="flex items-center gap-[6px]">
               <div class="bg-[#787e5e] h-px w-[14px]"></div>
-              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Gift Sets</span>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">CANDLES</span>
               <div class="bg-[#787e5e] h-px w-[14px]"></div>
             </div>
-            <p class="font-serif text-[24px] text-[#ece9e3] group-hover:text-nymph-tan transition-colors">儀式感禮品組</p>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">天然大豆蠟燭</p>
           </div>
         </a>
-
-      </div>
-    </div>
-
-    <!-- ==================== MOBILE / TABLET CAROUSEL VIEW (Figma 95:25) ==================== -->
-    <div class="lg:hidden relative px-4 select-none">
-      
-      <!-- Mobile Carousel Navigation Buttons -->
-      <button id="carousel-prev" type="button" aria-label="上一項" class="absolute left-1 top-[150px] -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-nymph-cream/90 border border-nymph-tan text-nymph-forest shadow-md flex items-center justify-center hover:bg-white transition-all active:scale-90">
-        <img src="./assets/be4b8693b1157f907f3b009a016c94d133455ad1.svg" alt="" class="w-3.5 h-3.5">
-      </button>
-      <button id="carousel-next" type="button" aria-label="下一項" class="absolute right-1 top-[150px] -translate-y-1/2 z-30 w-8 h-8 rounded-full bg-nymph-cream/90 border border-nymph-tan text-nymph-forest shadow-md flex items-center justify-center hover:bg-white transition-all active:scale-90">
-        <img src="./assets/d284e90e40223e473271243d442d9272367b37f1.svg" alt="" class="w-3.5 h-3.5">
-      </button>
-
-      <!-- Carousel Track -->
-      <div id="categories-track" class="flex gap-4 sm:gap-6 items-end overflow-x-auto no-scrollbar snap-x snap-mandatory py-4 px-6">
-        
-        <!-- Mobile Card 0: 精選香氛 -->
-        <a href="shop.html?cat=fragrance" class="snap-center shrink-0 w-[160px] flex flex-col items-center group">
-          <div class="w-[160px] h-[245px] rounded-full overflow-hidden border border-[#d0cbb6] bg-[#eae7e0] relative shadow-md">
-            <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover">
-            <span class="absolute top-3 left-3.5 font-serif italic text-[#3d4a2e] text-[9px]">Nº</span>
-            <span class="absolute top-3 right-3.5 font-serif text-[#3d4a2e] text-[9px]">01</span>
-          </div>
-          <div class="mt-3 text-center">
-            <div class="flex items-center justify-center gap-1.5 mb-1">
-              <span class="w-2.5 h-px bg-[#787e5e]"></span>
-              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Fragrance</span>
-              <span class="w-2.5 h-px bg-[#787e5e]"></span>
+        <!-- Card 2: 神聖占卜儀式 -->
+        <a href="shop.html?cat=divination" data-index="2" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">03</span>
             </div>
-            <p class="font-serif text-lg text-[#ece9e3]">精選香氛</p>
           </div>
-        </a>
-
-        <!-- Mobile Card 1: 天然大豆蠟燭 (Figma 95:36) -->
-        <a href="shop.html?cat=candles" class="snap-center shrink-0 w-[160px] flex flex-col items-center group">
-          <div class="w-[160px] h-[245px] rounded-full overflow-hidden border border-[#d0cbb6] bg-[#eae7e0] relative shadow-md">
-            <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover">
-            <span class="absolute top-3 left-3.5 font-serif italic text-[#3d4a2e] text-[9px]">Nº</span>
-            <span class="absolute top-3 right-3.5 font-serif text-[#3d4a2e] text-[9px]">02</span>
-          </div>
-          <div class="mt-3 text-center">
-            <div class="flex items-center justify-center gap-1.5 mb-1">
-              <span class="w-2.5 h-px bg-[#787e5e]"></span>
-              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Candles</span>
-              <span class="w-2.5 h-px bg-[#787e5e]"></span>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">DIVINATION</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
             </div>
-            <p class="font-serif text-lg text-[#ece9e3]">天然大豆蠟燭</p>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">神聖占卜儀式</p>
           </div>
         </a>
-
-        <!-- Mobile Card 2: 神聖占卜儀式 - Centerpiece (Figma 95:49) -->
-        <a href="shop.html?cat=divination" class="snap-center shrink-0 w-[200px] flex flex-col items-center group relative">
-          <!-- Subtle Outer Gold Accent Ring on Mobile -->
-          <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-[216px] h-[326px] rounded-full border border-[#d2c2a7] pointer-events-none"></div>
-          <div class="w-[200px] h-[310px] rounded-full overflow-hidden border-2 border-[#d0cbb6] bg-[#eae7e0] relative shadow-xl">
-            <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover">
-            <span class="absolute top-3.5 left-4 font-serif italic text-[#3d4a2e] text-[10px]">Nº</span>
-            <span class="absolute top-3.5 right-4 font-serif text-[#3d4a2e] text-[10px]">03</span>
-          </div>
-          <div class="mt-3 text-center">
-            <div class="flex items-center justify-center gap-1.5 mb-1">
-              <span class="w-3 h-px bg-[#787e5e]"></span>
-              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Divination</span>
-              <span class="w-3 h-px bg-[#787e5e]"></span>
+        <!-- Card 3: 脈輪療癒水晶 -->
+        <a href="shop.html?cat=crystals" data-index="3" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">04</span>
             </div>
-            <p class="font-serif font-bold text-xl text-[#ece9e3]">神聖占卜儀式</p>
           </div>
-        </a>
-
-        <!-- Mobile Card 3: 脈輪療癒水晶 (Figma 95:62) -->
-        <a href="shop.html?cat=crystals" class="snap-center shrink-0 w-[160px] flex flex-col items-center group">
-          <div class="w-[160px] h-[245px] rounded-full overflow-hidden border border-[#d0cbb6] bg-[#eae7e0] relative shadow-md">
-            <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover">
-            <span class="absolute top-3 left-3.5 font-serif italic text-[#3d4a2e] text-[9px]">Nº</span>
-            <span class="absolute top-3 right-3.5 font-serif text-[#3d4a2e] text-[9px]">04</span>
-          </div>
-          <div class="mt-3 text-center">
-            <div class="flex items-center justify-center gap-1.5 mb-1">
-              <span class="w-2.5 h-px bg-[#787e5e]"></span>
-              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Crystals</span>
-              <span class="w-2.5 h-px bg-[#787e5e]"></span>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">CRYSTALS</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
             </div>
-            <p class="font-serif text-lg text-[#ece9e3]">脈輪療癒水晶</p>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">脈輪療癒水晶</p>
           </div>
         </a>
-
-        <!-- Mobile Card 4: 儀式感禮品組 -->
-        <a href="shop.html?cat=sets" class="snap-center shrink-0 w-[160px] flex flex-col items-center group">
-          <div class="w-[160px] h-[245px] rounded-full overflow-hidden border border-[#d0cbb6] bg-[#eae7e0] relative shadow-md">
-            <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover">
-            <span class="absolute top-3 left-3.5 font-serif italic text-[#3d4a2e] text-[9px]">Nº</span>
-            <span class="absolute top-3 right-3.5 font-serif text-[#3d4a2e] text-[9px]">05</span>
-          </div>
-          <div class="mt-3 text-center">
-            <div class="flex items-center justify-center gap-1.5 mb-1">
-              <span class="w-2.5 h-px bg-[#787e5e]"></span>
-              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">Gift Sets</span>
-              <span class="w-2.5 h-px bg-[#787e5e]"></span>
+        <!-- Card 4: 儀式感禮品組 -->
+        <a href="shop.html?cat=sets" data-index="4" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">05</span>
             </div>
-            <p class="font-serif text-lg text-[#ece9e3]">儀式感禮品組</p>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">GIFT SETS</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">儀式感禮品組</p>
           </div>
         </a>
-
+        <!-- Card 5: 精選香氛 -->
+        <a href="shop.html?cat=fragrance" data-index="5" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">01</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">FRAGRANCE</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">精選香氛</p>
+          </div>
+        </a>
+        <!-- Card 6: 天然大豆蠟燭 -->
+        <a href="shop.html?cat=candles" data-index="6" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">02</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">CANDLES</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">天然大豆蠟燭</p>
+          </div>
+        </a>
+        <!-- Card 7: 神聖占卜儀式 -->
+        <a href="shop.html?cat=divination" data-index="7" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-10">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">03</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">DIVINATION</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-bold group-hover:text-nymph-tan transition-colors">神聖占卜儀式</p>
+          </div>
+        </a>
+        <!-- Card 8: 脈輪療癒水晶 -->
+        <a href="shop.html?cat=crystals" data-index="8" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">04</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">CRYSTALS</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">脈輪療癒水晶</p>
+          </div>
+        </a>
+        <!-- Card 9: 儀式感禮品組 -->
+        <a href="shop.html?cat=sets" data-index="9" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">05</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">GIFT SETS</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">儀式感禮品組</p>
+          </div>
+        </a>
+        <!-- Card 10: 精選香氛 -->
+        <a href="shop.html?cat=fragrance" data-index="10" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">01</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">FRAGRANCE</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">精選香氛</p>
+          </div>
+        </a>
+        <!-- Card 11: 天然大豆蠟燭 -->
+        <a href="shop.html?cat=candles" data-index="11" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">02</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">CANDLES</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">天然大豆蠟燭</p>
+          </div>
+        </a>
+        <!-- Card 12: 神聖占卜儀式 -->
+        <a href="shop.html?cat=divination" data-index="12" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">03</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">DIVINATION</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">神聖占卜儀式</p>
+          </div>
+        </a>
+        <!-- Card 13: 脈輪療癒水晶 -->
+        <a href="shop.html?cat=crystals" data-index="13" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">04</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">CRYSTALS</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">脈輪療癒水晶</p>
+          </div>
+        </a>
+        <!-- Card 14: 儀式感禮品組 -->
+        <a href="shop.html?cat=sets" data-index="14" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+          <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+              <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
+              <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
+              <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">05</span>
+            </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center pt-[12px] px-[2px] gap-[5px]">
+            <div class="flex items-center gap-[6px]">
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+              <span class="font-sans font-semibold text-[8px] uppercase tracking-wider text-[#787e5e]">GIFT SETS</span>
+              <div class="bg-[#787e5e] h-px w-[14px]"></div>
+            </div>
+            <p class="cat-title font-serif text-[20px] sm:text-[22px] lg:text-[24px] text-[#ece9e3] font-normal group-hover:text-nymph-tan transition-colors">儀式感禮品組</p>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -1235,17 +1321,245 @@
   <!-- ==================== SHARED & PAGE SCRIPTS ==================== -->
   <script src="./assets/app.js"></script>
   <script>
-    // Category Carousel Scroll
-    const categoriesTrack = document.getElementById('categories-track');
-    const carouselPrev = document.getElementById('carousel-prev');
-    const carouselNext = document.getElementById('carousel-next');
+        // Unified Full-Width Interactive Category Carousel
+    (function initCategoryCarousel() {
+      const stage = document.getElementById('category-stage');
+      const track = document.getElementById('cat-track');
+      const prevBtn = document.getElementById('cat-carousel-prev');
+      const nextBtn = document.getElementById('cat-carousel-next');
+      if (!stage || !track) return;
 
-    carouselPrev?.addEventListener('click', () => {
-      categoriesTrack?.scrollBy({ left: -220, behavior: 'smooth' });
-    });
-    carouselNext?.addEventListener('click', () => {
-      categoriesTrack?.scrollBy({ left: 220, behavior: 'smooth' });
-    });
+      const cards = Array.from(track.querySelectorAll('.cat-card'));
+      if (cards.length === 0) return;
+
+      let currentIndex = 7; // Divination in Set 1 (initial center)
+      let currentTranslateX = 0;
+      let isDragging = false;
+      let startX = 0;
+      let dragDelta = 0;
+      let hasDragged = false;
+      let autoPlayTimer = null;
+      const AUTO_PLAY_DELAY = 5000;
+
+      function getDimensions() {
+        const w = window.innerWidth;
+        if (w >= 1024) {
+          return { cardWidth: 262, gap: 100, stepX: 362, isDesktop: true, isTablet: false };
+        } else if (w >= 640) {
+          return { cardWidth: 200, gap: 40, stepX: 240, isDesktop: false, isTablet: true };
+        } else {
+          return { cardWidth: 170, gap: 24, stepX: 194, isDesktop: false, isTablet: false };
+        }
+      }
+
+      function updateCardStyles() {
+        const dims = getDimensions();
+        cards.forEach((card, idx) => {
+          const pill = card.querySelector('.cat-pill');
+          const title = card.querySelector('.cat-title');
+          const isCenter = (idx === currentIndex);
+
+          if (isCenter) {
+            card.classList.add('z-10');
+            card.classList.remove('z-0');
+            if (title) {
+              title.classList.add('font-bold');
+              title.classList.remove('font-normal');
+            }
+            if (pill) {
+              pill.classList.add('border-2', 'shadow-2xl');
+              pill.classList.remove('border', 'shadow-lg');
+              if (dims.isDesktop) {
+                pill.style.height = '464px';
+              } else if (dims.isTablet) {
+                pill.style.height = '360px';
+              } else {
+                pill.style.height = '310px';
+              }
+            }
+          } else {
+            card.classList.remove('z-10');
+            card.classList.add('z-0');
+            if (title) {
+              title.classList.remove('font-bold');
+              title.classList.add('font-normal');
+            }
+            if (pill) {
+              pill.classList.remove('border-2', 'shadow-2xl');
+              pill.classList.add('border', 'shadow-lg');
+              if (dims.isDesktop) {
+                pill.style.height = '364px';
+              } else if (dims.isTablet) {
+                pill.style.height = '280px';
+              } else {
+                pill.style.height = '245px';
+              }
+            }
+          }
+        });
+      }
+
+      function setTrackPosition(idx, animate = true) {
+        const dims = getDimensions();
+        const stageWidth = stage.clientWidth || window.innerWidth;
+        const cardCenter = idx * dims.stepX + (dims.cardWidth / 2);
+        currentTranslateX = (stageWidth / 2) - cardCenter;
+
+        if (animate) {
+          track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        } else {
+          track.style.transition = 'none';
+        }
+        track.style.transform = `translateX(${currentTranslateX}px)`;
+        updateCardStyles();
+      }
+
+      function goToIndex(targetIdx, animate = true) {
+        currentIndex = targetIdx;
+        setTrackPosition(currentIndex, animate);
+      }
+
+      // Infinite loop wrap-around at ends
+      track.addEventListener('transitionend', (e) => {
+        if (e.target !== track || e.propertyName !== 'transform') return;
+        if (currentIndex >= 10) {
+          currentIndex -= 5;
+          setTrackPosition(currentIndex, false);
+          track.offsetHeight;
+        } else if (currentIndex < 5) {
+          currentIndex += 5;
+          setTrackPosition(currentIndex, false);
+          track.offsetHeight;
+        }
+      });
+
+      // 5-Second Auto Play
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(() => {
+          goToIndex(currentIndex + 1);
+        }, AUTO_PLAY_DELAY);
+      }
+
+      function stopAutoPlay() {
+        if (autoPlayTimer) {
+          clearInterval(autoPlayTimer);
+          autoPlayTimer = null;
+        }
+      }
+
+      // Mouse drag controls
+      stage.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isDragging = true;
+        hasDragged = false;
+        startX = e.pageX;
+        dragDelta = 0;
+        track.style.transition = 'none';
+        stage.classList.remove('cursor-grab');
+        stage.classList.add('cursor-grabbing');
+        stopAutoPlay();
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        dragDelta = e.pageX - startX;
+        if (Math.abs(dragDelta) > 5) {
+          hasDragged = true;
+        }
+        track.style.transform = `translateX(${currentTranslateX + dragDelta}px)`;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        stage.classList.remove('cursor-grabbing');
+        stage.classList.add('cursor-grab');
+
+        const threshold = 45;
+        if (dragDelta < -threshold) {
+          goToIndex(currentIndex + 1);
+        } else if (dragDelta > threshold) {
+          goToIndex(currentIndex - 1);
+        } else {
+          goToIndex(currentIndex);
+        }
+        startAutoPlay();
+      });
+
+      // Touch swipe controls
+      stage.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        hasDragged = false;
+        startX = e.touches[0].pageX;
+        dragDelta = 0;
+        track.style.transition = 'none';
+        stopAutoPlay();
+      }, { passive: true });
+
+      stage.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        dragDelta = e.touches[0].pageX - startX;
+        if (Math.abs(dragDelta) > 5) {
+          hasDragged = true;
+        }
+        track.style.transform = `translateX(${currentTranslateX + dragDelta}px)`;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        const threshold = 35;
+        if (dragDelta < -threshold) {
+          goToIndex(currentIndex + 1);
+        } else if (dragDelta > threshold) {
+          goToIndex(currentIndex - 1);
+        } else {
+          goToIndex(currentIndex);
+        }
+        startAutoPlay();
+      });
+
+      // Prevent link clicks during drag
+      stage.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          if (hasDragged) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        });
+      });
+
+      // Navigation arrow buttons
+      prevBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToIndex(currentIndex - 1);
+        startAutoPlay();
+      });
+
+      nextBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToIndex(currentIndex + 1);
+        startAutoPlay();
+      });
+
+      // Hover to pause auto-rotation
+      stage.addEventListener('mouseenter', stopAutoPlay);
+      stage.addEventListener('mouseleave', () => {
+        if (!isDragging) startAutoPlay();
+      });
+
+      // Window resize handling
+      window.addEventListener('resize', () => {
+        goToIndex(currentIndex, false);
+      });
+
+      // Initial alignment
+      setTimeout(() => {
+        goToIndex(7, false);
+        startAutoPlay();
+      }, 50);
+    })();
 
     // Newsletter Form Handler
     function handleNewsletter(e) {
