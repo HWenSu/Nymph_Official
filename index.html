@@ -74,7 +74,7 @@
     }
   </style>
 </head>
-<body class="bg-nymph-cream text-nymph-darkGreen font-sans antialiased selection:bg-nymph-olive selection:text-white">
+<body class="bg-nymph-cream text-nymph-darkGreen font-sans antialiased selection:bg-nymph-olive selection:text-white overflow-x-hidden">
 
   <!-- ==================== HEADER ==================== -->
   <header class="sticky top-0 z-40 bg-nymph-forest/95 backdrop-blur-md border-b border-nymph-olive/30 shadow-[0_2px_15px_rgba(0,0,0,0.15)] transition-all duration-300">
@@ -267,17 +267,17 @@
   </section>
 
   <!-- ==================== COLLECTION / CATEGORIES (Matches Figma 70:35) ==================== -->
-  <section id="collection" class="relative bg-[#435a44] pt-12 pb-16 lg:pt-14 lg:pb-20 text-nymph-cream overflow-hidden">
+  <section id="collection" class="relative z-20 bg-[#435a44] pt-12 pb-16 lg:pt-14 lg:pb-20 text-nymph-cream overflow-visible">
     
-    <!-- Top-Left Botanical Line Art Illustration (Figma 126:358) -->
-    <div class="absolute h-[195px] left-1/2 -translate-x-[597px] top-[-50px] lg:top-[-62px] w-[254px] pointer-events-none select-none z-10 opacity-80 hidden sm:block">
-      <img src="./assets/2cc6c8a673e88ac964ca04c14b1ea3be9850afea.png" alt="" class="w-full h-full object-cover">
+    <!-- Top-Left Botanical Line Art Illustration (Figma 126:358) - Layered on very top -->
+    <div class="absolute h-[195px] left-1/2 -translate-x-[597px] top-[-50px] lg:top-[-62px] w-[254px] pointer-events-none select-none z-30 opacity-95 hidden sm:block">
+      <img src="./assets/2cc6c8a673e88ac964ca04c14b1ea3be9850afea.png" alt="" class="w-full h-full object-contain drop-shadow-md">
     </div>
 
-    <!-- Top-Right Botanical Line Art Illustration (Figma 126:359) -->
-    <div class="absolute flex h-[282px] items-center justify-center left-1/2 translate-x-[268px] top-[-97px] w-[256px] pointer-events-none select-none z-10 opacity-80 hidden sm:block">
-      <div class="rotate-[160.19deg]">
-        <img src="./assets/b660fd47becf99c4f51f8ecf5a75e9a7516f01ce.png" alt="" class="w-[189px] h-[232px] object-cover">
+    <!-- Top-Right Botanical Line Art Illustration (Figma 126:359) - Layered on very top -->
+    <div class="absolute flex h-[282px] items-center justify-center left-1/2 translate-x-[268px] top-[-97px] w-[256px] pointer-events-none select-none z-30 opacity-95 hidden sm:block">
+      <div class="rotate-[160.19deg] w-[189px] h-[232px]">
+        <img src="./assets/b660fd47becf99c4f51f8ecf5a75e9a7516f01ce.png" alt="" class="w-full h-full object-contain drop-shadow-md">
       </div>
     </div>
 
