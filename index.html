@@ -306,7 +306,7 @@
     </div>
 
     <!-- ==================== UNIFIED FULL-WIDTH INTERACTIVE CAROUSEL STAGE ==================== -->
-    <div id="category-stage" class="relative w-full h-[580px] sm:h-[620px] lg:h-[640px] overflow-hidden select-none cursor-grab active:cursor-grabbing">
+    <div id="category-stage" class="relative w-full h-[580px] sm:h-[620px] lg:h-[640px] overflow-hidden">
       
       <!-- Subtle Background Leaf Watermarks (Figma 82:153 & 82:159) -->
       <div class="absolute h-[532px] left-[5%] top-[166px] w-[432px] opacity-10 pointer-events-none hidden lg:block">
@@ -1483,44 +1483,7 @@
         }
       }
 
-      // Smooth Mouse Drag with GSAP Physics
-      stage.addEventListener('mousedown', (e) => {
-        if (e.button !== 0) return;
-        isDragging = true;
-        hasDragged = false;
-        startX = e.pageX;
-        dragDelta = 0;
-        gsap.killTweensOf(track);
-        stage.classList.remove('cursor-grab');
-        stage.classList.add('cursor-grabbing');
-        stopAutoPlay();
-      });
 
-      window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        dragDelta = e.pageX - startX;
-        if (Math.abs(dragDelta) > 5) {
-          hasDragged = true;
-        }
-        gsap.set(track, { x: currentTranslateX + dragDelta });
-      });
-
-      window.addEventListener('mouseup', () => {
-        if (!isDragging) return;
-        isDragging = false;
-        stage.classList.remove('cursor-grabbing');
-        stage.classList.add('cursor-grab');
-
-        const threshold = 45;
-        if (dragDelta < -threshold) {
-          goToIndex(currentIndex + 1, true);
-        } else if (dragDelta > threshold) {
-          goToIndex(currentIndex - 1, true);
-        } else {
-          goToIndex(currentIndex, true);
-        }
-        startAutoPlay();
-      });
 
       // Touch Drag for Mobile
       stage.addEventListener('touchstart', (e) => {
@@ -1582,9 +1545,7 @@
 
       // Hover to pause auto-rotation
       stage.addEventListener('mouseenter', stopAutoPlay);
-      stage.addEventListener('mouseleave', () => {
-        if (!isDragging) startAutoPlay();
-      });
+      stage.addEventListener('mouseleave', startAutoPlay);
 
       // Window resize handling
       window.addEventListener('resize', () => {
