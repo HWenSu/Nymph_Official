@@ -277,12 +277,12 @@
   <section id="collection" class="relative z-20 bg-[#435a44] pt-12 pb-16 lg:pt-14 lg:pb-20 text-nymph-cream overflow-visible">
     
     <!-- Top-Left Botanical Line Art Illustration (Figma 126:358) - Layered on very top -->
-    <div id="botanical-left" class="absolute h-[195px] left-1/2 -translate-x-[597px] top-[-50px] lg:top-[-62px] w-[254px] pointer-events-none select-none z-30 opacity-95 hidden sm:block">
+    <div id="botanical-left" class="absolute h-[195px] left-1/2 -translate-x-[597px] top-[-50px] lg:top-[-62px] w-[254px] pointer-events-none select-none z-[130] opacity-95 hidden sm:block">
       <img src="./assets/2cc6c8a673e88ac964ca04c14b1ea3be9850afea.png" alt="" class="w-full h-full object-contain drop-shadow-md">
     </div>
 
     <!-- Top-Right Botanical Line Art Illustration (Figma 126:359) - Layered on very top -->
-    <div id="botanical-right" class="absolute flex h-[282px] items-center justify-center left-1/2 translate-x-[268px] top-[-97px] w-[256px] pointer-events-none select-none z-30 opacity-95 hidden sm:block">
+    <div id="botanical-right" class="absolute flex h-[282px] items-center justify-center left-1/2 translate-x-[268px] top-[-97px] w-[256px] pointer-events-none select-none z-[130] opacity-95 hidden sm:block">
       <div class="rotate-[160.19deg] w-[189px] h-[232px]">
         <img src="./assets/b660fd47becf99c4f51f8ecf5a75e9a7516f01ce.png" alt="" class="w-full h-full object-contain drop-shadow-md">
       </div>
@@ -319,7 +319,7 @@
       </div>
 
       <!-- Outer Sacred Geometry Ring for Center Card (Fixed in Screen Center, Figma 72:793) -->
-      <div id="sacred-center-ring" class="absolute border border-[#d2c2a7] rounded-full left-1/2 -translate-x-1/2 top-[19px] pointer-events-none z-20 flex items-center justify-end
+      <div id="sacred-center-ring" class="absolute border border-[#d2c2a7] rounded-full left-1/2 -translate-x-1/2 top-[19px] pointer-events-none z-[110] flex items-center justify-end
                   w-[190px] h-[330px] sm:w-[220px] sm:h-[380px] lg:w-[285px] lg:h-[489px]">
         <!-- Tiny diamond sparkle on ring (Figma 72:759) -->
         <img src="./assets/2cfbd70e326af482668c0feec5237507fb606f4f.svg" alt="" class="w-[11px] h-[11px] lg:w-[13px] lg:h-[13px] translate-x-1 lg:translate-x-1.5">
@@ -331,19 +331,19 @@
       </div>
 
       <!-- Floating Carousel Prev / Next Arrow Buttons -->
-      <button id="cat-carousel-prev" type="button" aria-label="上一項" class="absolute left-2 sm:left-6 top-[200px] sm:top-[220px] lg:top-[260px] -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
+      <button id="cat-carousel-prev" type="button" aria-label="上一項" class="absolute left-2 sm:left-6 top-[200px] sm:top-[220px] lg:top-[260px] -translate-y-1/2 z-[120] w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
         <img src="./assets/be4b8693b1157f907f3b009a016c94d133455ad1.svg" alt="" class="w-3.5 h-3.5 sm:w-4 sm:h-4">
       </button>
-      <button id="cat-carousel-next" type="button" aria-label="下一項" class="absolute right-2 sm:right-6 top-[200px] sm:top-[220px] lg:top-[260px] -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
+      <button id="cat-carousel-next" type="button" aria-label="下一項" class="absolute right-2 sm:right-6 top-[200px] sm:top-[220px] lg:top-[260px] -translate-y-1/2 z-[120] w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
         <img src="./assets/d284e90e40223e473271243d442d9272367b37f1.svg" alt="" class="w-3.5 h-3.5 sm:w-4 sm:h-4">
       </button>
 
       <!-- Carousel Track with 15 Cards (3 Cloned Sets of 5 Items) -->
-      <div id="cat-track" class="absolute top-[19px] left-0 flex items-center gap-[24px] sm:gap-[40px] lg:gap-[100px] will-change-transform" style="transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);">
+      <div id="cat-cards" class="absolute top-[19px] left-1/2 -translate-x-1/2 w-[170px] sm:w-[200px] lg:w-[262px] h-[550px] pointer-events-none">
         <!-- Card 0: 精選香氛 -->
-        <a href="shop.html?cat=fragrance" data-index="0" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=fragrance" data-index="0" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">01</span>
@@ -359,9 +359,9 @@
           </div>
         </a>
         <!-- Card 1: 天然大豆蠟燭 -->
-        <a href="shop.html?cat=candles" data-index="1" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=candles" data-index="1" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">02</span>
@@ -377,9 +377,9 @@
           </div>
         </a>
         <!-- Card 2: 神聖占卜儀式 -->
-        <a href="shop.html?cat=divination" data-index="2" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=divination" data-index="2" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">03</span>
@@ -395,9 +395,9 @@
           </div>
         </a>
         <!-- Card 3: 脈輪療癒水晶 -->
-        <a href="shop.html?cat=crystals" data-index="3" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=crystals" data-index="3" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">04</span>
@@ -413,9 +413,9 @@
           </div>
         </a>
         <!-- Card 4: 儀式感禮品組 -->
-        <a href="shop.html?cat=sets" data-index="4" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=sets" data-index="4" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">05</span>
@@ -431,9 +431,9 @@
           </div>
         </a>
         <!-- Card 5: 精選香氛 -->
-        <a href="shop.html?cat=fragrance" data-index="5" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=fragrance" data-index="5" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">01</span>
@@ -449,9 +449,9 @@
           </div>
         </a>
         <!-- Card 6: 天然大豆蠟燭 -->
-        <a href="shop.html?cat=candles" data-index="6" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=candles" data-index="6" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">02</span>
@@ -467,9 +467,9 @@
           </div>
         </a>
         <!-- Card 7: 神聖占卜儀式 -->
-        <a href="shop.html?cat=divination" data-index="7" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-10">
+        <a href="shop.html?cat=divination" data-index="7" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">03</span>
@@ -485,9 +485,9 @@
           </div>
         </a>
         <!-- Card 8: 脈輪療癒水晶 -->
-        <a href="shop.html?cat=crystals" data-index="8" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=crystals" data-index="8" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">04</span>
@@ -503,9 +503,9 @@
           </div>
         </a>
         <!-- Card 9: 儀式感禮品組 -->
-        <a href="shop.html?cat=sets" data-index="9" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=sets" data-index="9" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">05</span>
@@ -521,9 +521,9 @@
           </div>
         </a>
         <!-- Card 10: 精選香氛 -->
-        <a href="shop.html?cat=fragrance" data-index="10" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=fragrance" data-index="10" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/43b83d58601a3c6ae0089a9766917004d49399c0.png" alt="精選香氛" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">01</span>
@@ -539,9 +539,9 @@
           </div>
         </a>
         <!-- Card 11: 天然大豆蠟燭 -->
-        <a href="shop.html?cat=candles" data-index="11" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=candles" data-index="11" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/d0a55c8aacddbc19e58399ec6990e17242b22f44.png" alt="天然大豆蠟燭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">02</span>
@@ -557,9 +557,9 @@
           </div>
         </a>
         <!-- Card 12: 神聖占卜儀式 -->
-        <a href="shop.html?cat=divination" data-index="12" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=divination" data-index="12" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/ed68df54184691bd4ddb247709ad5896bf374827.png" alt="神聖占卜儀式" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">03</span>
@@ -575,9 +575,9 @@
           </div>
         </a>
         <!-- Card 13: 脈輪療癒水晶 -->
-        <a href="shop.html?cat=crystals" data-index="13" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=crystals" data-index="13" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/123eefdf72e720e8e0e5b000d135e18eb6f1ebb6.png" alt="脈輪療癒水晶" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">04</span>
@@ -593,9 +593,9 @@
           </div>
         </a>
         <!-- Card 14: 儀式感禮品組 -->
-        <a href="shop.html?cat=sets" data-index="14" class="cat-card shrink-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer transition-all duration-500 z-0">
+        <a href="shop.html?cat=sets" data-index="14" class="cat-card absolute top-0 left-0 w-[170px] sm:w-[200px] lg:w-[262px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[330px] sm:h-[380px] lg:h-[489px]">
-            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[245px] sm:h-[280px] lg:h-[364px] border shadow-lg rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative transition-all duration-500">
+            <div class="cat-pill w-[170px] sm:w-[200px] lg:w-[262px] h-[310px] sm:h-[360px] lg:h-[464px] border-2 shadow-2xl rounded-full overflow-hidden border-[#d0cbb6] bg-[#eae7e0] relative">
               <img src="./assets/62b496e329d1bd979feb81836b5aae161460265f.png" alt="儀式感禮品組" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none select-none" draggable="false">
               <span class="absolute top-[14px] left-[16px] font-serif italic text-[#3d4a2e] text-[10px] opacity-95">Nº</span>
               <span class="absolute top-[14px] right-[16px] font-serif text-[#3d4a2e] text-[10px] opacity-95">05</span>
@@ -1328,7 +1328,7 @@
   <!-- ==================== SHARED & PAGE SCRIPTS ==================== -->
   <script src="./assets/app.js"></script>
   <script>
-        // ==================== GSAP-POWERED FLUID CATEGORY CAROUSEL & INTERACTIONS ====================
+    // ==================== GSAP-POWERED FLUID CATEGORY CAROUSEL (GreenSock RwKwLWK) ====================
     (function initGSAPCategoryCarousel() {
       // Check if GSAP is loaded
       if (typeof gsap === 'undefined') {
@@ -1341,138 +1341,121 @@
       }
 
       const stage = document.getElementById('category-stage');
-      const track = document.getElementById('cat-track');
+      const cardsContainer = document.getElementById('cat-cards');
       const prevBtn = document.getElementById('cat-carousel-prev');
       const nextBtn = document.getElementById('cat-carousel-next');
-      if (!stage || !track) return;
+      if (!stage || !cardsContainer) return;
 
-      const cards = Array.from(track.querySelectorAll('.cat-card'));
+      const cards = Array.from(cardsContainer.querySelectorAll('.cat-card'));
       if (cards.length === 0) return;
 
-      let currentIndex = 7; // Divination in Set 1 (initial center)
-      let currentTranslateX = 0;
-      let isDragging = false;
-      let startX = 0;
-      let dragDelta = 0;
-      let hasDragged = false;
-      let autoPlayTimer = null;
-      let isAnimating = false;
-      const AUTO_PLAY_DELAY = 5000;
+      // Set initial hidden state for cards
+      gsap.set(cards, { xPercent: 400, opacity: 0, scale: 0 });
 
-      function getDimensions() {
-        const w = window.innerWidth;
-        if (w >= 1024) {
-          return { cardWidth: 262, gap: 100, stepX: 362, pillCenter: 464, pillSide: 364, isDesktop: true, isTablet: false };
-        } else if (w >= 640) {
-          return { cardWidth: 200, gap: 40, stepX: 240, pillCenter: 360, pillSide: 280, isDesktop: false, isTablet: true };
-        } else {
-          return { cardWidth: 170, gap: 24, stepX: 194, pillCenter: 310, pillSide: 245, isDesktop: false, isTablet: false };
+      const spacing = 0.1;
+      const snapTime = gsap.utils.snap(spacing);
+
+      // Card animation function matching GreenSock RwKwLWK Coverflow depth
+      const animateFunc = element => {
+        const tl = gsap.timeline();
+        tl.fromTo(element, 
+          { scale: 0.25, opacity: 0 }, 
+          { scale: 1, opacity: 1, zIndex: 100, duration: 0.5, yoyo: true, repeat: 1, ease: "sine.inOut", immediateRender: false }
+        )
+        .fromTo(element, 
+          { xPercent: 400 }, 
+          { xPercent: -400, duration: 1, ease: "none", immediateRender: false }, 0
+        );
+        return tl;
+      };
+
+      // Seamless looping sequence builder (GreenSock standard)
+      function buildSeamlessLoop(items, spacing, animateFunc) {
+        let overlap = Math.ceil(1 / spacing),
+          startTime = items.length * spacing + 0.5,
+          loopTime = (items.length + overlap) * spacing + 1,
+          rawSequence = gsap.timeline({ paused: true }),
+          seamlessLoop = gsap.timeline({
+            paused: true,
+            repeat: -1,
+            onRepeat() {
+              this._time === this._dur && (this._tTime += this._dur - 0.01);
+            }
+          }),
+          l = items.length + overlap * 2,
+          time, i, index;
+
+        for (i = 0; i < l; i++) {
+          index = i % items.length;
+          time = i * spacing;
+          rawSequence.add(animateFunc(items[index]), time);
+          i <= items.length && seamlessLoop.add("label" + i, time);
         }
+
+        rawSequence.time(startTime);
+        seamlessLoop.to(rawSequence, {
+          time: loopTime,
+          duration: loopTime - startTime,
+          ease: "none"
+        }).fromTo(rawSequence, { time: overlap * spacing + 1 }, {
+          time: startTime,
+          duration: startTime - (overlap * spacing + 1),
+          immediateRender: false,
+          ease: "none"
+        });
+        return seamlessLoop;
       }
 
-      function updateCardStyles(animate = true) {
-        const dims = getDimensions();
+      const seamlessLoop = buildSeamlessLoop(cards, spacing, animateFunc);
+      const initialOffset = 2 * spacing; // Card 2 (Divination / 神聖占卜儀式) centered initially
+      const playhead = { offset: initialOffset };
+      let currentTargetOffset = initialOffset;
+      const wrapTime = gsap.utils.wrap(0, seamlessLoop.duration());
+
+      function updateActiveStyle() {
+        const currentWrapped = wrapTime(playhead.offset);
+        const centerIndex = Math.round(currentWrapped / spacing) % cards.length;
         cards.forEach((card, idx) => {
-          const pill = card.querySelector('.cat-pill');
+          const isCenter = (idx === centerIndex);
           const title = card.querySelector('.cat-title');
-          const isCenter = (idx === currentIndex);
-
-          const targetHeight = isCenter ? dims.pillCenter : dims.pillSide;
-
-          if (isCenter) {
-            card.classList.add('z-10');
-            card.classList.remove('z-0');
-            if (title) {
-              title.classList.add('font-bold');
-              title.classList.remove('font-normal');
-            }
-            if (pill) {
-              pill.classList.add('border-2', 'shadow-2xl');
-              pill.classList.remove('border', 'shadow-lg');
-            }
-          } else {
-            card.classList.remove('z-10');
-            card.classList.add('z-0');
-            if (title) {
-              title.classList.remove('font-bold');
-              title.classList.add('font-normal');
-            }
-            if (pill) {
-              pill.classList.remove('border-2', 'shadow-2xl');
-              pill.classList.add('border', 'shadow-lg');
-            }
-          }
-
-          if (pill) {
-            if (animate) {
-              gsap.to(pill, {
-                height: targetHeight,
-                duration: 0.65,
-                ease: 'power2.out',
-                overwrite: 'auto'
-              });
+          if (title) {
+            if (isCenter) {
+              title.classList.add('font-bold', 'text-nymph-tan');
+              title.classList.remove('font-normal', 'text-[#ece9e3]');
             } else {
-              gsap.set(pill, { height: targetHeight });
+              title.classList.remove('font-bold', 'text-nymph-tan');
+              title.classList.add('font-normal', 'text-[#ece9e3]');
             }
           }
         });
       }
 
-      function checkWrapAround() {
-        const dims = getDimensions();
-        const stageWidth = stage.clientWidth || window.innerWidth;
-        let wrapped = false;
-
-        if (currentIndex >= 10) {
-          currentIndex -= 5;
-          wrapped = true;
-        } else if (currentIndex < 5) {
-          currentIndex += 5;
-          wrapped = true;
-        }
-
-        if (wrapped) {
-          const cardCenter = currentIndex * dims.stepX + (dims.cardWidth / 2);
-          currentTranslateX = (stageWidth / 2) - cardCenter;
-          gsap.set(track, { x: currentTranslateX });
-          updateCardStyles(false);
-        }
-        isAnimating = false;
-      }
-
-      function setTrackPosition(idx, animate = true) {
-        const dims = getDimensions();
-        const stageWidth = stage.clientWidth || window.innerWidth;
-        const cardCenter = idx * dims.stepX + (dims.cardWidth / 2);
-        currentTranslateX = (stageWidth / 2) - cardCenter;
-
-        updateCardStyles(animate);
-
-        if (animate) {
-          isAnimating = true;
-          gsap.to(track, {
-            x: currentTranslateX,
-            duration: 0.8,
-            ease: 'power3.out',
-            overwrite: 'auto',
-            onComplete: checkWrapAround
-          });
-        } else {
-          gsap.set(track, { x: currentTranslateX });
-          checkWrapAround();
-        }
-      }
-
-      function goToIndex(targetIdx, animate = true) {
-        currentIndex = targetIdx;
-        setTrackPosition(currentIndex, animate);
+      function scrubToOffset(targetOffset) {
+        currentTargetOffset = snapTime(targetOffset);
+        gsap.to(playhead, {
+          offset: currentTargetOffset,
+          duration: 0.65,
+          ease: "power2.out",
+          overwrite: "auto",
+          onUpdate() {
+            seamlessLoop.time(wrapTime(playhead.offset));
+            updateActiveStyle();
+          },
+          onComplete() {
+            const norm = wrapTime(playhead.offset);
+            playhead.offset = norm;
+            currentTargetOffset = norm;
+          }
+        });
       }
 
       // 5-Second Auto Rotation
+      const AUTO_PLAY_DELAY = 5000;
+      let autoPlayTimer = null;
       function startAutoPlay() {
         stopAutoPlay();
         autoPlayTimer = setInterval(() => {
-          goToIndex(currentIndex + 1, true);
+          scrubToOffset(currentTargetOffset + spacing);
         }, AUTO_PLAY_DELAY);
       }
 
@@ -1483,80 +1466,68 @@
         }
       }
 
-
-
-      // Touch Drag for Mobile
-      stage.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        hasDragged = false;
-        startX = e.touches[0].pageX;
-        dragDelta = 0;
-        gsap.killTweensOf(track);
-        stopAutoPlay();
-      }, { passive: true });
-
-      stage.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        dragDelta = e.touches[0].pageX - startX;
-        if (Math.abs(dragDelta) > 5) {
-          hasDragged = true;
-        }
-        gsap.set(track, { x: currentTranslateX + dragDelta });
-      }, { passive: true });
-
-      stage.addEventListener('touchend', () => {
-        if (!isDragging) return;
-        isDragging = false;
-        const threshold = 35;
-        if (dragDelta < -threshold) {
-          goToIndex(currentIndex + 1, true);
-        } else if (dragDelta > threshold) {
-          goToIndex(currentIndex - 1, true);
-        } else {
-          goToIndex(currentIndex, true);
-        }
-        startAutoPlay();
-      });
-
-      // Prevent link clicks during drag
-      stage.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          if (hasDragged) {
-            e.preventDefault();
-            e.stopPropagation();
-          }
-        });
-      });
-
-      // Arrow buttons with tactile GSAP feedback
+      // Prev / Next arrow buttons with tactile GSAP feedback
       prevBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
         gsap.fromTo(prevBtn, { scale: 0.88 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
-        goToIndex(currentIndex - 1, true);
+        stopAutoPlay();
+        scrubToOffset(currentTargetOffset - spacing);
         startAutoPlay();
       });
 
       nextBtn?.addEventListener('click', (e) => {
         e.stopPropagation();
         gsap.fromTo(nextBtn, { scale: 0.88 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
-        goToIndex(currentIndex + 1, true);
+        stopAutoPlay();
+        scrubToOffset(currentTargetOffset + spacing);
         startAutoPlay();
+      });
+
+      // Card click handling: center card navigates to shop, side cards rotate to center
+      cards.forEach((card, idx) => {
+        card.addEventListener('click', (e) => {
+          const currentWrapped = wrapTime(playhead.offset);
+          const centerIndex = Math.round(currentWrapped / spacing) % cards.length;
+          if (idx === centerIndex) {
+            // Already active card - allow standard link navigation
+            return;
+          }
+          // Side card - rotate to center
+          e.preventDefault();
+          let diff = idx - centerIndex;
+          if (diff > cards.length / 2) diff -= cards.length;
+          if (diff < -cards.length / 2) diff += cards.length;
+          stopAutoPlay();
+          scrubToOffset(currentTargetOffset + diff * spacing);
+          startAutoPlay();
+        });
       });
 
       // Hover to pause auto-rotation
       stage.addEventListener('mouseenter', stopAutoPlay);
       stage.addEventListener('mouseleave', startAutoPlay);
 
-      // Window resize handling
-      window.addEventListener('resize', () => {
-        goToIndex(currentIndex, false);
-      });
+      // Mobile Touch Swipe
+      let touchStartX = 0;
+      stage.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        stopAutoPlay();
+      }, { passive: true });
 
-      // Initial alignment
-      setTimeout(() => {
-        goToIndex(7, false);
+      stage.addEventListener('touchend', (e) => {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        if (deltaX < -35) {
+          scrubToOffset(currentTargetOffset + spacing);
+        } else if (deltaX > 35) {
+          scrubToOffset(currentTargetOffset - spacing);
+        }
         startAutoPlay();
-      }, 50);
+      }, { passive: true });
+
+      // Initialize initial frame and start autoplay
+      seamlessLoop.time(wrapTime(initialOffset));
+      updateActiveStyle();
+      startAutoPlay();
 
       // ==================== GSAP AMBIENT & SCROLL ANIMATIONS ====================
       // 1. Sacred Geometry Gold Ring Floating Breathe
