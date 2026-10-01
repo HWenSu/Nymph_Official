@@ -17,6 +17,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
 
   <!-- Site Header Component Styles -->
   <link rel="stylesheet" href="./assets/header.css">
@@ -1691,6 +1692,76 @@
           }
         });
       }
+
+      // ==================== 6. PRODUCT CARDS ENTRANCE ANIMATIONS (CodePen ZEaJmv slideInLeft) ====================
+      // Reference: https://codepen.io/code_dependant/pen/ZEaJmv (Che - Entrance Animations #1)
+      // Easing: cubic-bezier(0.17, 0.89, 0.03, 0.99)
+      // Duration: 1200ms
+      // Dynamic offset: 50 + total * ratio * 20 + 50 + total * heightRatio * 20 px
+      if (typeof CustomEase !== 'undefined') {
+        gsap.registerPlugin(CustomEase);
+        try {
+          CustomEase.create('codepenSlideInEase', '0.17, 0.89, 0.03, 0.99');
+        } catch (_) {}
+      }
+
+      function initProductCardsEntrance() {
+        const productGrids = [
+          document.querySelector('#shop .grid'),
+          document.querySelector('#featured .grid'),
+          document.querySelector('#featured .hidden.lg\\:grid')
+        ].filter(Boolean);
+
+        const entranceEase = (typeof CustomEase !== 'undefined' && CustomEase.get && CustomEase.get('codepenSlideInEase'))
+          ? 'codepenSlideInEase'
+          : 'power3.out';
+
+        productGrids.forEach(grid => {
+          const cards = Array.from(grid.querySelectorAll('article'));
+          if (cards.length === 0) return;
+          const total = cards.length;
+
+          function animateCards() {
+            const parentW = grid.offsetWidth || window.innerWidth;
+            const parentH = grid.offsetHeight || 600;
+
+            cards.forEach(card => {
+              const ratio = card.offsetLeft / (parentW || 1);
+              const heightRatio = card.offsetTop / (parentH || 1);
+              const startX = Math.round(50 + total * ratio * 20 + 50 + total * heightRatio * 20);
+
+              gsap.fromTo(card,
+                {
+                  x: startX,
+                  opacity: 0
+                },
+                {
+                  x: 0,
+                  opacity: 1,
+                  duration: 1.2,
+                  ease: entranceEase,
+                  clearProps: 'x'
+                }
+              );
+            });
+          }
+
+          if (typeof ScrollTrigger !== 'undefined') {
+            gsap.set(cards, { opacity: 0 });
+
+            ScrollTrigger.create({
+              trigger: grid,
+              start: 'top 88%',
+              once: true,
+              onEnter: () => animateCards()
+            });
+          } else {
+            animateCards();
+          }
+        });
+      }
+
+      initProductCardsEntrance();
     })();
 
     // Newsletter Form Handler
