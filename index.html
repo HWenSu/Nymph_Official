@@ -82,8 +82,8 @@
       scrollbar-width: none;
     }
 
-    /* AOS Zoom-in optimization */
-    [data-aos="zoom-in"] {
+    /* Product Cards Entrance Animation optimization */
+    section article {
       will-change: transform, opacity;
     }
   </style>
@@ -1702,10 +1702,10 @@
       }
     })();
 
-    // ==================== 6. PRODUCT CARDS ENTRANCE ANIMATIONS (AOS: zoom-in) ====================
-    // CodePen: https://codepen.io/michalsnik/pen/WxNdvq (zoom-in)
-    // Initial state: scale(0.6), opacity 0
-    // Final state: scale(1), opacity 1
+    // ==================== 6. PRODUCT CARDS ENTRANCE ANIMATIONS (Slide In: power4.out, 2.5s) ====================
+    // Initial state: x = "-400%", opacity = 0
+    // Target state: x = "0%", opacity = 1
+    // Animation: gsap.to(target, { duration: 2.5, ease: "power4.out", x: "0%" })
     // Interval delay: 0.3s between each card (0s, 0.3s, 0.6s, 0.9s)
     (function initProductCardsEntrance() {
       let createdTriggers = [];
@@ -1732,8 +1732,8 @@
           row.cards.push(card);
         });
 
-        // Initial AOS zoom-in state: scale = 0.6, opacity = 0
-        gsap.set(cards, { scale: 0.6, opacity: 0 });
+        // Initial state: x = "-400%", opacity = 0
+        gsap.set(cards, { x: "-400%", opacity: 0 });
 
         rows.forEach(row => {
           const rowCards = row.cards;
@@ -1747,12 +1747,12 @@
                 : (colIdx * 0.3);
 
               gsap.to(card, {
-                scale: 1,
+                x: "0%",
                 opacity: 1,
-                duration: 0.8,
+                duration: 2.5,
                 delay: delaySec,
-                ease: 'power2.out',
-                clearProps: 'transform,scale'
+                ease: "power4.out",
+                clearProps: "transform"
               });
             });
           }
