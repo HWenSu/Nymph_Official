@@ -859,7 +859,7 @@
   </section>
 
   <!-- ==================== FEATURED PRODUCTS 2: 熱銷商品 ==================== -->
-  <section class="relative py-16 lg:py-24 bg-nymph-cream overflow-hidden border-t border-nymph-sage/40">
+  <section id="featured" class="relative py-16 lg:py-24 bg-nymph-cream overflow-hidden border-t border-nymph-sage/40">
     <!-- Decorative botanical foliage in background -->
     <div class="absolute left-0 top-1/4 w-80 pointer-events-none opacity-25 select-none -translate-x-12">
       <img src="./assets/af92adf94efd210735a3a4038226a3f4b1c29f93.png" alt="" class="w-full h-auto object-contain">
@@ -1692,12 +1692,14 @@
           }
         });
       }
+    })();
 
-      // ==================== 6. PRODUCT CARDS ENTRANCE ANIMATIONS (CodePen ZEaJmv slideInLeft) ====================
-      // Reference: https://codepen.io/code_dependant/pen/ZEaJmv (Che - Entrance Animations #1)
-      // Easing: cubic-bezier(0.17, 0.89, 0.03, 0.99)
-      // Duration: 1200ms
-      // Dynamic offset: 50 + total * ratio * 20 + 50 + total * heightRatio * 20 px
+    // ==================== 6. PRODUCT CARDS ENTRANCE ANIMATIONS (CodePen ZEaJmv slideInLeft) ====================
+    // Reference: https://codepen.io/code_dependant/pen/ZEaJmv (Che - Entrance Animations #1)
+    // Easing: cubic-bezier(0.17, 0.89, 0.03, 0.99)
+    // Duration: 1100ms
+    // Dynamic offset: 50 + total * ratio * 20 + 50 + total * heightRatio * 20 px
+    (function initProductCardsEntrance() {
       if (typeof CustomEase !== 'undefined') {
         gsap.registerPlugin(CustomEase);
         try {
@@ -1705,30 +1707,43 @@
         } catch (_) {}
       }
 
-      function initProductCardsEntrance() {
-        const productGrids = [
-          document.querySelector('#shop .grid'),
-          document.querySelector('#featured .grid'),
-          document.querySelector('#featured .hidden.lg\\:grid')
-        ].filter(Boolean);
+      function setupEntrance() {
+        const cards = Array.from(document.querySelectorAll('section article'));
+        if (cards.length === 0) return;
 
         const entranceEase = (typeof CustomEase !== 'undefined' && CustomEase.get && CustomEase.get('codepenSlideInEase'))
           ? 'codepenSlideInEase'
           : 'power3.out';
 
-        productGrids.forEach(grid => {
-          const cards = Array.from(grid.querySelectorAll('article'));
-          if (cards.length === 0) return;
-          const total = cards.length;
+        // Group cards into rows by vertical position and container
+        const rows = [];
+        cards.forEach(card => {
+          const parent = card.parentElement;
+          const top = card.offsetTop;
+          let row = rows.find(r => r.parent === parent && Math.abs(r.top - top) < 25);
+          if (!row) {
+            row = { parent, top, cards: [] };
+            rows.push(row);
+          }
+          row.cards.push(card);
+        });
 
-          function animateCards() {
-            const parentW = grid.offsetWidth || window.innerWidth;
-            const parentH = grid.offsetHeight || 600;
+        // Concurrently hide all cards until scrolled into view
+        gsap.set(cards, { opacity: 0 });
 
-            cards.forEach(card => {
+        rows.forEach(row => {
+          const rowCards = row.cards;
+          rowCards.sort((a, b) => a.offsetLeft - b.offsetLeft);
+          const totalInRow = rowCards.length;
+
+          function animateRow() {
+            const parentW = row.parent.offsetWidth || window.innerWidth;
+            const parentH = row.parent.offsetHeight || 600;
+
+            rowCards.forEach((card, colIdx) => {
               const ratio = card.offsetLeft / (parentW || 1);
               const heightRatio = card.offsetTop / (parentH || 1);
-              const startX = Math.round(50 + total * ratio * 20 + 50 + total * heightRatio * 20);
+              const startX = Math.round(50 + totalInRow * ratio * 20 + 50 + totalInRow * heightRatio * 20);
 
               gsap.fromTo(card,
                 {
@@ -1738,7 +1753,8 @@
                 {
                   x: 0,
                   opacity: 1,
-                  duration: 1.2,
+                  duration: 1.1,
+                  delay: colIdx * 0.18, // 每一張卡片依序間隔 0.18s，先看到第一張再依序波浪進場
                   ease: entranceEase,
                   clearProps: 'x'
                 }
@@ -1747,21 +1763,29 @@
           }
 
           if (typeof ScrollTrigger !== 'undefined') {
-            gsap.set(cards, { opacity: 0 });
-
             ScrollTrigger.create({
-              trigger: grid,
-              start: 'top 88%',
+              trigger: rowCards[0],
+              start: 'top 80%', // 滾動至視窗 80% 處才觸發波浪進場
               once: true,
-              onEnter: () => animateCards()
+              onEnter: () => animateRow()
             });
           } else {
-            animateCards();
+            animateRow();
           }
         });
       }
 
-      initProductCardsEntrance();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupEntrance);
+      } else {
+        setupEntrance();
+      }
+
+      window.addEventListener('load', () => {
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
+      });
     })();
 
     // Newsletter Form Handler

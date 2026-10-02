@@ -582,20 +582,16 @@
       }
     }
 
-    function animateShopProducts(items) {
-      const container = document.getElementById('shop-products-grid');
-      if (!container) return;
-      const elements = items || Array.from(container.querySelectorAll('.product-item')).filter(el => el.style.display !== 'none');
-      if (elements.length === 0) return;
-      const total = elements.length;
+    function animateShopRow(rowItems, container) {
       const parentW = container.offsetWidth || window.innerWidth;
       const parentH = container.offsetHeight || 600;
+      const total = rowItems.length;
 
       const entranceEase = (typeof CustomEase !== 'undefined' && CustomEase.get && CustomEase.get('codepenSlideInEase'))
         ? 'codepenSlideInEase'
         : 'power3.out';
 
-      elements.forEach(item => {
+      rowItems.forEach((item, colIdx) => {
         const ratio = item.offsetLeft / (parentW || 1);
         const heightRatio = item.offsetTop / (parentH || 1);
         const startX = Math.round(50 + total * ratio * 20 + 50 + total * heightRatio * 20);
@@ -608,7 +604,8 @@
           {
             x: 0,
             opacity: 1,
-            duration: 1.2,
+            duration: 1.1,
+            delay: colIdx * 0.18, // 每一張依序間隔 0.18s，先看到第一張再依序波浪進場
             ease: entranceEase,
             clearProps: 'x'
           }
@@ -616,27 +613,70 @@
       });
     }
 
-    // Trigger on page load / scroll into view
+    function animateShopProducts(items) {
+      const container = document.getElementById('shop-products-grid');
+      if (!container) return;
+      const elements = items || Array.from(container.querySelectorAll('.product-item')).filter(el => el.style.display !== 'none');
+      if (elements.length === 0) return;
+
+      // Group into rows
+      const rows = [];
+      elements.forEach(item => {
+        const top = item.offsetTop;
+        let row = rows.find(r => Math.abs(r.top - top) < 25);
+        if (!row) {
+          row = { top, items: [] };
+          rows.push(row);
+        }
+        row.items.push(item);
+      });
+
+      rows.forEach(row => {
+        row.items.sort((a, b) => a.offsetLeft - b.offsetLeft);
+        animateShopRow(row.items, container);
+      });
+    }
+
+    // Trigger on scroll into view
     (function initShopEntrance() {
       const grid = document.getElementById('shop-products-grid');
       if (!grid) return;
       const items = Array.from(grid.querySelectorAll('.product-item'));
 
-      // If already in viewport on load, play entrance immediately
-      const rect = grid.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.9) {
-        animateShopProducts(items);
-      } else if (typeof ScrollTrigger !== 'undefined') {
-        gsap.set(items, { opacity: 0 });
-        ScrollTrigger.create({
-          trigger: grid,
-          start: 'top 88%',
-          once: true,
-          onEnter: () => animateShopProducts(items)
-        });
-      } else {
-        animateShopProducts(items);
-      }
+      // Concurrently hide all items until scroll reaches row
+      gsap.set(items, { opacity: 0 });
+
+      // Group into rows
+      const rows = [];
+      items.forEach(item => {
+        const top = item.offsetTop;
+        let row = rows.find(r => Math.abs(r.top - top) < 25);
+        if (!row) {
+          row = { top, items: [] };
+          rows.push(row);
+        }
+        row.items.push(item);
+      });
+
+      rows.forEach(row => {
+        row.items.sort((a, b) => a.offsetLeft - b.offsetLeft);
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.create({
+            trigger: row.items[0],
+            start: 'top 85%', // 滾動進入視窗 85% 處才觸發波浪進場
+            once: true,
+            onEnter: () => animateShopRow(row.items, grid)
+          });
+        } else {
+          animateShopRow(row.items, grid);
+        }
+      });
+
+      window.addEventListener('load', () => {
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
+      });
     })();
   </script>
 
