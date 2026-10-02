@@ -116,3 +116,93 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
 }
+
+/* ==========================================================================
+   POSITION-AWARE BUTTONS (Kyle Brumm Effect - https://codepen.io/kjbrum/pen/wBBLXx)
+   ========================================================================== */
+
+.btn-pos-aware,
+.pos-aware-btn {
+  position: relative;
+  overflow: hidden !important;
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.pos-aware-btn.is-pos-absolute {
+  position: absolute !important;
+}
+
+.pos-aware-btn.is-pos-fixed {
+  position: fixed !important;
+}
+
+/* Position-aware expanding circle */
+.pos-aware-btn > .pos-aware-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: var(--pos-ripple-bg, rgba(255, 255, 255, 0.22));
+  transform: translate(-50%, -50%);
+  transition: width 0.45s ease-in-out, height 0.45s ease-in-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hover expansion */
+.pos-aware-btn:hover > .pos-aware-ripple {
+  width: var(--btn-ripple-dia, 260%);
+  height: var(--btn-ripple-dia, 260%);
+}
+
+/* Elevate button content and text */
+.pos-aware-btn > *:not(.pos-aware-ripple) {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  transition: color 0.35s ease, fill 0.35s ease, border-color 0.35s ease;
+}
+
+/* Themed ripple colors matching site design */
+.pos-aware-btn[class*="border-nymph-olive"] {
+  --pos-ripple-bg: #787E5E;
+}
+.pos-aware-btn[class*="border-nymph-olive"]:hover {
+  color: #FFFFFF !important;
+}
+
+.pos-aware-btn[class*="border-nymph-forest"] {
+  --pos-ripple-bg: #435A44;
+}
+.pos-aware-btn[class*="border-nymph-forest"]:hover {
+  color: #FFFFFF !important;
+}
+
+.pos-aware-btn[class*="border-nymph-tan"] {
+  --pos-ripple-bg: #D0CBB6;
+}
+.pos-aware-btn[class*="border-nymph-tan"]:hover {
+  color: #44422B !important;
+}
+
+.pos-aware-btn[class*="bg-nymph-cream"],
+.pos-aware-btn[class*="bg-[#ece9e3]"] {
+  --pos-ripple-bg: #FFFFFF;
+}
+
+.pos-aware-btn[class*="bg-nymph-olive"] {
+  --pos-ripple-bg: #435A44;
+}
+
+.pos-aware-btn[class*="bg-nymph-darkGreen"] {
+  --pos-ripple-bg: #556F56;
+}
+
+.pos-aware-btn[class*="bg-black/55"],
+.pos-aware-btn[class*="bg-[#435a44]"] {
+  --pos-ripple-bg: #344635;
+}
+

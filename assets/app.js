@@ -211,6 +211,9 @@ function renderCartDrawer() {
       shippingText.innerHTML = `再消費 <span class="font-semibold text-[#1c1c1a]">NT$ ${diff.toLocaleString()}</span> 即享免運優惠`;
     }
   }
+
+  // Refresh position-aware buttons inside cart drawer
+  setTimeout(initPositionAwareButtons, 10);
 }
 
 // Global Drawer & Menu Initialization
@@ -258,6 +261,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeCartBtn = document.getElementById('cart-drawer-close') || document.getElementById('close-cart-btn');
   closeCartBtn?.addEventListener('click', closeCartDrawer);
   document.getElementById('cart-backdrop')?.addEventListener('click', closeCartDrawer);
+
+  // Initialize Position-Aware Buttons on all pages
+  initPositionAwareButtons();
 
   // Initialize Directionally-Aware Header on all pages
   initDirectionalHeader();
@@ -316,5 +322,143 @@ function initDirectionalHeader() {
       }
     }
   });
+}
+
+// ==================== POSITION-AWARE BUTTONS (kjbrum effect) ====================
+// Based on Kyle Brumm's demo: https://codepen.io/kjbrum/pen/wBBLXx
+function isButtonElement(el) {
+  // If explicitly tagged
+  if (el.classList.contains('pos-aware-btn') || el.classList.contains('btn') || el.classList.contains('btn-pos-aware')) {
+    return true;
+  }
+
+  // Never match category carousel cards, navigation links, or footer link lists
+  if (el.classList.contains('cat-card') ||
+      el.classList.contains('site-header-nav-link') ||
+      el.classList.contains('drawer-nav-link') ||
+      el.closest('footer ul') ||
+      el.closest('#mobile-drawer nav') ||
+      el.closest('.sub-list') ||
+      el.getAttribute('onclick')?.includes('toggleSub')) {
+    return false;
+  }
+
+  // All <button> elements (except excluded above) are buttons!
+  if (el.tagName === 'BUTTON') return true;
+  if (el.tagName === 'INPUT' && (el.type === 'submit' || el.type === 'button')) return true;
+
+  // For <a> links: match if styled like a button (has padding + bg/border)
+  if (el.tagName === 'A') {
+    const cls = el.className || '';
+    const hasPadding = /\bp[xy]?-[2-9]|\bpx-\d+|\bpy-\d+/.test(cls);
+    const hasBgOrBorder = /\b(bg-nymph-|bg-\[|border-nymph-|border-\[|btn)\b/.test(cls);
+    if (hasPadding && hasBgOrBorder) return true;
+  }
+
+  return false;
+}
+
+function initPositionAwareButtons() {
+  const elements = document.querySelectorAll('button, a, input[type="submit"], input[type="button"], .btn-pos-aware, .pos-aware-btn');
+
+  elements.forEach(btn => {
+    // Check if this element should be treated as an interactive button
+    if (!isButtonElement(btn)) return;
+
+    // Avoid double-initialization
+    if (btn._hasPosAware) return;
+    btn._hasPosAware = true;
+    btn.classList.add('pos-aware-btn');
+
+    // Preserve computed position for absolute/fixed elements
+    const compPos = window.getComputedStyle(btn).position;
+    if (compPos === 'absolute') {
+      btn.classList.add('is-pos-absolute');
+    } else if (compPos === 'fixed') {
+      btn.classList.add('is-pos-fixed');
+    }
+
+    // Wrap bare text nodes in a relative span to keep text elevated above the ripple
+    Array.from(btn.childNodes).forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+        const textSpan = document.createElement('span');
+        textSpan.className = 'pos-aware-text';
+        textSpan.style.position = 'relative';
+        textSpan.style.zIndex = '2';
+        textSpan.style.pointerEvents = 'none';
+        textSpan.textContent = node.textContent;
+        btn.replaceChild(textSpan, node);
+      }
+    });
+
+    // Ensure non-ripple children have relative positioning and z-index 2
+    Array.from(btn.children).forEach(child => {
+      if (!child.classList.contains('pos-aware-ripple')) {
+        const childPos = window.getComputedStyle(child).position;
+        if (childPos === 'static') {
+          child.style.position = 'relative';
+        }
+        child.style.zIndex = '2';
+        child.style.pointerEvents = 'none';
+      }
+    });
+
+    // Create or locate the ripple element
+    let ripple = btn.querySelector(':scope > .pos-aware-ripple');
+    if (!ripple) {
+      ripple = document.createElement('span');
+      ripple.className = 'pos-aware-ripple';
+      ripple.setAttribute('aria-hidden', 'true');
+      btn.insertBefore(ripple, btn.firstChild);
+    }
+
+    // Update position on mouseenter & mouseleave (Kyle Brumm pattern)
+    function handleMouse(e) {
+      const rect = btn.getBoundingClientRect();
+      const relX = e.clientX - rect.left;
+      const relY = e.clientY - rect.top;
+
+      // Diameter ensuring complete coverage even from the farthest corner
+      const dia = Math.ceil(Math.hypot(rect.width, rect.height) * 2.25);
+      btn.style.setProperty('--btn-ripple-dia', dia + 'px');
+
+      ripple.style.left = relX + 'px';
+      ripple.style.top = relY + 'px';
+    }
+
+    btn.addEventListener('mouseenter', handleMouse);
+    btn.addEventListener('mouseleave', handleMouse);
+
+    // Touch device support
+    btn.addEventListener('touchend', () => {
+      setTimeout(() => {
+        btn.style.setProperty('--btn-ripple-dia', '0px');
+      }, 400);
+    }, { passive: true });
+  });
+}
+
+// Global exposure
+window.initPositionAwareButtons = initPositionAwareButtons;
+
+// Automatically initialize newly added buttons (e.g. dynamic content/filtering)
+if (typeof MutationObserver !== 'undefined') {
+  let moTimer = null;
+  const mo = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.addedNodes && m.addedNodes.length > 0) {
+        clearTimeout(moTimer);
+        moTimer = setTimeout(initPositionAwareButtons, 50);
+        break;
+      }
+    }
+  });
+  if (document.body) {
+    mo.observe(document.body, { childList: true, subtree: true });
+  } else {
+    document.addEventListener('DOMContentLoaded', () => {
+      mo.observe(document.body, { childList: true, subtree: true });
+    });
+  }
 }
 
