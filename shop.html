@@ -567,17 +567,16 @@
       animateShopProducts(items);
     }
 
-    // ==================== PRODUCT CARDS ENTRANCE ANIMATIONS (CodePen ZEaJmv slideInLeft) ====================
-    // Reference: https://codepen.io/code_dependant/pen/ZEaJmv (Che - Entrance Animations #1)
-    // Easing: cubic-bezier(0.17, 0.89, 0.03, 0.99)
-    // Duration: 1200ms
-    // Dynamic offset: 50 + total * ratio * 20 + 50 + total * heightRatio * 20 px
+    // ==================== PRODUCT CARDS ENTRANCE ANIMATIONS (Fluid & Snappy Wave) ====================
+    // Smooth deceleration curve: cubic-bezier(0.16, 1, 0.3, 1)
+    // Duration: 750ms for snappy, fluid glide
+    // Delay: colIdx * 0.08s for a crisp, continuous cascading wave
     if (typeof gsap !== 'undefined') {
       if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
       if (typeof CustomEase !== 'undefined') {
         gsap.registerPlugin(CustomEase);
         try {
-          CustomEase.create('codepenSlideInEase', '0.17, 0.89, 0.03, 0.99');
+          CustomEase.create('codepenSlideInEase', '0.16, 1, 0.3, 1');
         } catch (_) {}
       }
     }
@@ -589,12 +588,12 @@
 
       const entranceEase = (typeof CustomEase !== 'undefined' && CustomEase.get && CustomEase.get('codepenSlideInEase'))
         ? 'codepenSlideInEase'
-        : 'power3.out';
+        : 'power2.out';
 
       rowItems.forEach((item, colIdx) => {
         const ratio = item.offsetLeft / (parentW || 1);
         const heightRatio = item.offsetTop / (parentH || 1);
-        const startX = Math.round(50 + total * ratio * 20 + 50 + total * heightRatio * 20);
+        const startX = Math.round(30 + total * ratio * 15 + 30 + total * heightRatio * 15);
 
         gsap.fromTo(item,
           {
@@ -604,8 +603,8 @@
           {
             x: 0,
             opacity: 1,
-            duration: 1.1,
-            delay: colIdx * 0.18, // 每一張依序間隔 0.18s，先看到第一張再依序波浪進場
+            duration: 0.75, // 加快速度，流暢不拖沓
+            delay: colIdx * 0.08, // 連貫順暢的波浪時間差
             ease: entranceEase,
             clearProps: 'x'
           }

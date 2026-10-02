@@ -321,8 +321,9 @@
       </div>
 
       <!-- Outer Sacred Geometry Ring for Center Card (Fixed in Screen Center, Figma 72:793) -->
-      <div id="sacred-center-ring" class="absolute border border-[#d2c2a7] rounded-full left-1/2 -translate-x-1/2 top-[11px] pointer-events-none z-[110] flex items-center justify-end
-                  w-[172px] h-[275px] sm:w-[198px] sm:h-[315px] lg:w-[238px] lg:h-[392px]">
+      <div id="sacred-center-ring" class="absolute border border-[#d2c2a7] rounded-full left-1/2 -translate-x-1/2 pointer-events-none z-[110] flex items-center justify-end
+                  w-[185px] h-[293px] sm:w-[214px] sm:h-[338px] lg:w-[258px] lg:h-[424px]
+                  top-[0px] sm:top-[-3px] lg:top-[-6px]">
         <!-- Tiny diamond sparkle on ring (Figma 72:759) -->
         <img src="./assets/2cfbd70e326af482668c0feec5237507fb606f4f.svg" alt="" class="w-[10px] h-[10px] lg:w-[12px] lg:h-[12px] translate-x-1 lg:translate-x-1.5">
       </div>
@@ -1354,34 +1355,35 @@
       const cards = Array.from(cardsContainer.querySelectorAll('.cat-card'));
       if (cards.length === 0) return;
 
-      // Set initial hidden state for cards
-      gsap.set(cards, { xPercent: 440, opacity: 0, scale: 0 });
+      // Set initial hidden state for cards - transformOrigin centered on pill (Y: 195px)
+      gsap.set(cards, { xPercent: 575, opacity: 0, scale: 0, transformOrigin: '50% 195px' });
 
       const spacing = 0.1;
       const snapTime = gsap.utils.snap(spacing);
 
-      // Card animation function matching GreenSock RwKwLWK Coverflow depth
-      // - 每層尺寸差 10%:
-      //   - 1st layer (Center): scale = 1.00, opacity = 1.00, zIndex = 100
-      //   - 2nd layer (dist 1): scale = 0.90 (-10%), opacity = 0.88, zIndex = 80
-      //   - 3rd layer (dist 2): scale = 0.80 (-10%), opacity = 0.75, zIndex = 60
-      //   - 4th layer (dist 3): scale = 0.70 (-10%), opacity = 0.60, zIndex = 40
-      // - 第三層與第四層間距近一點 (delta = 75% vs delta = 102% & 118%):
+      // Card animation function:
+      // 1. 每層間距完全一致 (spacing step = 115%)：
+      //    0 -> 115 -> 230 -> 345 -> 460 -> 575
+      //    第四層 (xPercent 345) 與第三層 (230) 間距為 115%，與其他層完全一致無擠壓！
+      // 2. 卡片移到中間時放大 (Center: scale = 1.08, Layer 2: scale = 0.82)：
+      //    從第二層 (0.82) 移到中間時放大逾 31%，放大焦點感極為明顯且震撼！
+      // 3. 中間的框不變形：
+      //    transformOrigin 定位在藥丸中心 (50% 195px)，配合 #sacred-center-ring 幾何同心外框，比例均勻不變形。
       const animateFunc = element => {
         const tl = gsap.timeline();
         tl.fromTo(element, 
-          { xPercent: 440, scale: 0.40, opacity: 0, zIndex: 10 }, 
-          { xPercent: 365, scale: 0.55, opacity: 0.25, zIndex: 20, duration: 0.1, ease: "none", immediateRender: false }
+          { xPercent: 575, scale: 0.35, opacity: 0, zIndex: 10 }, 
+          { xPercent: 460, scale: 0.46, opacity: 0.25, zIndex: 20, duration: 0.1, ease: "none", immediateRender: false }
         )
-        .to(element, { xPercent: 295, scale: 0.70, opacity: 0.60, zIndex: 40, duration: 0.1, ease: "none" })
-        .to(element, { xPercent: 220, scale: 0.80, opacity: 0.75, zIndex: 60, duration: 0.1, ease: "none" })
-        .to(element, { xPercent: 118, scale: 0.90, opacity: 0.88, zIndex: 80, duration: 0.1, ease: "none" })
-        .to(element, { xPercent: 0,   scale: 1.00, opacity: 1.00, zIndex: 100, duration: 0.1, ease: "none" })
-        .to(element, { xPercent: -118, scale: 0.90, opacity: 0.88, zIndex: 80, duration: 0.1, ease: "none" })
-        .to(element, { xPercent: -220, scale: 0.80, opacity: 0.75, zIndex: 60, duration: 0.1, ease: "none" })
-        .to(element, { xPercent: -295, scale: 0.70, opacity: 0.60, zIndex: 40, duration: 0.1, ease: "none" })
-        .to(element, { xPercent: -365, scale: 0.55, opacity: 0.25, zIndex: 20, duration: 0.1, ease: "none" })
-        .to(element, { xPercent: -440, scale: 0.40, opacity: 0,    zIndex: 10, duration: 0.1, ease: "none" });
+        .to(element, { xPercent: 345, scale: 0.58, opacity: 0.60, zIndex: 40, duration: 0.1, ease: "none" })
+        .to(element, { xPercent: 230, scale: 0.70, opacity: 0.75, zIndex: 60, duration: 0.1, ease: "none" })
+        .to(element, { xPercent: 115, scale: 0.82, opacity: 0.88, zIndex: 80, duration: 0.1, ease: "none" })
+        .to(element, { xPercent: 0,   scale: 1.08, opacity: 1.00, zIndex: 100, duration: 0.1, ease: "none" })
+        .to(element, { xPercent: -115, scale: 0.82, opacity: 0.88, zIndex: 80, duration: 0.1, ease: "none" })
+        .to(element, { xPercent: -230, scale: 0.70, opacity: 0.75, zIndex: 60, duration: 0.1, ease: "none" })
+        .to(element, { xPercent: -345, scale: 0.58, opacity: 0.60, zIndex: 40, duration: 0.1, ease: "none" })
+        .to(element, { xPercent: -460, scale: 0.46, opacity: 0.25, zIndex: 20, duration: 0.1, ease: "none" })
+        .to(element, { xPercent: -575, scale: 0.35, opacity: 0,    zIndex: 10, duration: 0.1, ease: "none" });
         return tl;
       };
 
@@ -1606,10 +1608,10 @@
       startAutoPlay();
 
       // ==================== GSAP AMBIENT & SCROLL ANIMATIONS ====================
-      // 1. Sacred Geometry Gold Ring Floating Breathe
+      // 1. Sacred Geometry Gold Ring Floating Breathe (stable concentric glow)
       gsap.to('#sacred-center-ring', {
-        y: '+=5',
-        duration: 3,
+        opacity: 0.85,
+        duration: 2.5,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut'
@@ -1694,16 +1696,15 @@
       }
     })();
 
-    // ==================== 6. PRODUCT CARDS ENTRANCE ANIMATIONS (CodePen ZEaJmv slideInLeft) ====================
-    // Reference: https://codepen.io/code_dependant/pen/ZEaJmv (Che - Entrance Animations #1)
-    // Easing: cubic-bezier(0.17, 0.89, 0.03, 0.99)
-    // Duration: 1100ms
-    // Dynamic offset: 50 + total * ratio * 20 + 50 + total * heightRatio * 20 px
+    // ==================== 6. PRODUCT CARDS ENTRANCE ANIMATIONS (Fluid & Snappy Wave) ====================
+    // Smooth deceleration curve: cubic-bezier(0.16, 1, 0.3, 1)
+    // Duration: 750ms for snappy, fluid glide
+    // Delay: colIdx * 0.08s for a crisp, continuous cascading wave
     (function initProductCardsEntrance() {
       if (typeof CustomEase !== 'undefined') {
         gsap.registerPlugin(CustomEase);
         try {
-          CustomEase.create('codepenSlideInEase', '0.17, 0.89, 0.03, 0.99');
+          CustomEase.create('codepenSlideInEase', '0.16, 1, 0.3, 1');
         } catch (_) {}
       }
 
@@ -1713,7 +1714,7 @@
 
         const entranceEase = (typeof CustomEase !== 'undefined' && CustomEase.get && CustomEase.get('codepenSlideInEase'))
           ? 'codepenSlideInEase'
-          : 'power3.out';
+          : 'power2.out';
 
         // Group cards into rows by vertical position and container
         const rows = [];
@@ -1743,7 +1744,7 @@
             rowCards.forEach((card, colIdx) => {
               const ratio = card.offsetLeft / (parentW || 1);
               const heightRatio = card.offsetTop / (parentH || 1);
-              const startX = Math.round(50 + totalInRow * ratio * 20 + 50 + totalInRow * heightRatio * 20);
+              const startX = Math.round(30 + totalInRow * ratio * 15 + 30 + totalInRow * heightRatio * 15);
 
               gsap.fromTo(card,
                 {
@@ -1753,8 +1754,8 @@
                 {
                   x: 0,
                   opacity: 1,
-                  duration: 1.1,
-                  delay: colIdx * 0.18, // 每一張卡片依序間隔 0.18s，先看到第一張再依序波浪進場
+                  duration: 0.75, // 加快速度，流暢不拖沓
+                  delay: colIdx * 0.08, // 連貫順暢的波浪時間差
                   ease: entranceEase,
                   clearProps: 'x'
                 }
