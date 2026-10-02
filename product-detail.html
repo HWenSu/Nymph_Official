@@ -56,14 +56,14 @@
       
       <!-- Mobile Menu Toggle Button -->
       <div class="flex items-center lg:hidden">
-        <button id="mobile-menu-btn" type="button" aria-label="開啟選單" class="p-2 -ml-2 text-nymph-cream hover:text-white focus:outline-none">
+        <button id="mobile-menu-btn" type="button" aria-label="開啟選單" class="p-2 -ml-2 text-nymph-cream hover:text-white transition-colors focus:outline-none">
           <img src="./assets/28deb0e1f605c9e01d46577a8fdc055d4058474d.svg" alt="選單" class="w-5 h-4 object-contain">
         </button>
       </div>
 
       <!-- Brand Logo -->
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="./assets/e1a9ba9bba27310a2c2be7f93b67d8f80d4f2a67.svg" alt="Nymph" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105">
+        <img src="./assets/e1a9ba9bba27310a2c2be7f93b67d8f80d4f2a67.svg" alt="Nymph" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 duration-300">
         <div class="hidden sm:flex flex-col ml-3 gap-0.5">
           <img src="./assets/e55976c0d7cbe3fc0646ae276111f8c423e0684a.svg" alt="NYMPH" class="h-5 w-auto object-contain">
           <img src="./assets/0c5c3a9478573436e84dcaaf785ca915bf3412ea.svg" alt="南芙女神" class="h-3 w-auto object-contain opacity-90">
@@ -77,9 +77,9 @@
           <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">關於我們</span>
           <span class="w-0 h-[2px] bg-nymph-olive group-hover:w-full transition-all duration-300 rounded-full mt-0.5"></span>
         </a>
-        <a href="shop.html" class="relative group py-2 flex flex-col items-center">
+        <a href="shop.html" class="group py-2 flex flex-col items-center">
           <span class="font-sans font-semibold text-[15px] text-nymph-tan tracking-wide">所有商品</span>
-          <span class="absolute bottom-0 w-full h-[2px] bg-nymph-olive rounded-full"></span>
+          <span class="w-full h-[2px] bg-nymph-olive rounded-full mt-0.5"></span>
         </a>
         <a href="shop.html?sale=true" class="group py-2 flex flex-col items-center">
           <span class="font-sans font-normal text-[15px] text-nymph-sage hover:text-nymph-tan transition-colors tracking-wide">折扣優惠</span>
@@ -93,14 +93,14 @@
 
       <!-- Right Action Icons -->
       <div class="flex items-center gap-4 sm:gap-6">
-        <a href="shop.html" aria-label="搜尋" class="text-nymph-tan hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors">
+        <a href="shop.html" aria-label="搜尋商品" class="text-nymph-tan hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/10">
           <img src="./assets/487bb933c6c4df0bf30234ea3368f3e0a4dd6fdb.svg" alt="Search" class="w-5 h-5 object-contain">
         </a>
-        <button type="button" aria-label="購物車" class="cart-trigger-btn flex items-center gap-1.5 p-1.5 rounded-full hover:bg-white/10 transition-all text-nymph-tan group">
+        <button id="cart-header-btn" type="button" aria-label="購物車" class="cart-trigger-btn flex items-center gap-1.5 p-1.5 rounded-full hover:bg-white/10 transition-all text-nymph-tan group">
           <img src="./assets/30fd977a21856d4fb8c8b03444e58061b58d381c.svg" alt="Cart" class="w-5 h-5 object-contain group-hover:scale-110 transition-transform">
           <span class="cart-count-badge bg-nymph-cream text-nymph-darkOlive font-sans font-bold text-[10px] leading-tight px-1.5 py-0.5 rounded-full shadow-sm">2</span>
         </button>
-        <a href="profile.html" aria-label="會員中心" class="text-nymph-tan hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors">
+        <a href="profile.html" aria-label="會員中心" class="text-nymph-tan hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/10">
           <img src="./assets/c35a53d546de92c3f79922c9e47e50e7fbecbe60.svg" alt="User" class="w-5 h-5 object-contain">
         </a>
       </div>
@@ -446,31 +446,121 @@
     </div>
   </footer>
 
-  <!-- ==================== MOBILE MENU DRAWER ==================== -->
-  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 pointer-events-none">
-    <div id="mobile-menu-overlay" class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300"></div>
-    <div class="absolute inset-y-0 right-0 max-w-xs w-full bg-nymph-forest text-nymph-cream p-6 shadow-2xl flex flex-col justify-between overflow-y-auto">
-      <div>
-        <div class="flex items-center justify-between pb-6 border-b border-nymph-olive/30">
-          <span class="font-serif font-bold text-lg text-nymph-tan tracking-wider">NYMPH</span>
-          <button id="mobile-menu-close" type="button" class="p-2 text-nymph-cream hover:text-white">✕</button>
+  <!-- ==================== MOBILE DRAWER MENU ==================== -->
+  <div id="drawer-backdrop" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out"></div>
+  
+  <aside id="mobile-drawer" class="fixed top-0 left-0 bottom-0 z-50 w-[82vw] max-w-[320px] bg-nymph-cream shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <!-- Drawer Top -->
+    <div class="p-6">
+      <!-- Drawer Header -->
+      <div class="flex items-start justify-between pb-6 border-b border-nymph-sand/60">
+        <div>
+          <div class="flex items-center gap-2">
+            <img src="./assets/d1cf33687701e7fc64e6e8ca17c0c894906f06a2.svg" alt="" class="h-6 w-auto">
+            <span class="font-serif font-bold text-nymph-darkGreen text-xl tracking-[0.18em]">NYMPH</span>
+          </div>
+          <p class="font-serif text-xs text-nymph-olive mt-1 italic">與靈魂對話的日常聖境</p>
         </div>
-        <nav class="flex flex-col gap-4 py-8 text-base font-sans">
-          <a href="index.html" class="hover:text-nymph-tan py-1">首頁</a>
-          <a href="about.html" class="hover:text-nymph-tan py-1">關於我們</a>
-          <a href="shop.html" class="text-nymph-tan font-bold py-1">所有商品</a>
-          <a href="shop.html?sale=true" class="hover:text-nymph-tan py-1">折扣優惠</a>
-          <a href="shop.html?cat=gift" class="hover:text-nymph-tan py-1">禮盒系列</a>
-          <a href="profile.html" class="hover:text-nymph-tan py-1">會員中心</a>
-          <a href="orders.html" class="hover:text-nymph-tan py-1">我的訂單</a>
-          <a href="contact.html" class="hover:text-nymph-tan py-1">聯絡客服</a>
-        </nav>
+        <button id="close-drawer-btn" type="button" aria-label="關閉選單" class="p-1.5 text-nymph-darkGreen/70 hover:text-nymph-darkGreen rounded-full hover:bg-nymph-sand/30 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </div>
-      <div class="pt-6 border-t border-nymph-olive/30 text-xs text-nymph-sage">
-        <p>© 2026 南芙女神 nymph</p>
+
+      <!-- Ornament -->
+      <div class="flex items-center justify-center gap-3 my-6">
+        <div class="flex-1 h-px bg-nymph-olive/30"></div>
+        <span class="text-nymph-olive font-serif text-xs">✦</span>
+        <div class="flex-1 h-px bg-nymph-olive/30"></div>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="space-y-4">
+        <a href="index.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>首頁</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="about.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>關於我們</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="shop.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-olive font-serif text-lg font-bold tracking-wide transition-colors">
+          <span>所有商品</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="shop.html?sale=true" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>折扣優惠</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="shop.html?cat=gift" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>禮盒系列</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="profile.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>會員中心</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="orders.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>我的訂單</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+        <a href="contact.html" class="drawer-nav-link flex items-center justify-between py-2 text-nymph-darkGreen font-serif text-lg tracking-wide hover:text-nymph-olive transition-colors">
+          <span>聯絡客服</span>
+          <svg class="w-4 h-4 text-nymph-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="p-6 border-t border-nymph-sand/60">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-nymph-olive/20 flex items-center justify-center text-nymph-darkGreen font-serif font-bold">
+          N
+        </div>
+        <div>
+          <p class="font-serif font-semibold text-nymph-darkGreen text-sm">南芙女神 會員專區</p>
+          <a href="profile.html" class="text-xs text-nymph-olive hover:underline">登入 / 註冊帳號</a>
+        </div>
       </div>
     </div>
-  </div>
+  </aside>
+
+  <!-- ==================== MINI CART DRAWER ==================== -->
+  <div id="cart-backdrop" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 bottom-0 z-50 w-full max-w-md bg-nymph-cream shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col justify-between pointer-events-none">
+    <div class="p-6 border-b border-nymph-sand/50 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-xl font-bold text-nymph-darkGreen">您的日常聖境購物車</span>
+        <span class="cart-count-badge bg-nymph-forest text-nymph-cream text-xs px-2 py-0.5 rounded-full font-sans">2</span>
+      </div>
+      <button id="cart-drawer-close" class="p-1.5 text-nymph-darkGreen hover:bg-nymph-sand/30 rounded-full transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    
+    <!-- Free Shipping Progress -->
+    <div class="bg-nymph-cardSand px-6 py-3 border-b border-nymph-sand/40">
+      <p id="cart-shipping-text" class="text-xs font-sans text-nymph-darkGreen mb-1.5">滿 NT$ 2,000 即享免運優惠</p>
+      <div class="w-full bg-white h-1.5 rounded-full overflow-hidden">
+        <div id="cart-shipping-bar" class="bg-nymph-olive h-full transition-all duration-300" style="width: 50%;"></div>
+      </div>
+    </div>
+
+    <!-- Items List -->
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto px-6 py-2"></div>
+
+    <!-- Checkout Footer -->
+    <div class="p-6 bg-nymph-cardSand/60 border-t border-nymph-sand/60">
+      <div class="flex items-center justify-between mb-4">
+        <span class="font-sans text-sm text-nymph-olive">小計 Subtotal</span>
+        <span id="cart-drawer-subtotal" class="font-serif text-xl font-bold text-nymph-darkGreen">NT$ 0</span>
+      </div>
+      <button type="button" onclick="showToast('正在導向安全結帳頁面...');" class="w-full bg-nymph-darkGreen hover:bg-nymph-forest text-nymph-cream py-3.5 rounded-[1px] font-sans font-semibold text-xs tracking-wider uppercase transition-colors">
+        前往結帳 CHECKOUT
+      </button>
+    </div>
+  </aside>
 
   <!-- Interactive JavaScript for Product Detail -->
   <script>

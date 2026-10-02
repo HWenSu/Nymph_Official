@@ -240,7 +240,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeMenu() {
     if (mobileDrawer) {
-      mobileDrawer.classList.add('translate-x-full', 'pointer-events-none');
+      if (mobileDrawer.id === 'mobile-drawer' || mobileDrawer.classList.contains('-translate-x-full')) {
+        mobileDrawer.classList.add('-translate-x-full');
+        mobileDrawer.classList.remove('translate-x-full');
+      } else {
+        mobileDrawer.classList.add('translate-x-full');
+      }
+      mobileDrawer.classList.add('pointer-events-none');
       if (drawerBackdrop) {
         drawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
         drawerBackdrop.classList.remove('opacity-100');
@@ -252,6 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
   menuBtn?.addEventListener('click', openMenu);
   closeDrawerBtn?.addEventListener('click', closeMenu);
   drawerBackdrop?.addEventListener('click', closeMenu);
+  document.querySelectorAll('#mobile-drawer a, #mobile-menu-drawer a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
 
   // Cart drawer triggers
   document.querySelectorAll('.cart-trigger-btn').forEach(btn => {
