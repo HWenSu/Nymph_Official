@@ -276,7 +276,7 @@
   </section>
 
   <!-- ==================== COLLECTION / CATEGORIES (Matches Figma 70:35) ==================== -->
-  <section id="collection" class="relative z-20 bg-[#435a44] text-nymph-cream overflow-hidden flex flex-col justify-between pt-6 pb-3 sm:pt-8 sm:pb-4 lg:pt-9 lg:pb-5 scroll-mt-20" style="height: clamp(650px, calc(100vh * 2 / 3), 700px); min-height: 650px; max-height: 700px;">
+  <section id="collection" class="relative z-20 bg-[#435a44] text-nymph-cream overflow-hidden flex flex-col justify-between pt-6 pb-3 sm:pt-8 sm:pb-4 lg:pt-9 lg:pb-5 scroll-mt-20" style="height: calc(100vh - 80px); height: calc(100dvh - 80px); min-height: 680px;">
     
     <!-- Top-Left Botanical Line Art Illustration (Figma 126:358) - Layered on very top -->
     <div id="botanical-left" class="absolute h-[155px] lg:h-[170px] left-1/2 -translate-x-[560px] top-[-35px] lg:top-[-45px] w-auto pointer-events-none select-none z-[130] opacity-95 hidden sm:block">
@@ -308,7 +308,7 @@
     </div>
 
     <!-- ==================== UNIFIED FULL-WIDTH INTERACTIVE CAROUSEL STAGE ==================== -->
-    <div id="category-stage" class="relative w-full h-[400px] sm:h-[430px] lg:h-[465px] overflow-hidden select-none cursor-grab touch-pan-y flex-1">
+    <div id="category-stage" class="relative w-full min-h-[460px] sm:min-h-[500px] lg:min-h-[540px] overflow-hidden select-none cursor-grab touch-pan-y flex-1">
       
       <!-- Subtle Background Leaf Watermarks (Figma 82:153 & 82:159) -->
       <div class="absolute h-[532px] left-[5%] top-[166px] w-[432px] opacity-10 pointer-events-none hidden lg:block">
@@ -323,7 +323,7 @@
       <!-- Outer Sacred Geometry Ring for Center Card (Fixed in Screen Center, Figma 72:793) -->
       <div id="sacred-center-ring" class="absolute border border-[#d2c2a7] rounded-full left-1/2 -translate-x-1/2 pointer-events-none z-[110] flex items-center justify-end
                   w-[185px] h-[293px] sm:w-[214px] sm:h-[338px] lg:w-[258px] lg:h-[424px]
-                  top-[0px] sm:top-[-3px] lg:top-[-6px]">
+                  top-[10px] sm:top-[12px] lg:top-[14px]">
         <!-- Tiny diamond sparkle on ring (Figma 72:759) -->
         <img src="./assets/2cfbd70e326af482668c0feec5237507fb606f4f.svg" alt="" class="w-[10px] h-[10px] lg:w-[12px] lg:h-[12px] translate-x-1 lg:translate-x-1.5">
       </div>
@@ -334,15 +334,15 @@
       </div>
 
       <!-- Floating Carousel Prev / Next Arrow Buttons -->
-      <button id="cat-carousel-prev" type="button" aria-label="上一項" class="absolute left-2 sm:left-6 top-[140px] sm:top-[160px] lg:top-[196px] -translate-y-1/2 z-[120] w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
+      <button id="cat-carousel-prev" type="button" aria-label="上一項" class="absolute left-2 sm:left-6 top-[156px] sm:top-[181px] lg:top-[226px] -translate-y-1/2 z-[120] w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
         <img src="./assets/be4b8693b1157f907f3b009a016c94d133455ad1.svg" alt="" class="w-3.5 h-3.5 sm:w-4 sm:h-4">
       </button>
-      <button id="cat-carousel-next" type="button" aria-label="下一項" class="absolute right-2 sm:right-6 top-[140px] sm:top-[160px] lg:top-[196px] -translate-y-1/2 z-[120] w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
+      <button id="cat-carousel-next" type="button" aria-label="下一項" class="absolute right-2 sm:right-6 top-[156px] sm:top-[181px] lg:top-[226px] -translate-y-1/2 z-[120] w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full bg-nymph-cream/90 hover:bg-white text-nymph-forest shadow-lg border border-nymph-tan flex items-center justify-center transition-all active:scale-90">
         <img src="./assets/d284e90e40223e473271243d442d9272367b37f1.svg" alt="" class="w-3.5 h-3.5 sm:w-4 sm:h-4">
       </button>
 
       <!-- Carousel Track with 15 Cards (3 Cloned Sets of 5 Items) -->
-      <div id="cat-cards" class="absolute top-[11px] left-1/2 -translate-x-1/2 w-[155px] sm:w-[180px] lg:w-[220px] h-[450px] pointer-events-none">
+      <div id="cat-cards" class="absolute top-[21px] sm:top-[26px] lg:top-[31px] left-1/2 -translate-x-1/2 w-[155px] sm:w-[180px] lg:w-[220px] h-[480px] pointer-events-none">
         <!-- Card 0: 精選香氛 -->
         <a href="shop.html?cat=fragrance" data-index="0" class="cat-card absolute top-0 left-0 w-[155px] sm:w-[180px] lg:w-[220px] flex flex-col items-center group cursor-pointer pointer-events-auto will-change-transform">
           <div class="pill-box flex items-center justify-center w-full h-[270px] sm:h-[310px] lg:h-[390px]">
@@ -1355,8 +1355,9 @@
       const cards = Array.from(cardsContainer.querySelectorAll('.cat-card'));
       if (cards.length === 0) return;
 
-      // Set initial hidden state for cards - transformOrigin centered on pill (Y: 195px)
-      gsap.set(cards, { xPercent: 575, opacity: 0, scale: 0, transformOrigin: '50% 195px' });
+      // Set initial hidden state for cards - transformOrigin dynamically centered on pill
+      const pillCenterY = window.innerWidth >= 1024 ? 195 : (window.innerWidth >= 640 ? 155 : 135);
+      gsap.set(cards, { xPercent: 575, opacity: 0, scale: 0, transformOrigin: `50% ${pillCenterY}px` });
 
       const spacing = 0.1;
       const snapTime = gsap.utils.snap(spacing);
